@@ -1,0 +1,10 @@
+<nav class="nav">
+  <ul class="nav-list">
+    <li class="nav-list__item" routerLinkActive="nav-list__item--active" [routerLinkActiveOptions]="{exact: true}">
+      <a [routerLink]="['/']" class="nav-list__link">Dashboard</a>
+    </li>
+    <li class="nav-list__item" routerLinkActive="nav-list__item--active">
+      <a [routerLink]="['/', 'funds']" class="nav-list__link">Funds</a>
+    </li>
+  </ul>
+</nav>

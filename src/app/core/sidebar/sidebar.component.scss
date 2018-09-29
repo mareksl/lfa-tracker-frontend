@@ -1,0 +1,57 @@
+@import '../../../scss/base/variables';
+
+.nav {
+  height: 100%;
+  width: 100%;
+
+  background-color: $color-shade-darker;
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+
+  flex-flow: row wrap;
+}
+
+.nav-list__item {
+  overflow: hidden;
+  position: relative;
+  height: 3rem;
+
+  background-color: $color-shade-dark;
+  border-left: .25rem solid $color-accent-dark;
+
+  &--active {
+    border-color: $color-shade-light;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: -.25rem;
+      top: 0;
+      width: .25rem;
+      height: 100%;
+
+      border-radius: 50%;
+      background-color: $color-shade-light;
+
+      box-shadow: 0 0 1rem $color-shade-light;
+    }
+  }
+}
+
+.nav-list__link {
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+  padding-left: 1rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .nav-list {
+    flex-flow: column;
+  }
+}

@@ -1,0 +1,6 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+
+.dashboard {
+  @include main-content;
+}

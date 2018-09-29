@@ -1,0 +1,98 @@
+$button-shadow-dims: 0 .5rem 2rem -.5rem;
+$button-shadow-dims-active: 0 .5rem .5rem -.5rem;
+$button-shadow-dims-inset: inset 0 0 1rem -.25rem;
+
+.button {
+  cursor: pointer;
+
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  // font-weight: 700;
+
+  padding: .75rem 1.5rem;
+  margin: .25rem;
+
+  border: 1px solid transparent;
+  background-color: $color-accent-light;
+  color: $color-shade-light;
+
+  border-radius: .125rem;
+
+  transition: box-shadow $transition-duration;
+
+  &:hover {
+    box-shadow: $button-shadow-dims $color-accent-light;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: $button-shadow-dims-active $color-accent-light;
+  }
+
+  &:active {
+    box-shadow: $button-shadow-dims-active $color-accent-light,
+      $button-shadow-dims-inset $color-shade-dark;
+    transition: box-shadow 0s;
+  }
+}
+
+
+.button--accent {
+  background-color: $color-shade-light;
+  color: $color-shade-dark;
+}
+
+.button--success {
+  background-color: $color-success;
+  color: $color-shade-light;
+
+  &:hover {
+    box-shadow: $button-shadow-dims $color-success;
+  }
+
+  &:focus {
+    box-shadow: $button-shadow-dims-active $color-success;
+  }
+
+  &:active {
+    box-shadow: $button-shadow-dims-active $color-success,
+      $button-shadow-dims-inset $color-shade-dark;
+  }
+}
+
+.button--warning {
+  background-color: $color-warning;
+  color: $color-shade-light;
+
+  &:hover {
+    box-shadow: $button-shadow-dims $color-warning;
+  }
+
+  &:focus {
+    box-shadow: $button-shadow-dims-active $color-warning;
+  }
+
+  &:active {
+    box-shadow: $button-shadow-dims-active $color-warning,
+      $button-shadow-dims-inset $color-shade-dark;
+  }
+}
+
+.button--danger {
+  background-color: $color-danger;
+  color: $color-shade-light;
+
+  &:hover {
+    box-shadow: $button-shadow-dims $color-danger;
+  }
+
+  &:focus {
+    box-shadow: $button-shadow-dims-active $color-danger;
+  }
+
+  &:active {
+    box-shadow: $button-shadow-dims-active $color-danger,
+      $button-shadow-dims-inset $color-shade-dark;
+  }
+}

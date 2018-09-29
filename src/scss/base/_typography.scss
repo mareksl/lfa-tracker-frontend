@@ -1,0 +1,35 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 100%;
+  color: $color-shade-light;
+}
+
+
+a {
+  text-decoration: none;
+  color: $color-shade-light;
+
+  &:hover, &:focus {
+    color: $color-accent-light;
+  }
+}
+
+h2 {
+  font-size: 2.441em;
+}
+
+h3 {
+  font-size: 1.953em;
+}
+
+h4 {
+  font-size: 1.563em;
+}
+
+small {
+  font-size: .8rem;
+}
