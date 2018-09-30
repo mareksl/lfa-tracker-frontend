@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Observable, merge, of, fromEvent } from 'rxjs';
+import { mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -6,7 +8,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Output()
+  navToggled = new EventEmitter();
+  connected: boolean;
+  online$: Observable<boolean>;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.online$ = merge(
+      of(navigator.onLine),
+      fromEvent(window, 'online').pipe(mapTo(true)),
+      fromEvent(window, 'offline').pipe(mapTo(false))
+    );
+
+    this.online$.subscribe(value => {
+      this.connected = value;
+    });
+  }
+
+  toggleNav() {
+    this.navToggled.emit();
+  }
 }

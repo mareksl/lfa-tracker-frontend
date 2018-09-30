@@ -1,0 +1,19 @@
+.input {
+  font-family: 'Roboto',
+    'Helvetica',
+    sans-serif;
+  font-size: 1rem;
+
+  padding: .75rem;
+
+  border: 1px solid $color-accent-light;
+  border-radius: $border-radius-default;
+  background-color: $color-shade-light;
+
+  &:focus {
+    outline: none;
+    box-shadow: $button-shadow-dims-active $color-accent-light;
+    background-color: $color-shade-lighter;
+
+  }
+}

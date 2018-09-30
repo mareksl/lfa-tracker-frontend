@@ -2,7 +2,7 @@
 @import '../../../scss/utils/mixins';
 @import '../../../scss/base/grid';
 
-.dashboard {
+.funds {
   @include main-content;
   @include grid-container;
 }

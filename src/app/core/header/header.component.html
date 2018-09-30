@@ -4,4 +4,13 @@
     <h1>LFA Progress Tracker</h1>
   </a>
 
+  <div class="header__buttons">
+    <button class="header__button" (click)="toggleNav()"><span class="fa fa-fw fa-bars"></span></button>
+    <ul class="header__controls">
+      <li><button class="header__button"><span class="fa fa-fw fa-bell"></span></button></li>
+      <li><button class="header__button"><span class="fa fa-fw fa-cog"></span></button></li>
+      <li><span class="fa fa-fw fa-circle header__status" [ngClass]="{'header__status--connected': connected}"></span></li>
+    </ul>
+  </div>
+
 </header>

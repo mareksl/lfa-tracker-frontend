@@ -6,7 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  navVisible: boolean;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.navVisible = true;
+  }
+
+  toggleNav() {
+    this.navVisible = !this.navVisible;
+  }
 }

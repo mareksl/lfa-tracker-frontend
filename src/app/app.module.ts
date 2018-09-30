@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PanelComponent } from './pages/dashboard/panel/panel.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { FundsComponent } from './pages/funds/funds.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,10 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
     FooterComponent,
     DashboardComponent,
     PanelComponent,
-    SidebarComponent
+    SidebarComponent,
+    FundsComponent
   ],
-  imports: [AppRoutingModule, BrowserModule, FormsModule],
+  imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })

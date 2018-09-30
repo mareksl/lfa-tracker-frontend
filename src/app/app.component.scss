@@ -10,6 +10,14 @@
     "footer";
   grid-template-columns: 100%;
   grid-template-rows: 2rem 4rem 1fr 2rem;
+
+  &--noNavbar {
+    grid-template-areas: "header"
+      "main"
+      "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: 2rem 1fr 2rem;
+  }
 }
 
 .header {
@@ -35,5 +43,13 @@
       "footer footer";
     grid-template-columns: 16rem 1fr;
     grid-template-rows: 4rem 1fr 2rem;
+
+    &--noNavbar {
+      grid-template-areas: "header"
+        "main"
+        "footer";
+      grid-template-columns: 1fr;
+      grid-template-rows: 4rem 1fr 2rem;
+    }
   }
 }

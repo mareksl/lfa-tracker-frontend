@@ -17,29 +17,34 @@ $button-shadow-dims-inset: inset 0 0 1rem -.25rem;
   background-color: $color-accent-light;
   color: $color-shade-light;
 
-  border-radius: .125rem;
+  border-radius: $border-radius-default;
 
-  transition: box-shadow $transition-duration;
+  transition: box-shadow $transition-duration,
+    transform $transition-duration;
 
   &:hover {
+    transform: translateY(-.125rem);
     box-shadow: $button-shadow-dims $color-accent-light;
   }
 
   &:focus {
     outline: none;
+    transform: translateY(-.125rem);
     box-shadow: $button-shadow-dims-active $color-accent-light;
   }
 
   &:active {
+    transform: translateY(.125rem);
     box-shadow: $button-shadow-dims-active $color-accent-light,
       $button-shadow-dims-inset $color-shade-dark;
-    transition: box-shadow 0s;
+    transition: box-shadow 0s, transfrom 0s;
   }
 }
 
 
 .button--accent {
   background-color: $color-shade-light;
+  border-color: $color-accent-light;
   color: $color-shade-dark;
 }
 
