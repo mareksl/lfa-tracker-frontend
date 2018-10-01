@@ -8,12 +8,14 @@ body {
   color: $color-shade-light;
 }
 
-
 a {
   text-decoration: none;
   color: $color-shade-light;
 
-  &:hover, &:focus {
+  transition: $transition-duration;
+
+  &:focus,
+  &:hover {
     color: $color-accent-light;
   }
 }
@@ -31,5 +33,5 @@ h4 {
 }
 
 small {
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
