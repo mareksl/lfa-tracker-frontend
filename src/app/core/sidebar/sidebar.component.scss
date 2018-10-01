@@ -19,10 +19,11 @@
   position: relative;
   height: 3rem;
 
-  background-color: $color-shade-dark;
+  background-color: $color-shade-darker;
   border-left: 0.25rem solid $color-accent-dark;
 
-  transition: border-color $transition-duration;
+  transition: border-color $transition-duration,
+    background-color $transition-duration;
 
   &:before {
     content: '';
@@ -30,8 +31,8 @@
     position: absolute;
     left: -0.25rem;
     top: 0;
-    width: 0.25rem;
     height: 100%;
+    width: 0.25rem;
 
     border-radius: 50%;
     background-color: $color-shade-light;
@@ -40,7 +41,15 @@
     box-shadow: none;
   }
 
+  &:focus,
+  &:hover {
+    &:before {
+      box-shadow: 0 0 1rem $color-shade-light;
+    }
+  }
+
   &--active {
+    background-color: $color-shade-dark;
     border-color: $color-shade-light;
 
     &:before {
@@ -50,11 +59,13 @@
 }
 
 .nav-list__link {
+  color: $color-shade-light;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   height: 100%;
-  padding-left: 1rem;
+  padding: 0 1rem;
 }
 
 @media screen and (min-width: 40rem) {

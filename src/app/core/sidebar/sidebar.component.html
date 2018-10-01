@@ -2,10 +2,13 @@
   <ul class="nav-list">
     <li class="nav-list__item" routerLinkActive="nav-list__item--active"
       [routerLinkActiveOptions]="{exact: true}">
-      <a [routerLink]="['/']" class="nav-list__link">Dashboard</a>
+      <a [routerLink]="['/']" class="nav-list__link">Dashboard <span class="fa fa-fw fa-dashboard"></span></a>
     </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">
-      <a [routerLink]="['/', 'funds']" class="nav-list__link">Funds</a>
+      <a [routerLink]="['/', 'funds']" class="nav-list__link">Funds <span class="fa fa-fw fa-list-alt"></span></a>
+    </li>
+    <li class="nav-list__item" routerLinkActive="nav-list__item--active">
+      <a [routerLink]="['/', 'statistics']" class="nav-list__link">Statistics <span class="fa fa-fw fa-tasks"></span></a>
     </li>
   </ul>
 </nav>

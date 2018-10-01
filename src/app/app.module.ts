@@ -11,6 +11,7 @@ import { PanelComponent } from './pages/dashboard/panel/panel.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { FundsComponent } from './pages/funds/funds.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardComponent,
     PanelComponent,
     SidebarComponent,
-    FundsComponent
+    FundsComponent,
+    StatisticsComponent
   ],
   imports: [AppRoutingModule, BrowserModule, FormsModule, HttpClientModule],
   providers: [],
