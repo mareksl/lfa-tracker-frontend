@@ -3,3 +3,7 @@
   padding: 1rem;
   background-color: $color-shade-dark;
 }
+
+@mixin main-content__header {
+  grid-column-end: span 12;
+}

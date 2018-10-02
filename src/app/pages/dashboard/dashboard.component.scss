@@ -6,3 +6,7 @@
   @include main-content;
   @include grid-container;
 }
+
+.dashboard__header {
+  @include main-content__header;
+}
