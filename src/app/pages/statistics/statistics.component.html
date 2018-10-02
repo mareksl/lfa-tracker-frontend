@@ -1,3 +1,10 @@
 <div class="statistics">
   <h2 class="statistics__header">Statistics</h2>
+  <div class="statistics__data"></div>
+  <div class="statistics__charts">
+    <div class="chart">
+      <canvas baseChart [chartType]="'pie'" [data]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="true"
+        [colors]="chartColors"></canvas>
+    </div>
+  </div>
 </div>

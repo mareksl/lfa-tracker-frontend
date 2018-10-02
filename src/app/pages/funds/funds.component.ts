@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./funds.component.scss']
 })
 export class FundsComponent implements OnInit {
-  private fundsSubscription: Subscription;
+  fundsSubscription: Subscription;
   funds: Fund[];
 
   constructor(private fundsService: FundsService) {}

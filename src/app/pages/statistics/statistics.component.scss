@@ -10,3 +10,18 @@
 .statistics__header {
   @include main-content__header;
 }
+
+.statistics__data {
+  @include content-box;
+  grid-column-end: span 12;
+}
+.statistics__charts {
+  @include content-box;
+  @include grid-container;
+
+  grid-column-end: span 12;
+}
+
+.chart {
+  grid-column-end: span 6;
+}
