@@ -9,40 +9,32 @@ import { StatisticsService } from '../../core/services/statistics/statistics.ser
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
+  loading: boolean;
   statisticsSubscription: Subscription;
-  statistics: IStatistics = { totalFundCount: 0, percentageDone: 0 };
+  statistics: IStatistics = { totalCount: 0, doneCount: 0, percentageDone: 0 };
 
-  chartData: number[] = [];
-  chartLabels: string[] = [];
-  chartOptions = { responsive: true };
-
-  chartColors = [
-    {
-      backgroundColor: 'rgba(103, 58, 183, .1)',
-      borderColor: 'rgb(103, 58, 183)',
-      pointBackgroundColor: 'rgb(103, 58, 183)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(103, 58, 183, .8)'
-    }
-    // ...colors for additional data sets
-  ];
+  totalPieChartData: number[] = [0, 0];
 
   constructor(private statsService: StatisticsService) {}
 
   ngOnInit() {
+    this.loading = false;
     this.statisticsSubscription = this.fetchStatistics();
-
-    this.chartLabels = ['Checked Funds', 'Unchecked Funds'];
   }
 
   fetchStatistics() {
+    this.loading = true;
     return this.statsService.getAll().subscribe((stats: IStatistics) => {
       this.statistics = stats;
-      this.chartData = [
-        this.statistics.percentageDone * this.statistics.totalFundCount,
-        (1 - this.statistics.percentageDone) * this.statistics.totalFundCount
+      this.totalPieChartData = [
+        this.statistics.doneCount,
+        this.statistics.totalCount - this.statistics.doneCount
       ];
+      this.loading = false;
     });
+  }
+
+  refreshData() {
+    this.fetchStatistics();
   }
 }

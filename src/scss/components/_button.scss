@@ -38,6 +38,15 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
       $button-shadow-dims-inset $color-shade-dark;
     transition: box-shadow 0s, transfrom 0s;
   }
+
+  &:disabled {
+    cursor: wait;
+    pointer-events: none;
+  }
+}
+
+.button--square {
+  padding: 0.75rem;
 }
 
 .button--accent {

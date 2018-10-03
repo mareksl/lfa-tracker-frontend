@@ -13,6 +13,8 @@ import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { FundsComponent } from './pages/funds/funds.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { TotalPieChartComponent } from './pages/statistics/charts/total-pie-chart/total-pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     PanelComponent,
     SidebarComponent,
     FundsComponent,
-    StatisticsComponent
+    StatisticsComponent,
+    AdminComponent,
+    TotalPieChartComponent
   ],
   imports: [
     AppRoutingModule,

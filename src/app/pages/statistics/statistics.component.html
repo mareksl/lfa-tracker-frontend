@@ -1,10 +1,24 @@
 <div class="statistics">
-  <h2 class="statistics__header">Statistics</h2>
-  <div class="statistics__data"></div>
+  <header class="statistics__header">
+    <h2>Statistics</h2>
+    <button class="button button--square button--accent" (click)="refreshData()" [disabled]="loading">
+      <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
+    </button>
+  </header>
+  <ul class="statistics__data">
+    <li class="statistics__datapoint">
+      Total Fund Count: {{statistics.totalCount}}
+    </li>
+    <li class="statistics__datapoint">
+      Checked Funds: {{statistics.doneCount}}
+    </li>
+    <li class="statistics__datapoint">
+      Checked Percentage: {{statistics.percentageDone | percent:'1.0-2'}}
+    </li>
+  </ul>
   <div class="statistics__charts">
     <div class="chart">
-      <canvas baseChart [chartType]="'pie'" [data]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="true"
-        [colors]="chartColors"></canvas>
+      <app-total-pie-chart [chartData]="totalPieChartData"></app-total-pie-chart>
     </div>
   </div>
 </div>

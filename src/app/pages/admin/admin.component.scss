@@ -2,34 +2,18 @@
 @import '../../../scss/utils/mixins';
 @import '../../../scss/base/grid';
 
-.statistics {
+.admin {
   @include main-content;
   @include grid-container;
 }
-
-.statistics__header {
+.admin__header {
   @include main-content__header;
 }
-
-.statistics__data {
+.admin__export {
   @include content-box;
-  grid-column-end: span 12;
+  grid-column-end: span 6;
 }
-
-.statistics__datapoint {
-  margin-bottom: 1rem;
-  &:last-child {
-    margin: 0;
-  }
-}
-
-.statistics__charts {
+.admin__import {
   @include content-box;
-  @include grid-container;
-
-  grid-column-end: span 12;
-}
-
-.chart {
   grid-column-end: span 6;
 }

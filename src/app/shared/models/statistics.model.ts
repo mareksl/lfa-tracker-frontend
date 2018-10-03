@@ -1,5 +1,6 @@
 export interface IStatistics {
-  totalFundCount: number;
+  totalCount: number;
+  doneCount: number;
   percentageDone: number;
 }
 

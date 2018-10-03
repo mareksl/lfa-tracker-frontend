@@ -6,6 +6,10 @@
 
 @mixin main-content__header {
   grid-column-end: span 12;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
 }
 
 @mixin content-box {
