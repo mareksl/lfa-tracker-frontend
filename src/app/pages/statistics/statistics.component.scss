@@ -11,9 +11,32 @@
   @include main-content__header;
 }
 
+.statistics__heading {
+  margin-bottom: 1rem;
+}
+
 .statistics__data {
   @include content-box;
-  grid-column-end: span 12;
+  @include grid-container;
+  @include full-width;
+}
+
+.statistics__total {
+  @include full-width;
+}
+
+.statistics__by-criteria {
+  @include full-width;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.statistics__criterion {
+  @include content-box;
+
+  flex: 1 0 calc(20% - 2rem);
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
 }
 
 .statistics__datapoint {
@@ -21,15 +44,28 @@
   &:last-child {
     margin: 0;
   }
+  &--accent {
+    font-weight: 700;
+  }
 }
 
 .statistics__charts {
   @include content-box;
   @include grid-container;
-
-  grid-column-end: span 12;
+  @include full-width;
 }
 
 .chart {
-  grid-column-end: span 6;
+  @include full-width;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .chart {
+    grid-column-end: span 6;
+  }
+}
+
+.no-funds {
+  @include content-box;
+  @include full-width;
 }

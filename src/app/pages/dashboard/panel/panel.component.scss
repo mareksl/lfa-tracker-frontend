@@ -3,15 +3,4 @@
 
 .panel {
   @include content-box;
-
-  &--success {
-    border-color: $color-success;
-  }
-  &--warning {
-    border-color: $color-warning;
-  }
-  &--danger {
-    border-color: $color-danger;
-    animation: pulse__box--danger $pulse-duration infinite;
-  }
 }

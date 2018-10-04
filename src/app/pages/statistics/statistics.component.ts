@@ -11,7 +11,14 @@ import { StatisticsService } from '../../core/services/statistics/statistics.ser
 export class StatisticsComponent implements OnInit {
   loading: boolean;
   statisticsSubscription: Subscription;
-  statistics: IStatistics = { totalCount: 0, doneCount: 0, percentageDone: 0 };
+  statistics: IStatistics = {
+    totalCount: 0,
+    doneCount: 0,
+    percentageDone: 0,
+    statsByAssignee: {},
+    statsByRank: {},
+    statsByDepartment: {}
+  };
 
   totalPieChartData: number[] = [0, 0];
 

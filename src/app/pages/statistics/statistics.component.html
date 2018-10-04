@@ -5,20 +5,68 @@
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
   </header>
-  <ul class="statistics__data">
-    <li class="statistics__datapoint">
-      Total Fund Count: {{statistics.totalCount}}
-    </li>
-    <li class="statistics__datapoint">
-      Checked Funds: {{statistics.doneCount}}
-    </li>
-    <li class="statistics__datapoint">
-      Checked Percentage: {{statistics.percentageDone | percent:'1.0-2'}}
-    </li>
-  </ul>
-  <div class="statistics__charts">
-    <div class="chart">
-      <app-total-pie-chart [chartData]="totalPieChartData"></app-total-pie-chart>
-    </div>
+  <div class="no-funds no-funds--danger" *ngIf="statistics.totalCount === 0; else content">
+    <p>No statistics available!</p>
   </div>
+  <ng-template #content>
+    <div class="statistics__data">
+      <h3 class="statistics__header">Total stats:</h3>
+      <ul class="statistics__total">
+        <li class="statistics__datapoint">
+          Total Fund Count: {{statistics.totalCount}}
+        </li>
+        <li class="statistics__datapoint">
+          Checked Funds: {{statistics.doneCount}}
+        </li>
+        <li class="statistics__datapoint statistics__datapoint--accent">
+          Checked Percentage: {{statistics.percentageDone | percent:'1.0-2'}}
+        </li>
+      </ul>
+    </div>
+    <div class="statistics__data">
+      <h3 class="statistics__header">Stats by rank:</h3>
+      <ul class="statistics__by-criteria">
+        <li class="statistics__criterion" *ngFor="let rank of statistics.statsByRank | keyvalue">
+          <h4 class="statistics__heading">Rank {{rank.key}}</h4>
+          <ul>
+            <li class="statistics__datapoint">
+              Total Fund Count: {{rank.value.totalCount}}
+            </li>
+            <li class="statistics__datapoint">
+              Checked Funds: {{rank.value.doneCount}}
+            </li>
+            <li class="statistics__datapoint statistics__datapoint--accent">
+              Checked Percentage: {{rank.value.percentageDone | percent:'1.0-2'}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="statistics__data">
+      <h3 class="statistics__header">Stats by department:</h3>
+      <ul class="statistics__by-criteria">
+        <li class="statistics__criterion" *ngFor="let department of statistics.statsByDepartment | keyvalue">
+          <h4 class="statistics__heading">{{department.key}}</h4>
+          <ul>
+            <li class="statistics__datapoint">
+              Total Fund Count: {{department.value.totalCount}}
+            </li>
+            <li class="statistics__datapoint">
+              Checked Funds: {{department.value.doneCount}}
+            </li>
+            <li class="statistics__datapoint statistics__datapoint--accent">
+              Checked Percentage: {{department.value.percentageDone | percent:'1.0-2'}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="statistics__charts">
+      <h2 class="statistics__header">Charts</h2>
+      <div class="chart">
+        <app-total-pie-chart [chartData]="totalPieChartData"></app-total-pie-chart>
+      </div>
+    </div>
+  </ng-template>
+
 </div>
