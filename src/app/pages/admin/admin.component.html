@@ -2,10 +2,17 @@
   <h2 class="admin__header">Admin</h2>
 
   <div class="admin__export">
-    <h3>Export funds</h3>
-
+    <h3 class="admin__header">Export funds</h3>
+    <button class="button"><span class="fa fa-download button__icon"></span>Download</button>
   </div>
   <div class="admin__import">
-    <h3>Import Excel file</h3>
+    <h3 class="admin__header">Import Excel file</h3>
+    <form #form="ngForm" class="import__form" enctype="multipart/form-data" (submit)="uploadFile()">
+      <input name="file" id="file" class="file-input import__file-input" [ngClass]="{'file-input--uploaded': file}"
+        type="file" accept=".xlsx,.xls,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        (change)="onFileChange($event)">
+      <label for="file"><span class="fa fa-file button__icon"></span>{{file ? file.name : 'Choose File'}}</label>
+      <button [disabled]="!file" type="submit" class="button"><span class="fa fa-upload button__icon"></span>Upload</button>
+    </form>
   </div>
 </div>

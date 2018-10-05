@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  file: File;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.file = null;
   }
 
+  uploadFile() {
+    console.log(this.file);
+  }
+
+  onFileChange(event) {
+    this.file = event.target.files[0];
+  }
 }

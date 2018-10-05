@@ -61,6 +61,26 @@
         </li>
       </ul>
     </div>
+    <div class="statistics__data">
+      <h3 class="statistics__header">Stats by Assignee:</h3>
+      <select class="select assignee__select" name="assignee" id="assignee" [(ngModel)]="assignee">
+        <option *ngFor="let assignee of statistics.statsByAssignee | keyvalue" [value]="assignee.key">{{assignee.key}}</option>
+      </select>
+      <div *ngIf="assignee.length > 0" class="assignee__data">
+        <h4 class="statistics__heading">{{assignee}}</h4>
+        <ul>
+          <li class="statistics__datapoint">
+            Total Fund Count: {{statistics.statsByAssignee[assignee].totalCount}}
+          </li>
+          <li class="statistics__datapoint">
+            Checked Funds: {{statistics.statsByAssignee[assignee].doneCount}}
+          </li>
+          <li class="statistics__datapoint statistics__datapoint--accent">
+            Checked Percentage: {{statistics.statsByAssignee[assignee].percentageDone | percent:'1.0-2'}}
+          </li>
+        </ul>
+      </div>
+    </div>
     <div class="statistics__charts">
       <h2 class="statistics__header">Charts</h2>
       <div class="chart">

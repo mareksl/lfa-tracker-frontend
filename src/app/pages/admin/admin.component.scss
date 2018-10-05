@@ -9,6 +9,7 @@
 .admin__header {
   @include main-content__header;
 }
+
 .admin__export {
   @include content-box;
   grid-column-end: span 6;
@@ -16,4 +17,8 @@
 .admin__import {
   @include content-box;
   grid-column-end: span 6;
+}
+
+.import__form {
+  @include full-width;
 }

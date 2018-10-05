@@ -9,6 +9,7 @@ import { StatisticsService } from '../../core/services/statistics/statistics.ser
   styleUrls: ['./statistics.component.scss']
 })
 export class StatisticsComponent implements OnInit {
+  assignee: string;
   loading: boolean;
   statisticsSubscription: Subscription;
   statistics: IStatistics = {
@@ -27,6 +28,7 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
     this.loading = false;
     this.statisticsSubscription = this.fetchStatistics();
+    this.assignee = '';
   }
 
   fetchStatistics() {

@@ -39,6 +39,14 @@
   margin: 0 1rem 1rem 1rem;
 }
 
+.assignee__select {
+  @include full-width;
+}
+.assignee__data {
+  @include content-box;
+  @include full-width;
+}
+
 .statistics__datapoint {
   margin-bottom: 1rem;
   &:last-child {

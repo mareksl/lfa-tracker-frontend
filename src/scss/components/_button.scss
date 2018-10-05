@@ -108,3 +108,7 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
       $button-shadow-dims-inset $color-shade-dark;
   }
 }
+
+.button__icon {
+  padding-right: 1rem;
+}
