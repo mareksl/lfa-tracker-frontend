@@ -4,17 +4,26 @@
   width: 100%;
   height: 100%;
   display: flex;
+  flex-flow: row wrap;
 
   background-color: $color-shade-darker;
 }
 
 .header__brand {
+  flex: 1 0 100%;
+  padding: 0.5rem;
   font-weight: 700;
 
   width: 16rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .header__brand {
+    flex: 0 1 16rem;
+  }
 }
 
 .header__button {
@@ -44,7 +53,7 @@
 
   &:active {
     color: $color-success;
-    transform: scale(.9);
+    transform: scale(0.9);
     transition: color 0s, transform 0s;
   }
 }

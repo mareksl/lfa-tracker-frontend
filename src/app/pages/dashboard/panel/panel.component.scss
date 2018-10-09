@@ -2,5 +2,42 @@
 @import '../../../../scss/utils/mixins';
 
 .panel {
+  z-index: 0;
   @include content-box;
+  position: relative;
+  overflow: hidden;
+  border-color: $color-primary;
+
+  &:before {
+    z-index: -1;
+    content: '\f05a';
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    opacity: 0.2;
+    filter: blur(.125rem);
+
+    color: $color-primary;
+    font-size: 8rem;
+  }
+
+  &--success {
+    &:before {
+      content: '\f058';
+      color: $color-success;
+    }
+  }
+  &--warning {
+    &:before {
+      content: '\f06a';
+      color: $color-warning;
+    }
+  }
+  &--danger {
+    &:before {
+      content: '\f057';
+      color: $color-danger;
+    }
+  }
 }

@@ -1,0 +1,10 @@
+@import '../../../../scss/base/variables';
+.funds-list__list {
+  display: flex;
+  flex-flow: column;
+}
+
+.funds-list__item {
+  padding: 1rem;
+  border-bottom: 1px solid $color-accent-dark;
+}

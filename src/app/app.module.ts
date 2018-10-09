@@ -14,6 +14,8 @@ import { PanelComponent } from './pages/dashboard/panel/panel.component';
 import { FundsComponent } from './pages/funds/funds.component';
 import { TotalPieChartComponent } from './pages/statistics/charts/total-pie-chart/total-pie-chart.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { FundsListComponent } from './pages/funds/funds-list/funds-list.component';
+import { FundsListItemComponent } from './pages/funds/funds-list/funds-list-item/funds-list-item.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     FundsComponent,
     StatisticsComponent,
     AdminComponent,
-    TotalPieChartComponent
+    TotalPieChartComponent,
+    FundsListComponent,
+    FundsListItemComponent
   ],
   imports: [
     AppRoutingModule,

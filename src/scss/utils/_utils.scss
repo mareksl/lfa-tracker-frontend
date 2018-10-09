@@ -8,3 +8,9 @@
   padding: 0;
   border: 0;
 }
+
+
+.no-funds {
+  @include content-box;
+  @include full-width;
+}

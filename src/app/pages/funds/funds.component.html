@@ -1,6 +1,13 @@
 <div class="funds">
-  <h2 class="funds__header">Funds</h2>
-  <ul>
-    <li *ngFor="let fund of funds">{{fund.lipperId}} - {{fund.fundName}}</li>
-  </ul>
+  <div class="funds__header">
+    <h2>Funds</h2><button class="button button--square button--accent" (click)="refreshData()" [disabled]="loading">
+      <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
+    </button>
+  </div>
+  <div class="no-funds no-funds--danger" *ngIf="funds.length === 0; else content">
+    <p>No funds available!</p>
+  </div>
+  <ng-template #content>
+    <app-funds-list class="funds__list" [funds]="funds"></app-funds-list>
+  </ng-template>
 </div>

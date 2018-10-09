@@ -20,6 +20,15 @@ a {
   }
 }
 
+p {
+  line-height: 1.45;
+  padding-bottom: 0.5rem;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
 h2 {
   font-size: 2.441em;
 }

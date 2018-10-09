@@ -10,3 +10,8 @@
 .funds__header {
   @include main-content__header;
 }
+
+.funds__list {
+  @include content-box;
+  @include full-width;
+}

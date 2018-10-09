@@ -1,0 +1,14 @@
+.funds-list-item {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.funds-list-item__lipper-id {
+  flex: 0 1 auto;
+  padding-right: 1rem;
+}
+
+.funds-list-item__fund-name {
+  flex: 1 1 auto;
+}

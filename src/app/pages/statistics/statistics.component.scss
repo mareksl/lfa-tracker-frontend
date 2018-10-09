@@ -72,8 +72,3 @@
     grid-column-end: span 6;
   }
 }
-
-.no-funds {
-  @include content-box;
-  @include full-width;
-}
