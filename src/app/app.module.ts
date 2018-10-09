@@ -1,20 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { ChartsModule } from 'ng2-charts';
-
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './core/header/header.component';
-import { FooterComponent } from './core/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './core/footer/footer.component';
+import { HeaderComponent } from './core/header/header.component';
+import { SidebarComponent } from './core/sidebar/sidebar.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PanelComponent } from './pages/dashboard/panel/panel.component';
-import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { FundsComponent } from './pages/funds/funds.component';
-import { HttpClientModule } from '@angular/common/http';
-import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { TotalPieChartComponent } from './pages/statistics/charts/total-pie-chart/total-pie-chart.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +32,7 @@ import { TotalPieChartComponent } from './pages/statistics/charts/total-pie-char
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     ChartsModule
   ],

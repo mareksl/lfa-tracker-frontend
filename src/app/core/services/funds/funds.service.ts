@@ -21,4 +21,8 @@ export class FundsService {
       catchError(handleError('getAll', []))
     );
   }
+
+  removeAll() {
+    return this.http.delete(`${config.apiUrl}/funds`);
+  }
 }

@@ -19,7 +19,8 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
 
   border-radius: $border-radius-default;
 
-  transition: box-shadow $transition-duration, transform $transition-duration;
+  transition: box-shadow $transition-duration, transform $transition-duration,
+    background-color $transition-duration, border $transition-duration;
 
   &:focus {
     outline: none;
@@ -40,6 +41,7 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
   }
 
   &:disabled {
+    filter: grayscale(1);
     cursor: wait;
     pointer-events: none;
   }
@@ -110,5 +112,5 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
 }
 
 .button__icon {
-  padding-right: 1rem;
+  margin-right: 1rem;
 }

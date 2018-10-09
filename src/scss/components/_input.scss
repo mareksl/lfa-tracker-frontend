@@ -76,6 +76,7 @@
 .file-input--uploaded {
   & + label {
     background-color: $color-success;
+    border-color: $color-success;
     color: $color-shade-light;
 
     &:focus {

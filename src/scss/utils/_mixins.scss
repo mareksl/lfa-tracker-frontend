@@ -6,6 +6,7 @@
 
 @mixin main-content__header {
   grid-column-end: span 12;
+  margin-bottom: 1rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;

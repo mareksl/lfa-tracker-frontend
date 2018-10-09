@@ -14,4 +14,8 @@ export class FilesService {
       observe: 'response'
     });
   }
+
+  upload(form) {
+    return this.http.post(`${config.apiUrl}/files`, form);
+  }
 }

@@ -10,11 +10,7 @@
   @include main-content__header;
 }
 
-.admin__export {
-  @include content-box;
-  grid-column-end: span 6;
-}
-.admin__import {
+.admin__section {
   @include content-box;
   grid-column-end: span 6;
 }
