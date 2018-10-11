@@ -9,9 +9,18 @@
 
 .funds__header {
   @include main-content__header;
+  position: sticky;
+  top: 6rem;
+  background-color: $color-shade-dark;
 }
 
 .funds__list {
   @include content-box;
   @include full-width;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .funds__header {
+    top: 4rem;
+  }
 }

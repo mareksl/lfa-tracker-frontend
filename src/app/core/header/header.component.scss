@@ -1,4 +1,5 @@
 @import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
 
 .header {
   width: 100%;
@@ -7,6 +8,8 @@
   flex-flow: row wrap;
 
   background-color: $color-shade-darker;
+
+  @include box-shadow-default;
 }
 
 .header__brand {

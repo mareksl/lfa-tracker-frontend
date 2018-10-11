@@ -1,4 +1,5 @@
 @import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
 
 .footer {
   width: 100%;
@@ -10,4 +11,6 @@
   padding-left: 1rem;
 
   background-color: $color-shade-darker;
+
+  @include box-shadow-inverse;
 }

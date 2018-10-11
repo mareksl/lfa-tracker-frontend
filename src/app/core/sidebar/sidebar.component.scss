@@ -1,4 +1,5 @@
 @import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
 
 .nav {
   height: 100%;
@@ -10,8 +11,12 @@
 .nav-list {
   width: 100%;
   display: flex;
+  position: sticky;
+  top: 4rem;
 
   flex-flow: row wrap;
+
+  @include box-shadow-default;
 }
 
 .nav-list__item {
@@ -69,8 +74,11 @@
   padding: 0 1rem;
 }
 
-@media screen and (min-width: 40rem) {
+@media screen and (min-width: $breakpoint-width) {
   .nav-list {
     flex-flow: column;
+  }
+  .nav-list__item {
+    flex-basis: 3rem;
   }
 }

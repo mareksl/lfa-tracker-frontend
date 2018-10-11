@@ -5,7 +5,7 @@
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
   </header>
-  <div class="no-funds no-funds--danger" *ngIf="statistics.totalCount === 0; else content">
+  <div class="no-funds no-funds--danger" *ngIf="!loading && statistics.totalCount === 0; else content">
     <p>No statistics available!</p>
   </div>
   <ng-template #content>

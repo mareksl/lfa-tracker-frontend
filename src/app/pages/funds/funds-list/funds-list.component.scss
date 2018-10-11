@@ -2,6 +2,7 @@
 .funds-list__list {
   display: flex;
   flex-flow: column;
+  overflow-y: auto;
 }
 
 .funds-list__item {

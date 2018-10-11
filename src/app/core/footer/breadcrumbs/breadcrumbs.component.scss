@@ -1,0 +1,25 @@
+@import '../../../../scss/base/variables';
+
+.breadcrumbs {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.breadcrumbs__item {
+  font-size: .8rem;
+  background-image: linear-gradient(
+    90deg,
+    $color-shade-darker,
+    $color-shade-dark
+  );
+  border-radius: 1rem;
+  margin-right: .5rem;
+  box-shadow: 0.25rem 0 0.125rem -0.125rem $color-box-shadow;
+  padding: 0.25rem 0;
+  &::after {
+    content: '\f105';
+    font-family: FontAwesome;
+    display: inline-block;
+    padding: 0 0.5rem;
+  }
+}
