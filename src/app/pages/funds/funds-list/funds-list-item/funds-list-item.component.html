@@ -1,5 +1,5 @@
 <div class="funds-list-item">
   <span class="funds-list-item__lipper-id">{{fund.lipperId}}</span>
-  <span class="funds-list-item__fund-name">{{fund.fundName}}</span>
+  <a [routerLink]="[fund.lipperId]" class="link link--inverse funds-list-item__fund-name">{{fund.fundName}}</a>
   <span class="funds-list-item__assignee">{{fund.fundOwner}}</span>
 </div>

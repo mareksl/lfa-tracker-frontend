@@ -1,6 +1,8 @@
+@import '../../../../../scss/base/variables';
+
 .funds-list-item {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
   justify-content: space-between;
 }
 
@@ -11,4 +13,10 @@
 
 .funds-list-item__fund-name {
   flex: 1 1 auto;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .funds-list-item {
+    flex-flow: row wrap;
+  }
 }

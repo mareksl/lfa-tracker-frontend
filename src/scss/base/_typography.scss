@@ -10,14 +10,21 @@ body {
 
 a {
   text-decoration: none;
+  transition: color $transition-duration;
+}
+
+.link {
   color: $color-shade-light;
 
-  transition: $transition-duration;
 
   &:focus,
   &:hover {
     color: $color-accent-light;
   }
+}
+
+.link--inverse {
+  color: $color-primary;
 }
 
 p {
