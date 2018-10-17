@@ -10,3 +10,40 @@
 .fund-details__header {
   @include main-content__header;
 }
+
+.fund-details__data {
+  @include content-box;
+}
+
+.fund-details__status {
+  @include content-box;
+}
+
+.fund-status-icon {
+  color: $color-danger;
+
+  &--pending {
+    color: $color-warning;
+  }
+
+  &--done {
+    color: $color-success;
+  }
+}
+
+.data-point {
+  display: flex;
+  padding-bottom: 0.5rem;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.data-point__title {
+  font-weight: 700;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .data-point {
+    flex-flow: row nowrap;
+  }
+}

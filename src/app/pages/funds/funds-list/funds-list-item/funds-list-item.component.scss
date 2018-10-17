@@ -1,6 +1,7 @@
 @import '../../../../../scss/base/variables';
 
 .funds-list-item {
+  position: relative;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -9,14 +10,48 @@
 .funds-list-item__lipper-id {
   flex: 0 1 auto;
   padding-right: 1rem;
+  padding-bottom: 0.5rem;
 }
 
 .funds-list-item__fund-name {
   flex: 1 1 auto;
+  padding-bottom: 0.5rem;
+}
+
+.fund-status-icon {
+  flex: 0 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+
+  color: $color-danger;
+
+  &--pending {
+    color: $color-warning;
+  }
+
+  &--done {
+    color: $color-success;
+  }
 }
 
 @media screen and (min-width: $breakpoint-width-mid) {
   .funds-list-item {
     flex-flow: row wrap;
+  }
+  .funds-list-item__lipper-id {
+    padding-bottom: 0;
+  }
+  .funds-list-item__fund-name {
+    padding-bottom: 0;
+  }
+  .fund-status-icon {
+    position: relative;
+    padding-bottom: 0;
+    transform: translateX(0);
   }
 }

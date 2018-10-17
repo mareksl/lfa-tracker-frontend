@@ -24,6 +24,7 @@
 }
 
 .header {
+  z-index: 1;
   grid-area: header;
   position: fixed;
   top: 0;
@@ -32,6 +33,7 @@
 }
 
 .sidebar {
+  z-index: 1;
   grid-area: sidebar;
   position: fixed;
   top: 6rem;
@@ -40,10 +42,12 @@
 }
 
 .main {
+  z-index: 0;
   grid-area: main;
 }
 
 .footer {
+  z-index: 1;
   grid-area: footer;
   position: sticky;
   bottom: 0;

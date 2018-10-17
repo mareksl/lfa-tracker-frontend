@@ -10,6 +10,7 @@
 .funds__header {
   @include main-content__header;
   position: sticky;
+  z-index: 1;
   top: 6rem;
   background-color: $color-shade-dark;
 }

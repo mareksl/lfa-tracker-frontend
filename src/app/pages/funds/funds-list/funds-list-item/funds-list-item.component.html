@@ -1,5 +1,6 @@
 <div class="funds-list-item">
   <span class="funds-list-item__lipper-id">{{fund.lipperId}}</span>
+  <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.fundStatus === 'done', 'fund-status-icon--pending': fund.fundStatus === 'pending'}"></span>
   <a [routerLink]="[fund.lipperId]" class="link link--inverse funds-list-item__fund-name">{{fund.fundName}}</a>
   <span class="funds-list-item__assignee">{{fund.fundOwner}}</span>
 </div>

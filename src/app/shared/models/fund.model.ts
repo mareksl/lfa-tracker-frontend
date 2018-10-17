@@ -71,4 +71,19 @@ export class Fund implements IFund {
     this.profileDataVerified = data.profileDataVerified;
     this.timeseriesDataVerified = data.timeseriesDataVerified;
   }
+
+  get fundStatus(): string {
+    const statuses = [
+      this.extendedLGCVerified,
+      this.performanceVerified,
+      this.profileDataVerified,
+      this.timeseriesDataVerified
+    ];
+
+    return statuses.every(v => v)
+      ? 'done'
+      : statuses.some(v => v)
+        ? 'pending'
+        : 'none';
+  }
 }
