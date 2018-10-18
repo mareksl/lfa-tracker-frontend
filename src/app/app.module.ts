@@ -19,6 +19,8 @@ import { FundsListItemComponent } from './pages/funds/funds-list/funds-list-item
 import { BreadcrumbsComponent } from './core/footer/breadcrumbs/breadcrumbs.component';
 import { FundDetailsComponent } from './pages/funds/fund-details/fund-details.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
+import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-pagination.component';
+import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
     FundsListItemComponent,
     BreadcrumbsComponent,
     FundDetailsComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FundsPaginationComponent,
+    ClickOutsideDirective
   ],
   imports: [
     AppRoutingModule,

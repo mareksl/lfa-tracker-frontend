@@ -33,7 +33,7 @@ export class BreadcrumbsComponent implements OnInit {
     //   ? route.snapshot.params['id']
     //   : route.routeConfig.path;
 
-    console.log(route);
+    // console.log(route);
 
     return breadcrumbs;
   }

@@ -45,3 +45,8 @@
     animation: pulse__box--danger $pulse-duration infinite;
   }
 }
+
+@mixin content-box--slim {
+  @include content-box;
+  padding: 0.25rem;
+}

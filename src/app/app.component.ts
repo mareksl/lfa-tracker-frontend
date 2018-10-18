@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { config } from './config/app-settings.config';
 
 @Component({
   selector: 'app-root',
@@ -16,5 +17,17 @@ export class AppComponent implements OnInit {
 
   toggleNav() {
     this.navVisible = !this.navVisible;
+  }
+
+  onResize(event) {
+    if (event.target.innerWidth < config.breakpointWidth) {
+      this.navVisible = false;
+    }
+  }
+
+  clickOutside() {
+    if (window.innerWidth < config.breakpointWidth) {
+      this.navVisible = false;
+    }
   }
 }

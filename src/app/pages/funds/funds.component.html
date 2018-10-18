@@ -1,8 +1,13 @@
 <div class="funds">
   <div class="funds__header">
-    <h2>Funds</h2><button class="button button--square button--accent" (click)="refreshData()" [disabled]="loading">
+    <h2>Funds</h2>
+    <span>Results: {{fullFundCount}}</span>
+    <button class="button button--square button--accent" (click)="fetchFunds()" [disabled]="loading">
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
+    <app-funds-pagination class="funds__pagination" [currentPage]="page" [pageCount]="pageCount" [resultsPerPage]="limit"
+      (resultsPerPageChanged)="changeLimit($event)" (pageChanged)="changePage($event)"></app-funds-pagination>
+
   </div>
   <div class="no-funds no-funds--danger" *ngIf="!loading && funds.length === 0; else content">
     <p>No funds available!</p>

@@ -1,0 +1,18 @@
+<ul class="pagination__list">
+  <li class="pagination__list-item"><button class="button button--square pagination__button" [disabled]="currentPage === 1"
+      [ngClass]="{'button--accent': currentPage === 1}" (click)="changePage(1)">1</button></li>
+  <li *ngFor="let page of pagesToDisplay" class="pagination__list-item">
+    <button class="button button--square pagination__button" [disabled]="currentPage === page + 1" [ngClass]="{'button--accent': currentPage === page + 1}"
+      (click)="changePage(page + 1)">{{page
+      + 1}}</button>
+  </li>
+  <li class="pagination__list-item"><button class="button button--square pagination__button" [disabled]="currentPage === pageCount"
+      [ngClass]="{'button--accent': currentPage === pageCount}" (click)="changePage(pageCount)">{{pageCount}}</button></li>
+
+</ul>
+<div class="pagination__results-per-page">
+  <label class="results-per-page__label" for="results-per-page">Funds per page</label>
+  <input type="number" min="10" max="100" step="10" #resultsInput id="results-per-page" class="input input--slim results-per-page__input"
+    [(ngModel)]="resultsPerPage" (keyup.enter)="changeResultsPerPage(resultsInput.value)">
+
+</div>

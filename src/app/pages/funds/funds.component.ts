@@ -1,35 +1,82 @@
-import { Component, OnInit } from '@angular/core';
-import { FundsService } from '../../core/services/funds/funds.service';
-import { Fund } from '../../shared/models/fund.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import {
+  FundsResponse,
+  FundsService
+} from '../../core/services/funds/funds.service';
+import { Fund } from '../../shared/models/fund.model';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-funds',
   templateUrl: './funds.component.html',
   styleUrls: ['./funds.component.scss']
 })
-export class FundsComponent implements OnInit {
+export class FundsComponent implements OnInit, OnDestroy {
   loading: boolean;
   fundsSubscription: Subscription;
   funds: Fund[];
+  page: number;
+  pageCount: number;
+  limit: number;
+  fullFundCount: number;
 
-  constructor(private fundsService: FundsService) {}
+  constructor(
+    private fundsService: FundsService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
+    this.fullFundCount = 0;
+    this.page = 1;
+    this.limit = 10;
     this.funds = [];
-    this.loading = false;
+
     this.fundsSubscription = this.fetchFunds();
+
+    this.route.queryParams
+      .pipe(filter(params => params.page || params.limit))
+      .subscribe(params => {
+        this.page = params.page || this.page;
+        this.limit = params.limit || this.limit;
+        this.fetchFunds();
+        this.loading = false;
+      });
   }
 
   fetchFunds() {
     this.loading = true;
-    return this.fundsService.getAll().subscribe((funds: Fund[]) => {
-      this.funds = funds;
-      this.loading = false;
+    return this.fundsService
+      .getRange(this.page, this.limit)
+      .subscribe((fundsResponse: FundsResponse) => {
+        this.funds = <Fund[]>fundsResponse.funds;
+        this.pageCount = fundsResponse.pages;
+        this.page = fundsResponse.page || this.page;
+        this.limit = fundsResponse.limit || this.limit;
+        this.fullFundCount = fundsResponse.count;
+        this.loading = false;
+      });
+  }
+
+  changePage(page: number) {
+    this.page = page;
+    this.router.navigate(['/funds'], {
+      queryParamsHandling: 'merge',
+      queryParams: { page }
     });
   }
 
-  refreshData() {
-    this.fetchFunds();
+  changeLimit(limit: number) {
+    this.limit = limit;
+    this.router.navigate(['/funds'], {
+      queryParamsHandling: 'merge',
+      queryParams: { limit }
+    });
+  }
+
+  ngOnDestroy() {
+    this.fundsSubscription.unsubscribe();
   }
 }

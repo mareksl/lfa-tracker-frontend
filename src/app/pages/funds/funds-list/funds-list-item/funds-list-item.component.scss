@@ -5,6 +5,7 @@
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  padding-right: 3.5rem;
 }
 
 .funds-list-item__lipper-id {
@@ -19,6 +20,7 @@
 }
 
 .fund-status-icon {
+  font-size: 1.5rem;
   flex: 0 0 auto;
   position: absolute;
   top: 50%;
@@ -42,6 +44,7 @@
 @media screen and (min-width: $breakpoint-width-mid) {
   .funds-list-item {
     flex-flow: row wrap;
+    padding-right: 0;
   }
   .funds-list-item__lipper-id {
     padding-bottom: 0;
@@ -50,6 +53,7 @@
     padding-bottom: 0;
   }
   .fund-status-icon {
+    font-size: 1rem;
     position: relative;
     padding-bottom: 0;
     transform: translateX(0);

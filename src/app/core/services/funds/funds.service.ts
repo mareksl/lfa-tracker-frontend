@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Fund, IFund } from '../../../shared/models/fund.model';
 import { config } from '../../../config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
@@ -8,6 +8,12 @@ import { Observable } from 'rxjs';
 
 export interface FundsResponse {
   funds: IFund[];
+
+  count?: number;
+
+  page?: number;
+  limit?: number;
+  pages?: number;
 }
 export interface FundResponse {
   fund: IFund;
@@ -19,11 +25,21 @@ export interface FundResponse {
 export class FundsService {
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Fund[]> {
-    return this.http.get<FundsResponse>(`${config.apiUrl}/funds`).pipe(
-      map(fundsResponse => fundsResponse.funds.map(fund => new Fund(fund))),
-      catchError(handleError('getAll', []))
-    );
+  getRange(page: number, limit: number): Observable<FundsResponse> {
+    return this.http
+      .get<FundsResponse>(`${config.apiUrl}/funds`, {
+        params: new HttpParams().set('page', `${page}`).set('limit', `${limit}`)
+      })
+      .pipe(
+        map(fundsResponse => {
+          const mappedFunds = fundsResponse.funds.map(
+            (fund: IFund) => new Fund(fund)
+          );
+          fundsResponse.funds = mappedFunds;
+          return fundsResponse;
+        }),
+        catchError(handleError('getRange', { funds: [] }))
+      );
   }
   getById(id: number): Observable<Fund> {
     return this.http.get<FundResponse>(`${config.apiUrl}/funds/${id}`).pipe(

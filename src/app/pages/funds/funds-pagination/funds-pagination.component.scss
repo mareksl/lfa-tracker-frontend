@@ -1,0 +1,25 @@
+.pagination__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  flex: 0 1 auto;
+}
+.pagination__button {
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination__results-per-page {
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+.results-per-page__label {
+  padding-right: 1rem;
+}
+.results-per-page__input {
+  width: 5rem;
+}
