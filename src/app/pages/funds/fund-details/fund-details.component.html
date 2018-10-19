@@ -53,19 +53,19 @@
   <div class="fund-details__status col-4">
     <h3 class="fund-details__header">Fund status <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.fundStatus === 'done', 'fund-status-icon--pending': fund.fundStatus === 'pending'}"></span></h3>
     <ul>
-      <li class="data-point">
+      <li class="data-point data-point--status">
         <span class="data-point__title">Extended LGC Verified</span>
         <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.extendedLGCVerified}"></span>
       </li>
-      <li class="data-point">
+      <li class="data-point data-point--status">
         <span class="data-point__title">Performance Verified</span>
         <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.performanceVerified}"></span>
       </li>
-      <li class="data-point">
+      <li class="data-point data-point--status">
         <span class="data-point__title">Profile Data Verified</span>
         <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.profileDataVerified}"></span>
       </li>
-      <li class="data-point">
+      <li class="data-point data-point--status">
         <span class="data-point__title">Time Series Verified</span>
         <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.timeseriesDataVerified}"></span>
       </li>

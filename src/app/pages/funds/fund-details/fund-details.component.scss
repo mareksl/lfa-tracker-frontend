@@ -20,6 +20,8 @@
 }
 
 .fund-status-icon {
+  width: 2rem;
+  text-align: center;
   color: $color-danger;
 
   &--pending {
@@ -36,6 +38,10 @@
   padding-bottom: 0.5rem;
   flex-flow: column;
   justify-content: space-between;
+}
+
+.data-point--status {
+  flex-flow: row nowrap;
 }
 
 .data-point__title {

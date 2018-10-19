@@ -25,13 +25,21 @@
   @include full-width;
   flex: 0 1 100%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
   justify-content: space-between;
-  margin-top: .5rem;
+  align-items: stretch;
+  margin-top: 0.5rem;
 }
 
 @media screen and (min-width: $breakpoint-width) {
   .funds__header {
     top: 4rem;
+  }
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .funds__pagination {
+    flex-flow: row wrap;
+    align-items: center;
   }
 }

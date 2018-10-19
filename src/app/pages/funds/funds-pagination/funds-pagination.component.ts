@@ -6,17 +6,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./funds-pagination.component.scss']
 })
 export class FundsPaginationComponent implements OnInit {
+  advancedSearchOpen: boolean;
+
   @Input()
   currentPage: number;
   @Input()
   pageCount: number;
   @Input()
   resultsPerPage: number;
+  @Input()
+  query: string;
 
   @Output()
-  pageChanged = new EventEmitter<number>();
+  currentPageChange = new EventEmitter<number>();
   @Output()
-  resultsPerPageChanged = new EventEmitter<number>();
+  resultsPerPageChange = new EventEmitter<number>();
+  @Output()
+  queryChange = new EventEmitter<string>();
 
   get pagesToDisplay(): number[] {
     const minPage = Math.max(1, +this.currentPage - 5);
@@ -31,13 +37,23 @@ export class FundsPaginationComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.advancedSearchOpen = false;
+  }
 
   changePage(page: number) {
-    this.pageChanged.emit(page);
+    this.currentPageChange.emit(page);
   }
 
   changeResultsPerPage(i: number) {
-    this.resultsPerPageChanged.emit(i);
+    this.resultsPerPageChange.emit(i);
+  }
+
+  search() {
+    this.queryChange.emit(this.query);
+  }
+
+  toggleAdvancedSearch() {
+    this.advancedSearchOpen = !this.advancedSearchOpen;
   }
 }

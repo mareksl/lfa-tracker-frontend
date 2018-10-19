@@ -98,3 +98,34 @@
     }
   }
 }
+
+.input-float__wrapper {
+  position: relative;
+}
+
+.input-float__label {
+  position: absolute;
+  color: $color-shade-dark;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: text;
+  top: 1px;
+  bottom: 1px;
+  left: 1px;
+  padding: 0 0.5rem;
+  transition: transform $transition-duration, opacity $transition-duration;
+  transform-origin: top;
+}
+
+::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.input-float__input {
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}

@@ -1,25 +1,62 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
 .pagination__list {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   flex: 0 1 auto;
 }
+
 .pagination__button {
   font-size: 0.875rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.pagination__search-wrapper {
+  flex: 1 1 auto;
+  margin: 0 0.5rem;
+}
+
+.pagination__search {
+  width: 100%;
+}
+
 .pagination__results-per-page {
   display: flex;
   align-items: center;
   flex-flow: row wrap;
-  flex: 1 1 auto;
-  justify-content: flex-end;
+  flex: 0 1 auto;
+  justify-content: center;
 }
+
 .results-per-page__label {
   padding-right: 1rem;
 }
+
 .results-per-page__input {
   width: 5rem;
+}
+
+.pagination__advanced-search {
+  padding-top: 1rem;
+  flex: 1 0 100%;
+}
+
+.advanced-search__toggle-icon {
+  transition: transform $transition-duration;
+}
+
+.advanced-search__toggle-icon--open {
+  transform: rotate(180deg);
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .pagination__results-per-page {
+    flex: 0 1 auto;
+    justify-content: flex-end;
+  }
 }

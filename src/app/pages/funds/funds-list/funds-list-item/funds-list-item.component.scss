@@ -14,6 +14,12 @@
   padding-bottom: 0.5rem;
 }
 
+.funds-list-item__rank {
+  flex: 0 1 auto;
+  padding-right: 1rem;
+  padding-bottom: 0.5rem;
+}
+
 .funds-list-item__fund-name {
   flex: 1 1 auto;
   padding-bottom: 0.5rem;
@@ -47,6 +53,9 @@
     padding-right: 0;
   }
   .funds-list-item__lipper-id {
+    padding-bottom: 0;
+  }
+  .funds-list-item__rank {
     padding-bottom: 0;
   }
   .funds-list-item__fund-name {

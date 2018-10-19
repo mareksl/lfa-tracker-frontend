@@ -6,13 +6,25 @@
       (click)="changePage(page + 1)">{{page
       + 1}}</button>
   </li>
-  <li class="pagination__list-item"><button class="button button--square pagination__button" [disabled]="currentPage === pageCount"
-      [ngClass]="{'button--accent': currentPage === pageCount}" (click)="changePage(pageCount)">{{pageCount}}</button></li>
-
+  <li class="pagination__list-item" *ngIf="pageCount > 1"><button class="button button--square pagination__button"
+      [disabled]="currentPage === pageCount" [ngClass]="{'button--accent': currentPage === pageCount}" (click)="changePage(pageCount)">{{pageCount}}</button></li>
 </ul>
+<div class="input-float__wrapper pagination__search-wrapper">
+  <input id="search" name="search" type="search" class="input input--slim input-float__input pagination__search"
+    (search)="search()" [(ngModel)]="query" placeholder="Search">
+  <label for="search" class="input-float__label">Search</label>
+</div>
 <div class="pagination__results-per-page">
   <label class="results-per-page__label" for="results-per-page">Funds per page</label>
-  <input type="number" min="10" max="100" step="10" #resultsInput id="results-per-page" class="input input--slim results-per-page__input"
-    [(ngModel)]="resultsPerPage" (keyup.enter)="changeResultsPerPage(resultsInput.value)">
-
+  <select type="number" min="10" max="100" step="10" #resultsInput id="results-per-page" class="select select--slim results-per-page__input"
+    [(ngModel)]="resultsPerPage" (change)="changeResultsPerPage(resultsInput.value)">
+    <option selected disabled [value]="resultsPerPage">{{resultsPerPage}}</option>
+    <option value="10">10</option>
+    <option value="25">25</option>
+    <option value="50">50</option>
+  </select>
 </div>
+<button class="button button--square" (click)="toggleAdvancedSearch()">
+  <span class="fa fa-chevron-down advanced-search__toggle-icon" [ngClass]="{'advanced-search__toggle-icon--open': advancedSearchOpen}"></span>
+</button>
+<app-funds-advanced-search class="pagination__advanced-search" *ngIf="advancedSearchOpen"></app-funds-advanced-search>

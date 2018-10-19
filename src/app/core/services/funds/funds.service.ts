@@ -25,10 +25,17 @@ export interface FundResponse {
 export class FundsService {
   constructor(private http: HttpClient) {}
 
-  getRange(page: number, limit: number): Observable<FundsResponse> {
+  getRange(
+    page: number,
+    limit: number,
+    query: string
+  ): Observable<FundsResponse> {
     return this.http
       .get<FundsResponse>(`${config.apiUrl}/funds`, {
-        params: new HttpParams().set('page', `${page}`).set('limit', `${limit}`)
+        params: new HttpParams()
+          .set('page', `${page}`)
+          .set('limit', `${limit}`)
+          .set('q', `${query}`)
       })
       .pipe(
         map(fundsResponse => {

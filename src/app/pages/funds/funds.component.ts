@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   FundsResponse,
@@ -21,6 +21,7 @@ export class FundsComponent implements OnInit, OnDestroy {
   pageCount: number;
   limit: number;
   fullFundCount: number;
+  query: string;
 
   constructor(
     private fundsService: FundsService,
@@ -33,15 +34,18 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.page = 1;
     this.limit = 10;
     this.funds = [];
+    this.query = '';
 
     this.fundsSubscription = this.fetchFunds();
 
     this.route.queryParams
-      .pipe(filter(params => params.page || params.limit))
+      .pipe(filter(params => params.page || params.limit || params.q))
       .subscribe(params => {
         this.page = params.page || this.page;
         this.limit = params.limit || this.limit;
-        this.fetchFunds();
+        this.query = params.q || this.query;
+        this.fundsSubscription.unsubscribe();
+        this.fundsSubscription = this.fetchFunds();
         this.loading = false;
       });
   }
@@ -49,7 +53,7 @@ export class FundsComponent implements OnInit, OnDestroy {
   fetchFunds() {
     this.loading = true;
     return this.fundsService
-      .getRange(this.page, this.limit)
+      .getRange(this.page, this.limit, this.query)
       .subscribe((fundsResponse: FundsResponse) => {
         this.funds = <Fund[]>fundsResponse.funds;
         this.pageCount = fundsResponse.pages;
@@ -73,6 +77,14 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/funds'], {
       queryParamsHandling: 'merge',
       queryParams: { limit }
+    });
+  }
+
+  search(query: string) {
+    this.query = query;
+    this.router.navigate(['/funds'], {
+      queryParamsHandling: 'merge',
+      queryParams: { q: query, page: 1 }
     });
   }
 

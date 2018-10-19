@@ -21,6 +21,7 @@ import { FundDetailsComponent } from './pages/funds/fund-details/fund-details.co
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-pagination.component';
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
+import { FundsAdvancedSearchComponent } from './pages/funds/funds-advanced-search/funds-advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ClickOutsideDirective } from './shared/directives/click-outside.directi
     FundDetailsComponent,
     NotFoundComponent,
     FundsPaginationComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
+    FundsAdvancedSearchComponent
   ],
   imports: [
     AppRoutingModule,
