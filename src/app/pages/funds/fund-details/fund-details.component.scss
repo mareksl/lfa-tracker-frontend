@@ -48,6 +48,10 @@
   font-weight: 700;
 }
 
+.data-point__data {
+  text-align: right;
+}
+
 @media screen and (min-width: $breakpoint-width-mid) {
   .data-point {
     flex-flow: row nowrap;
