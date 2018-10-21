@@ -1,5 +1,13 @@
-interface IStatisticsByCriteria {
+interface IStatisticsByRank {
   [name: string]: {
+    totalCount: number;
+    doneCount: number;
+    percentageDone: number;
+  };
+}
+interface IStatisticsByProperty {
+  [name: string]: {
+    statsByRank: IStatisticsByRank;
     totalCount: number;
     doneCount: number;
     percentageDone: number;
@@ -10,9 +18,9 @@ export interface IStatistics {
   totalCount: number;
   doneCount: number;
   percentageDone: number;
-  statsByRank: IStatisticsByCriteria;
-  statsByDepartment: IStatisticsByCriteria;
-  statsByAssignee: IStatisticsByCriteria;
+  statsByRank: IStatisticsByRank;
+  statsByDepartment: IStatisticsByProperty;
+  statsByAssignee: IStatisticsByProperty;
 }
 
 // export class Statistics implements IStatistics {

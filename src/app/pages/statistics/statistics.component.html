@@ -36,7 +36,8 @@
               Checked Funds: {{rank.value.doneCount}}
             </li>
             <li class="statistics__datapoint statistics__datapoint--accent">
-              Checked Percentage: {{rank.value.percentageDone | percent:'1.0-2'}}
+              Checked Percentage: <span [appPercentageColor]="rank.value.percentageDone">{{rank.value.percentageDone |
+                percent:'1.0-2'}}</span>
             </li>
           </ul>
         </li>
@@ -54,8 +55,17 @@
             <li class="statistics__datapoint">
               Checked Funds: {{department.value.doneCount}}
             </li>
+            <li *ngFor="let rank of department.value.statsByRank | keyvalue" class="statistics__datapoint">
+              Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}
+              <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
+                {{rank.value.percentageDone | percent:'1.0-2'}}
+              </span>
+            </li>
             <li class="statistics__datapoint statistics__datapoint--accent">
-              Checked Percentage: {{department.value.percentageDone | percent:'1.0-2'}}
+              Total Checked Percentage:
+              <span [appPercentageColor]="department.value.percentageDone">
+                {{department.value.percentageDone | percent:'1.0-2'}}
+              </span>
             </li>
           </ul>
         </li>
@@ -75,6 +85,14 @@
           <li class="statistics__datapoint">
             Checked Funds: {{statistics.statsByAssignee[assignee].doneCount}}
           </li>
+
+          <li *ngFor="let rank of statistics.statsByAssignee[assignee].statsByRank | keyvalue" class="statistics__datapoint">
+            Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}
+            <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
+              {{rank.value.percentageDone | percent:'1.0-2'}}
+            </span>
+          </li>
+
           <li class="statistics__datapoint statistics__datapoint--accent">
             Checked Percentage: {{statistics.statsByAssignee[assignee].percentageDone | percent:'1.0-2'}}
           </li>

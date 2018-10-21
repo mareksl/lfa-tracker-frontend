@@ -16,7 +16,6 @@ a {
 .link {
   color: $color-shade-light;
 
-
   &:focus,
   &:hover {
     color: $color-accent-light;
@@ -50,4 +49,20 @@ h4 {
 
 small {
   font-size: 0.8rem;
+}
+
+.text--accent {
+  font-weight: 700;
+}
+
+.text--success {
+  color: $color-success;
+}
+
+.text--warning {
+  color: $color-warning;
+}
+
+.text--danger {
+  color: $color-danger;
 }

@@ -22,6 +22,7 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-pagination.component';
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 import { FundsAdvancedSearchComponent } from './pages/funds/funds-advanced-search/funds-advanced-search.component';
+import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FundsAdvancedSearchComponent } from './pages/funds/funds-advanced-searc
     NotFoundComponent,
     FundsPaginationComponent,
     ClickOutsideDirective,
-    FundsAdvancedSearchComponent
+    FundsAdvancedSearchComponent,
+    PercentageColorDirective
   ],
   imports: [
     AppRoutingModule,
