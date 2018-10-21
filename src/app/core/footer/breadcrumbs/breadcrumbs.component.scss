@@ -16,16 +16,15 @@
   margin-right: 0.5rem;
   box-shadow: 0.25rem 0 0.125rem -0.125rem $color-box-shadow;
   padding: 0.25rem 0;
+  transition: box-shadow $transition-duration, color $transition-duration;
   &::after {
     content: '\f105';
     font-family: FontAwesome;
     display: inline-block;
     padding: 0 0.5rem;
-    transition: padding $transition-duration;
   }
-  &:hover {
-    &::after {
-      padding-left: 1rem;
-    }
+  &:hover,
+  &:focus {
+    box-shadow: none;
   }
 }
