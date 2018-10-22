@@ -1,0 +1,24 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.total-statistics__header {
+  @include main-content__header;
+}
+.total-statistics__list {
+  @include full-width;
+}
+
+.total-statistics__datapoint {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin: 0;
+  }
+  &--accent {
+    font-weight: 700;
+  }
+}
+
+.total-statistics__progress {
+  @include full-width;
+}

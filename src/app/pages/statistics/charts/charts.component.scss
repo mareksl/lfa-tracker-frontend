@@ -1,0 +1,36 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.charts__header {
+  @include main-content__header;
+}
+
+.chart {
+  @include full-width;
+  padding: 1rem;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .chart {
+    grid-column-end: span 6;
+  }
+  .chart--medium {
+    grid-column-end: span 12;
+  }
+  .chart--large {
+    grid-column-end: span 12;
+  }
+}
+@media screen and (min-width: $breakpoint-width-mid) {
+  .chart {
+    grid-column-end: span 4;
+  }
+  .chart--medium {
+    grid-column-end: span 6;
+  }
+  .chart--large {
+    grid-column-start: 2;
+    grid-column-end: span 10;
+  }
+}

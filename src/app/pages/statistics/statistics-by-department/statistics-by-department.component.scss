@@ -1,0 +1,42 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.statistics-by-department__header {
+  @include main-content__header;
+}
+
+.statistics-by-department__heading {
+  margin-bottom: 1rem;
+}
+
+.statistics-by-department__list {
+  @include full-width;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.statistics-by-department__item {
+  @include content-box;
+
+  flex: 1 0 calc(20% - 2rem);
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.statistics-by-department__datapoint {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin: 0;
+  }
+  &--accent {
+    font-weight: 700;
+  }
+}
+
+.statistics-by-department__search-wrapper {
+  @include full-width;
+}
+.statistics-by-department__search {
+  width: 100%;
+}

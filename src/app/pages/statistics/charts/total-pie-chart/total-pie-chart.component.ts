@@ -7,8 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TotalPieChartComponent implements OnInit {
   @Input()
-  chartData: number[] = [];
-  chartLabels: string[] = [];
+  chartData: number[];
+
+  @Input()
+  chartLabels: string[];
+
+  @Input()
+  title: string;
+
   chartOptions = { responsive: true };
 
   chartColors: any[];
@@ -16,7 +22,6 @@ export class TotalPieChartComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.chartLabels = ['Checked Funds', 'Unchecked Funds'];
     this.chartColors = [{ backgroundColor: ['#429765', '#f44336'] }];
   }
 }

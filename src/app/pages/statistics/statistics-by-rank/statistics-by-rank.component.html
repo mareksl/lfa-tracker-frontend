@@ -1,0 +1,18 @@
+<h3 class="statistics-by-rank__header">Stats by rank:</h3>
+<ul class="statistics-by-rank__list">
+  <li class="statistics-by-rank__rank" *ngFor="let rank of statistics | keyvalue">
+    <h4 class="statistics-by-rank__heading">Rank {{rank.key}}</h4>
+    <ul>
+      <li class="statistics-by-rank__datapoint">
+        Total Fund Count: {{rank.value.totalCount}}
+      </li>
+      <li class="statistics-by-rank__datapoint">
+        Checked Funds: {{rank.value.doneCount}}
+      </li>
+      <li class="statistics-by-rank__datapoint statistics-by-rank__datapoint--accent">
+        Checked Percentage: <span [appPercentageColor]="rank.value.percentageDone">{{rank.value.percentageDone |
+          percent:'1.0-2'}}</span>
+      </li>
+    </ul>
+  </li>
+</ul>

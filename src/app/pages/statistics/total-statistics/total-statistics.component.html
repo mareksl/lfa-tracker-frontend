@@ -1,0 +1,13 @@
+<h3 class="total-statistics__header">Total stats:</h3>
+<ul class="total-statistics__list">
+  <li class="total-statistics__datapoint">
+    Total Fund Count: {{statistics.totalCount}}
+  </li>
+  <li class="total-statistics__datapoint">
+    Checked Funds: {{statistics.doneCount}}
+  </li>
+  <li class="total-statistics__datapoint total-statistics__datapoint--accent">
+    Checked Percentage: {{statistics.percentageDone | percent:'1.0-2'}}
+  </li>
+</ul>
+<app-progress-bar [value]="statistics.percentageDone" class="total-statistics__progress"></app-progress-bar>

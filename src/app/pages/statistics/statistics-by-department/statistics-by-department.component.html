@@ -1,0 +1,33 @@
+<h3 class="statistics-by-department__header">Stats by department:</h3>
+
+<div class="input-float__wrapper statistics-by-department__search-wrapper">
+  <input id="search" name="search" type="search" class="input input-float__input statistics-by-department__search"
+    placeholder="Filter by department" [(ngModel)]="search">
+  <label for="search" class="input-float__label">Filter by department</label>
+</div>
+
+<ul class="statistics-by-department__list">
+  <li class="statistics-by-department__item" *ngFor="let department of statisticsFiltered | keyvalue">
+    <h4 class="statistics-by-department__heading">{{department.key}}</h4>
+    <ul>
+      <li class="statistics-by-department__datapoint">
+        Total Fund Count: {{department.value.totalCount}}
+      </li>
+      <li class="statistics-by-department__datapoint">
+        Checked Funds: {{department.value.doneCount}}
+      </li>
+      <li *ngFor="let rank of department.value.statsByRank | keyvalue" class="statistics-by-department__datapoint">
+        Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}
+        <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
+          {{rank.value.percentageDone | percent:'1.0-2'}}
+        </span>
+      </li>
+      <li class="statistics-by-department__datapoint statistics-by-department__datapoint--accent">
+        Total Checked Percentage:
+        <span [appPercentageColor]="department.value.percentageDone">
+          {{department.value.percentageDone | percent:'1.0-2'}}
+        </span>
+      </li>
+    </ul>
+  </li>
+</ul>

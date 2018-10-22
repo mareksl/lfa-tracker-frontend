@@ -23,6 +23,13 @@ import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-p
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 import { FundsAdvancedSearchComponent } from './pages/funds/funds-advanced-search/funds-advanced-search.component';
 import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
+import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
+import { TotalStatisticsComponent } from './pages/statistics/total-statistics/total-statistics.component';
+import { StatisticsByRankComponent } from './pages/statistics/statistics-by-rank/statistics-by-rank.component';
+import { StatisticsByDepartmentComponent } from './pages/statistics/statistics-by-department/statistics-by-department.component';
+import { StatisticsByAssigneeComponent } from './pages/statistics/statistics-by-assignee/statistics-by-assignee.component';
+import { ChartsComponent } from './pages/statistics/charts/charts.component';
+import { LineChartComponent } from './pages/statistics/charts/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +51,14 @@ import { PercentageColorDirective } from './shared/directives/percentage-color.d
     FundsPaginationComponent,
     ClickOutsideDirective,
     FundsAdvancedSearchComponent,
-    PercentageColorDirective
+    PercentageColorDirective,
+    ProgressBarComponent,
+    TotalStatisticsComponent,
+    StatisticsByRankComponent,
+    StatisticsByDepartmentComponent,
+    StatisticsByAssigneeComponent,
+    ChartsComponent,
+    LineChartComponent
   ],
   imports: [
     AppRoutingModule,
