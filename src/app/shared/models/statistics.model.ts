@@ -1,9 +1,11 @@
+export interface IStatisticsItem {
+  statsByRank?: IStatisticsByRank;
+  totalCount: number;
+  doneCount: number;
+  percentageDone: number;
+}
 interface IStatisticsByRank {
-  [name: string]: {
-    totalCount: number;
-    doneCount: number;
-    percentageDone: number;
-  };
+  [name: string]: IStatisticsItem;
 }
 interface IStatisticsByProperty {
   [name: string]: {
@@ -14,13 +16,11 @@ interface IStatisticsByProperty {
   };
 }
 
-export interface IStatistics {
-  totalCount: number;
-  doneCount: number;
-  percentageDone: number;
+export interface IStatistics extends IStatisticsItem {
   statsByRank: IStatisticsByRank;
   statsByDepartment: IStatisticsByProperty;
   statsByAssignee: IStatisticsByProperty;
+  statsByUniverse: IStatisticsByProperty;
 }
 
 // export class Statistics implements IStatistics {

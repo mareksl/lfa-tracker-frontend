@@ -14,7 +14,7 @@
   @include full-width;
 }
 
-.statistics-by-assignee__data {
+.statistics-by-assignee__item {
   @include content-box;
   @include full-width;
 }
@@ -30,4 +30,8 @@
   &--accent {
     font-weight: 700;
   }
+}
+
+.statistics-by-assignee__progress {
+  @include full-width;
 }

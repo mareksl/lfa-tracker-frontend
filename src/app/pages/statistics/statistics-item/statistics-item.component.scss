@@ -1,0 +1,12 @@
+.statistics-item__heading {
+  margin-bottom: 1rem;
+}
+.statistics-item__datapoint {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin: 0;
+  }
+  &--accent {
+    font-weight: 700;
+  }
+}

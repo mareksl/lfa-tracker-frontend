@@ -30,6 +30,8 @@ import { StatisticsByDepartmentComponent } from './pages/statistics/statistics-b
 import { StatisticsByAssigneeComponent } from './pages/statistics/statistics-by-assignee/statistics-by-assignee.component';
 import { ChartsComponent } from './pages/statistics/charts/charts.component';
 import { LineChartComponent } from './pages/statistics/charts/line-chart/line-chart.component';
+import { StatisticsByUniverseComponent } from './pages/statistics/statistics-by-universe/statistics-by-universe.component';
+import { StatisticsItemComponent } from './pages/statistics/statistics-item/statistics-item.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { LineChartComponent } from './pages/statistics/charts/line-chart/line-ch
     StatisticsByDepartmentComponent,
     StatisticsByAssigneeComponent,
     ChartsComponent,
-    LineChartComponent
+    LineChartComponent,
+    StatisticsByUniverseComponent,
+    StatisticsItemComponent
   ],
   imports: [
     AppRoutingModule,

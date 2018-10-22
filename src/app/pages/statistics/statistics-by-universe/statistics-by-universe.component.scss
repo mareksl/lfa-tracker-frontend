@@ -2,20 +2,27 @@
 @import '../../../../scss/utils/mixins';
 @import '../../../../scss/base/grid';
 
-.statistics-by-rank__header {
+.statistics-by-universe__header {
   @include main-content__header;
 }
 
-.statistics-by-rank__list {
+.statistics-by-universe__list {
   @include full-width;
   display: flex;
   flex-flow: row wrap;
 }
 
-.statistics-by-rank__item {
+.statistics-by-universe__item {
   @include content-box;
 
   flex: 1 0 calc(20% - 2rem);
   padding: 1rem;
   margin: 0 1rem 1rem 1rem;
+}
+
+.statistics-by-universe__search-wrapper {
+  @include full-width;
+}
+.statistics-by-universe__search {
+  width: 100%;
 }

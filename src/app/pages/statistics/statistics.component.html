@@ -10,9 +10,10 @@
   </div>
   <ng-template #content>
     <app-total-statistics [statistics]="statistics" class="statistics__data"></app-total-statistics>
-    <app-statistics-by-rank [statistics]="statistics.statsByRank" class="statistics__data"></app-statistics-by-rank>
-    <app-statistics-by-department [statistics]="statistics.statsByDepartment" class="statistics__data"></app-statistics-by-department>
-    <app-statistics-by-assignee [statistics]="statistics.statsByAssignee" class="statistics__data"></app-statistics-by-assignee>
+    <app-statistics-by-rank id="statistics-by-rank" [statistics]="statistics.statsByRank" class="statistics__data"></app-statistics-by-rank>
+    <app-statistics-by-universe id="statistics-by-universe" [statistics]="statistics.statsByUniverse" class="statistics__data"></app-statistics-by-universe>
+    <app-statistics-by-department id="statistics-by-department" [statistics]="statistics.statsByDepartment" class="statistics__data"></app-statistics-by-department>
+    <app-statistics-by-assignee id="statistics-by-assignee" [statistics]="statistics.statsByAssignee" class="statistics__data"></app-statistics-by-assignee>
     <app-charts [statistics]="statistics" class="statistics__charts"></app-charts>
   </ng-template>
 

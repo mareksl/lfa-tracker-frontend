@@ -1,13 +1,12 @@
 <nav class="nav">
   <ul class="nav-list">
-    <li class="nav-list__item" routerLinkActive="nav-list__item--active"
-      [routerLinkActiveOptions]="{exact: true}">
+    <li class="nav-list__item" routerLinkActive="nav-list__item--active" [routerLinkActiveOptions]="{exact: true}">
       <a [routerLink]="['/']" class="link nav-list__link">Dashboard <span class="fa fa-fw fa-dashboard"></span></a>
     </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">
       <a [routerLink]="['/', 'funds']" class="link nav-list__link">Funds <span class="fa fa-fw fa-list-alt"></span></a>
     </li>
-    <li class="nav-list__item" routerLinkActive="nav-list__item--active">
+    <li class="nav-list__item nav-list__item--expandable" routerLinkActive="nav-list__item--active">
       <a [routerLink]="['/', 'statistics']" class="link nav-list__link">Statistics <span class="fa fa-fw fa-pie-chart"></span></a>
     </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">

@@ -17,7 +17,8 @@ export class StatisticsComponent implements OnInit {
     percentageDone: 0,
     statsByAssignee: {},
     statsByRank: {},
-    statsByDepartment: {}
+    statsByDepartment: {},
+    statsByUniverse: {}
   };
 
   constructor(private statsService: StatisticsService) {}
