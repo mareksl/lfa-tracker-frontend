@@ -10,16 +10,21 @@
 
   &:before {
     z-index: -1;
-    content: '\f05a';
+    content: '';
     font-family: FontAwesome;
     position: absolute;
     top: 0.5rem;
     left: 0.5rem;
     opacity: 0.2;
-    filter: blur(.125rem);
-
-    color: $color-primary;
+    filter: blur(0.125rem);
     font-size: 8rem;
+  }
+
+  &--info {
+    &:before {
+      content: '\f05a';
+      color: $color-primary;
+    }
   }
 
   &--success {

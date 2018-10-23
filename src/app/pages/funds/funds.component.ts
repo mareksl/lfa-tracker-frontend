@@ -41,12 +41,12 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.route.queryParams
       .pipe(filter(params => params.page || params.limit || params.q))
       .subscribe(params => {
+        this.loading = true;
         this.page = params.page || this.page;
         this.limit = params.limit || this.limit;
         this.query = params.q || this.query;
         this.fundsSubscription.unsubscribe();
         this.fundsSubscription = this.fetchFunds();
-        this.loading = false;
       });
   }
 

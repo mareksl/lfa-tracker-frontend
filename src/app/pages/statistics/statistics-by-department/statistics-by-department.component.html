@@ -1,12 +1,15 @@
-<h3 class="statistics-by-department__header">Stats by department:</h3>
+<div class="statistics-by-department__header">
+  <h3 class="statistics-by-department__header">Stats by department:</h3>
+  <app-button-open [(toggled)]="statsVisible"></app-button-open>
+</div>
 
-<div class="input-float__wrapper statistics-by-department__search-wrapper">
+<div *ngIf="statsVisible" class="input-float__wrapper statistics-by-department__search-wrapper">
   <input id="search" name="search" type="search" class="input input-float__input statistics-by-department__search"
     placeholder="Filter by department" [(ngModel)]="search">
   <label for="search" class="input-float__label">Filter by department</label>
 </div>
 
-<ul class="statistics-by-department__list">
-    <app-statistics-item class="statistics-by-department__item" *ngFor="let department of statisticsFiltered | keyvalue" [item]="department.value"
-      [key]="department.key"></app-statistics-item>
+<ul *ngIf="statsVisible" class="statistics-by-department__list">
+  <app-statistics-item class="statistics-by-department__item" *ngFor="let department of statisticsFiltered | keyvalue"
+    [item]="department.value" [key]="department.key"></app-statistics-item>
 </ul>

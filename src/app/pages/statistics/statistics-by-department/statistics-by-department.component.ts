@@ -12,10 +12,13 @@ export class StatisticsByDepartmentComponent implements OnInit {
 
   search: string;
 
+  statsVisible: boolean;
+
   constructor() {}
 
   ngOnInit() {
     this.search = '';
+    this.statsVisible = false;
   }
 
   get statisticsFiltered() {

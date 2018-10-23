@@ -4,6 +4,7 @@
 
 .statistics-by-universe__header {
   @include main-content__header;
+  margin-bottom: 0;
 }
 
 .statistics-by-universe__list {

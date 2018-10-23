@@ -1,0 +1,42 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.advanced-search {
+  @include content-box;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.advanced-search__heading {
+  flex: 1 0 100%;
+  padding-bottom: 1rem;
+}
+
+.advanced-search__input-group {
+  flex: 1 0 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.input-group__label {
+  flex: 0 1 20%;
+  padding-right: 1rem;
+}
+
+.input-group__input {
+  flex: 1 1 80%;
+}
+
+.advanced-search__ranks {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.ranks__item {
+  display: block;
+  flex: 0 1 20%;
+}

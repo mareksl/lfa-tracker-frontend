@@ -1,39 +1,45 @@
-<form>
+<form class="advanced-search">
+  <h3 class="advanced-search__heading">Advanced Search</h3>
 
-  <div class="">
-    <label class="">Order By</label>
-    <select class="select select--slim">
+  <div class="advanced-search__input-group">
+    <label class="input-group__label">Order By</label>
+    <select class="select select--slim input-group__input">
     </select>
   </div>
 
-  <fieldset>
+  <div class="advanced-search__input-group">
+    <label class="input-group__label" for="code">Code (Lipper ID / ISIN)</label>
+    <input id="code" type="text" class="input input--slim input-group__input">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label class="input-group__label" for="assignee">Assignee</label>
+    <input id="assignee" type="text" class="input input--slim input-group__input">
+  </div>
+  <fieldset class="advanced-search__input-group">
     <legend>Ranks</legend>
-    <div>
-      <input type="checkbox">
-      <label>1</label>
-    </div>
-    <div>
-      <input type="checkbox">
-      <label>2</label>
-    </div>
-    <div>
-      <input type="checkbox">
-      <label>3</label>
-    </div>
-    <div>
-      <input type="checkbox">
-      <label>4</label>
-    </div>
-    <div>
-      <input type="checkbox">
-      <label>5</label>
+    <div class="advanced-search__ranks">
+      <div class="ranks__item">
+        <input type="checkbox">
+        <label>1</label>
+      </div>
+      <div class="ranks__item">
+        <input type="checkbox">
+        <label>2</label>
+      </div>
+      <div class="ranks__item">
+        <input type="checkbox">
+        <label>3</label>
+      </div>
+      <div class="ranks__item">
+        <input type="checkbox">
+        <label>4</label>
+      </div>
+      <div class="ranks__item">
+        <input type="checkbox">
+        <label>5</label>
+      </div>
     </div>
   </fieldset>
-
-  <label for="code">Code (Lipper ID / ISIN)</label>
-  <input id="code" type="text" class="input input--slim">
-
-  <label for="assignee">Assignee</label>
-  <input id="assignee" type="text" class="input input--slim">
 
 </form>

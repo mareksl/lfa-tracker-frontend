@@ -13,8 +13,11 @@ export class StatisticsByUniverseComponent implements OnInit {
   search: string;
   constructor() {}
 
+  statsVisible: boolean;
+
   ngOnInit() {
     this.search = '';
+    this.statsVisible = false;
   }
 
   get statisticsFiltered() {

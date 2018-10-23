@@ -15,6 +15,15 @@ progress[value]::-webkit-progress-bar {
 
 progress[value]::-webkit-progress-value {
   background: $color-primary;
+
+  background-image: -webkit-linear-gradient(
+    -45deg,
+    transparent 33%,
+    rgba(0, 0, 0, 0.1) 33%,
+    rgba(0, 0, 0, 0.1) 66%,
+    transparent 66%
+  );
+  background-size: 4rem 2rem;
   transition: $transition-duration;
 
   border-radius: $border-radius-default;
@@ -22,6 +31,14 @@ progress[value]::-webkit-progress-value {
 
 progress[value]::-moz-progress-bar {
   background: $color-primary;
-
+  background-image: -webkit-linear-gradient(
+    -45deg,
+    transparent 33%,
+    rgba(0, 0, 0, 0.1) 33%,
+    rgba(0, 0, 0, 0.1) 66%,
+    transparent 66%
+  );
+  background-size: 4rem 2rem;
+  transition: $transition-duration;
   border-radius: $border-radius-default;
 }

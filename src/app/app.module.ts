@@ -32,6 +32,8 @@ import { ChartsComponent } from './pages/statistics/charts/charts.component';
 import { LineChartComponent } from './pages/statistics/charts/line-chart/line-chart.component';
 import { StatisticsByUniverseComponent } from './pages/statistics/statistics-by-universe/statistics-by-universe.component';
 import { StatisticsItemComponent } from './pages/statistics/statistics-item/statistics-item.component';
+import { ButtonOpenComponent } from './shared/components/button-open/button-open.component';
+import { LoadingOverlayComponent } from './shared/components/loading-overlay/loading-overlay.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { StatisticsItemComponent } from './pages/statistics/statistics-item/stat
     ChartsComponent,
     LineChartComponent,
     StatisticsByUniverseComponent,
-    StatisticsItemComponent
+    StatisticsItemComponent,
+    ButtonOpenComponent,
+    LoadingOverlayComponent
   ],
   imports: [
     AppRoutingModule,

@@ -9,10 +9,13 @@
       [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query" (queryChange)="search($event)"></app-funds-pagination>
 
   </div>
-  <div class="no-funds no-funds--danger" *ngIf="!loading && funds.length === 0; else content">
-    <p>No funds available!</p>
-  </div>
-  <ng-template #content>
-    <app-funds-list class="funds__list" [funds]="funds"></app-funds-list>
+  <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
+  <ng-template #loaded>
+    <div class="no-funds no-funds--danger" *ngIf="funds.length === 0; else content">
+      <p>No funds available!</p>
+    </div>
+    <ng-template #content>
+      <app-funds-list class="funds__list" [funds]="funds"></app-funds-list>
+    </ng-template>
   </ng-template>
 </div>

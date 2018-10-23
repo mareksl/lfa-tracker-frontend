@@ -9,6 +9,8 @@ import { FundsService } from 'src/app/core/services/funds/funds.service';
   styleUrls: ['./fund-details.component.scss']
 })
 export class FundDetailsComponent implements OnInit {
+  loading: boolean;
+
   fund: Fund;
   id: number;
 
@@ -18,6 +20,7 @@ export class FundDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loading = true;
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.getFund(this.id);
@@ -25,6 +28,9 @@ export class FundDetailsComponent implements OnInit {
   }
 
   getFund(id: number) {
-    this.fundsService.getById(id).subscribe(fund => (this.fund = fund));
+    this.fundsService.getById(id).subscribe(fund => {
+      this.fund = fund;
+      this.loading = false;
+    });
   }
 }

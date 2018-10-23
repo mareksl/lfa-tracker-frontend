@@ -1,0 +1,7 @@
+.toggle-icon {
+  transition: transform $transition-duration;
+}
+
+.toggle-icon--open {
+  transform: rotate(180deg);
+}

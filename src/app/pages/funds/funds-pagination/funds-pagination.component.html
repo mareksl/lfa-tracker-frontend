@@ -24,7 +24,5 @@
     <option value="50">50</option>
   </select>
 </div>
-<button class="button button--square" (click)="toggleAdvancedSearch()">
-  <span class="fa fa-chevron-down advanced-search__toggle-icon" [ngClass]="{'advanced-search__toggle-icon--open': advancedSearchOpen}"></span>
-</button>
+<app-button-open [(toggled)]="advancedSearchOpen"></app-button-open>
 <app-funds-advanced-search class="pagination__advanced-search" *ngIf="advancedSearchOpen"></app-funds-advanced-search>

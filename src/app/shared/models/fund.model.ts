@@ -1,5 +1,5 @@
 export interface IFund {
-  lipperId: number;
+  lipperID: number;
   awardUniverse: string[];
   awardPeriod: number[];
   highestRank: number;
@@ -12,7 +12,7 @@ export interface IFund {
   fundOwner: string;
   department: string;
   classificationScheme: string;
-  isinCode: string;
+  iSINCode: string;
   assetTypeName: string;
   classificationName: string;
   awardVerifiedNoteDate: string;
@@ -24,7 +24,7 @@ export interface IFund {
 }
 
 export class Fund implements IFund {
-  lipperId: number;
+  lipperID: number;
   awardUniverse: string[];
   awardPeriod: number[];
   highestRank: number;
@@ -37,7 +37,7 @@ export class Fund implements IFund {
   fundOwner: string;
   department: string;
   classificationScheme: string;
-  isinCode: string;
+  iSINCode: string;
   assetTypeName: string;
   classificationName: string;
   awardVerifiedNoteDate: string;
@@ -48,7 +48,7 @@ export class Fund implements IFund {
   timeseriesDataVerified: boolean;
 
   constructor(data: IFund) {
-    this.lipperId = data.lipperId;
+    this.lipperID = data.lipperID;
     this.awardUniverse = data.awardUniverse;
     this.awardPeriod = data.awardPeriod;
     this.highestRank = data.highestRank;
@@ -61,7 +61,7 @@ export class Fund implements IFund {
     this.fundOwner = data.fundOwner;
     this.department = data.department;
     this.classificationScheme = data.classificationScheme;
-    this.isinCode = data.isinCode;
+    this.iSINCode = data.iSINCode;
     this.assetTypeName = data.assetTypeName;
     this.classificationName = data.classificationName;
     this.awardVerifiedNoteDate = data.awardVerifiedNoteDate;
