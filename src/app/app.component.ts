@@ -1,10 +1,41 @@
 import { Component, OnInit } from '@angular/core';
 import { config } from './config/app-settings.config';
+import {
+  trigger,
+  transition,
+  style,
+  query,
+  animate
+} from '@angular/animations';
+
+export const routerTransition = trigger('routerTransition', [
+  transition('* <=> *', [
+    query(
+      ':enter, :leave',
+      style({
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        zIndex: '1'
+      }),
+      { optional: true }
+    ),
+    query(
+      ':leave',
+      [
+        style({ transform: 'translateX(0)' }),
+        animate('.8s ease', style({ transform: 'translateX(100%)' }))
+      ],
+      { optional: true }
+    )
+  ])
+]);
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [routerTransition]
 })
 export class AppComponent implements OnInit {
   navVisible: boolean;
@@ -29,5 +60,9 @@ export class AppComponent implements OnInit {
     if (window.innerWidth < config.breakpointWidth) {
       this.navVisible = false;
     }
+  }
+
+  getState(outlet) {
+    return outlet.activatedRouteData.state;
   }
 }

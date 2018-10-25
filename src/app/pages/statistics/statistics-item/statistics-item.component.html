@@ -1,21 +1,25 @@
-<h4 class="statistics-item__heading">{{title | titlecase}}{{key}}</h4>
-<ul>
-  <li class="statistics-item__datapoint">
-    Total Fund Count: {{item.totalCount}}
-  </li>
-  <li class="statistics-item__datapoint">
-    Checked Funds: {{item.doneCount}}
-  </li>
-  <li *ngFor="let rank of item.statsByRank | keyvalue" class="statistics-item__datapoint">
-    Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}
-    <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
-      {{rank.value.percentageDone | percent:'1.0-2'}}
-    </span>
-  </li>
-  <li class="statistics-item__datapoint statistics-item__datapoint--accent">
-    Total Checked Percentage:
-    <span [appPercentageColor]="item.percentageDone">
-      {{item.percentageDone | percent:'1.0-2'}}
-    </span>
-  </li>
-</ul>
+<div class="statistics-item">
+  <h4 class="statistics-item__heading">{{title | titlecase}}{{key}}</h4>
+  <ul>
+    <li class="statistics-item__datapoint">
+      <span>Total Fund Count:</span>
+      <span>{{item.totalCount}}</span>
+    </li>
+    <li class="statistics-item__datapoint">
+      <span>Checked Funds: </span>
+      <span>{{item.doneCount}}</span>
+    </li>
+    <li *ngFor="let rank of item.statsByRank | keyvalue" class="statistics-item__datapoint">
+      <span>Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}</span>
+      <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
+        {{rank.value.percentageDone | percent:'1.0-2'}}
+      </span>
+    </li>
+    <li class="statistics-item__datapoint statistics-item__datapoint--accent">
+      <span>Total: </span>
+      <span [appPercentageColor]="item.percentageDone">
+        {{item.percentageDone | percent:'1.0-2'}}
+      </span>
+    </li>
+  </ul>
+</div>

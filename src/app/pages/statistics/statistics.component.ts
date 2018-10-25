@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IStatistics } from '../../shared/models/statistics.model';
 import { StatisticsService } from '../../core/services/statistics/statistics.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-statistics',

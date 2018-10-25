@@ -1,8 +1,16 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
 .statistics-item__heading {
   margin-bottom: 1rem;
 }
+
 .statistics-item__datapoint {
   margin-bottom: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
   &:last-child {
     margin: 0;
   }

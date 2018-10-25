@@ -8,14 +8,11 @@
 
 .statistics-by-rank__list {
   @include full-width;
-  display: flex;
-  flex-flow: row wrap;
+  @include grid-box-list;
+
 }
 
 .statistics-by-rank__item {
   @include content-box;
-
-  flex: 1 0 calc(20% - 2rem);
   padding: 1rem;
-  margin: 0 1rem 1rem 1rem;
 }

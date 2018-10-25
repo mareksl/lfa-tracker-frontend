@@ -10,11 +10,13 @@ import { NotFoundComponent } from './core/not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: DashboardComponent,
+    data: { state: 'dashboard' }
   },
   {
     path: 'funds',
-    component: FundsComponent
+    component: FundsComponent,
+    data: { state: 'funds' }
   },
   {
     path: 'funds/:id',
@@ -22,15 +24,18 @@ const routes: Routes = [
   },
   {
     path: 'statistics',
-    component: StatisticsComponent
+    component: StatisticsComponent,
+    data: { state: 'statistics' }
   },
   {
     path: 'admin',
-    component: AdminComponent
+    component: AdminComponent,
+    data: { state: 'admin' }
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    data: { state: 'notfound' }
   }
 ];
 

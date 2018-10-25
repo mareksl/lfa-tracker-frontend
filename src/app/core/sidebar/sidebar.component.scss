@@ -2,10 +2,12 @@
 @import '../../../scss/utils/mixins';
 
 .nav {
+  display: block;
   height: 100%;
   width: 100%;
-
   background-color: $color-shade-darker;
+
+  @include box-shadow-inset-side;
 }
 
 .nav-list {
@@ -76,7 +78,5 @@
 @media screen and (min-width: $breakpoint-width) {
   .nav-list {
     flex-flow: column;
-  }
-  .nav-list__item {
   }
 }

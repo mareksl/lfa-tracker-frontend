@@ -1,3 +1,22 @@
 <div class="loading-overlay">
-  <span class="fa fa-refresh fa-spin loading-overlay__icon"></span>
+  <!-- <span class="fa fa-refresh fa-spin loading-overlay__icon"></span> -->
+  <svg class="loader" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blurred" />
+        <feFlood flood-color="rgb(0,0,0)" result="glowColor" />
+        <feComposite in="glowColor" in2="blurred" operator="in" result="glowColored" />
+
+        <feMerge>
+          <feMergeNode in="glowColored" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+
+    </defs>
+    <circle cx="170" cy="170" r="160" style="filter: url(#glow);" />
+    <circle cx="170" cy="170" r="135" style="filter: url(#glow);" />
+    <circle cx="170" cy="170" r="110" style="filter: url(#glow);" />
+    <circle cx="170" cy="170" r="85" style="filter: url(#glow);" />
+  </svg>
 </div>

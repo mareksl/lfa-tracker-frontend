@@ -21,7 +21,7 @@ export class StatisticsByUniverseComponent implements OnInit {
   }
 
   get statisticsFiltered() {
-    const regex = new RegExp(this.search, 'gi');
+    const regex = new RegExp(this.search, 'i');
     return Object.keys(this.statistics)
       .filter(key => regex.test(key))
       .reduce((result, key) => {
