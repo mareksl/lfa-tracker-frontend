@@ -36,7 +36,9 @@
 }
 
 .chart {
-  position: relative;
-  max-width: 16rem;
+  padding-top: 2rem;
+  flex: 1 0 auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-end;
 }
-

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BreadcrumbsComponent } from './core/footer/breadcrumbs/breadcrumbs.component';
@@ -76,7 +77,8 @@ import { PercentageColorDirective } from './shared/directives/percentage-color.d
     ReactiveFormsModule,
     HttpClientModule,
     ChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

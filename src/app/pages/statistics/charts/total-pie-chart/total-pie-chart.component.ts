@@ -15,13 +15,23 @@ export class TotalPieChartComponent implements OnInit {
   @Input()
   title: string;
 
-  chartOptions = { responsive: true };
+  chartOptions = {
+    responsive: true,
+    legend: { display: true, position: 'left' }
+  };
+  legendOptions = { display: true, position: 'left' };
 
   chartColors: any[];
 
   constructor() {}
 
   ngOnInit() {
-    this.chartColors = [{ backgroundColor: ['#429765', '#f44336'] }];
+    this.chartColors = [
+      {
+        borderColor: ['#429765', '#f44336'],
+        backgroundColor: ['#D9EAE0', '#fcd9d6'],
+        borderWidth: 1
+      }
+    ];
   }
 }
