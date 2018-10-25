@@ -10,11 +10,11 @@ export class StatisticsByAssigneeComponent implements OnInit {
   @Input()
   statistics: IStatistics;
 
-  assignee: string;
+  assignee: string[];
 
   constructor() {}
 
   ngOnInit() {
-    this.assignee = '';
+    this.assignee = [];
   }
 }

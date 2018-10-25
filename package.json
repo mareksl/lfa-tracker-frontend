@@ -23,6 +23,7 @@
     "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.0-rc.3",
+    "html2canvas": "^1.0.0-alpha.12",
     "ng2-charts": "^1.6.0",
     "ngx-breadcrumbs": "^0.0.3",
     "rxjs": "^6.0.0",

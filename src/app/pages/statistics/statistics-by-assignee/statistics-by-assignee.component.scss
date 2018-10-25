@@ -12,14 +12,20 @@
 
 .statistics-by-assignee__select {
   @include full-width;
+  resize: vertical;
+  height: 8rem;
+  option {
+    padding: 0.5rem;
+  }
 }
 
 .statistics-by-assignee__item {
   @include content-box;
-  @include full-width;
 }
+
 .statistics-by-assignee__list {
-  margin-bottom: 1rem;
+  @include full-width;
+  @include grid-box-list;
 }
 
 .statistics-by-assignee__datapoint {
@@ -30,8 +36,4 @@
   &--accent {
     font-weight: 700;
   }
-}
-
-.statistics-by-assignee__progress {
-  @include full-width;
 }

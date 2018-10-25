@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IStatisticsItem } from 'src/app/shared/models/statistics.model';
+import html2canvas from 'html2canvas';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-statistics-item',
@@ -24,4 +26,17 @@ export class StatisticsItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  toCanvas(el) {
+    html2canvas(el).then(canvas => {
+      const a = document.createElement('a');
+      a.href = canvas
+        .toDataURL('image/jpeg')
+        .replace('image/jpeg', 'image/octet-stream');
+      a.download = `${formatDate(new Date(), 'dd_MM_y', 'en_US')}_${
+        this.title ? this.title + '_' : ''
+      }${this.key}.jpg`;
+      a.click();
+    });
+  }
 }

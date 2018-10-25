@@ -2,6 +2,10 @@
 @import '../../../../scss/utils/mixins';
 @import '../../../../scss/base/grid';
 
+.statistics-item {
+  position: relative;
+}
+
 .statistics-item__heading {
   margin-bottom: 1rem;
 }
@@ -18,3 +22,21 @@
     font-weight: 700;
   }
 }
+
+.statistics-item__export-button {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.chart {
+  position: relative;
+  max-width: 16rem;
+}
+

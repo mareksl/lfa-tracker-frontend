@@ -1,7 +1,9 @@
 <h3 class="statistics-by-assignee__header">Stats by Assignee:</h3>
-<select class="select statistics-by-assignee__select" name="assignee" id="assignee" [(ngModel)]="assignee">
+<select class="select statistics-by-assignee__select" name="assignee" id="assignee" [(ngModel)]="assignee" multiple>
   <option *ngFor="let assignee of statistics | keyvalue" [value]="assignee.key">{{assignee.key}}</option>
 </select>
-<app-progress-bar *ngIf="assignee.length > 0" class="statistics-by-assignee__progress" [value]="statistics[assignee].percentageDone"></app-progress-bar>
-<app-statistics-item *ngIf="assignee.length > 0" class="statistics-by-assignee__item" [item]="statistics[assignee]"
-  [key]="assignee"></app-statistics-item>
+<ul class="statistics-by-assignee__list">
+  <app-statistics-item *ngFor="let assignee of assignee" class="statistics-by-assignee__item" [item]="statistics[assignee]"
+    [key]="assignee">
+  </app-statistics-item>
+</ul>
