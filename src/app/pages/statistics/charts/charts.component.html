@@ -1,6 +1,6 @@
 <h2 class="charts__header">Charts</h2>
 <div class="chart">
-  <app-total-pie-chart title="total" [chartData]="totalPieChartData" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
+    <app-total-pie-chart title="total" [chartData]="totalPieChartData" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
 </div>
 <div class="chart" *ngFor="let rank of rankPieChartData | keyvalue">
   <app-total-pie-chart [title]="'rank '+rank.key" [chartData]="rank.value" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>

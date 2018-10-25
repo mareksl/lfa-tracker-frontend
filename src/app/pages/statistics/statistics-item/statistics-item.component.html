@@ -2,7 +2,7 @@
   <button class="button button--accent statistics-item__export-button" (click)="toCanvas(statitem)">
     <span class="fa fa-fw fa-file-image-o"></span>
   </button>
-  <div #statitem>
+  <div class="statistics-item__data" #statitem>
     <h4 class="statistics-item__heading">{{title | titlecase}}{{key}}</h4>
     <ul>
       <li class="statistics-item__datapoint">
@@ -26,8 +26,6 @@
         </span>
       </li>
     </ul>
-    <div class="chart">
-      <app-total-pie-chart [chartData]="[item.doneCount, item.totalCount - item.doneCount]" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
-    </div>
+    <app-total-pie-chart class="chart" [chartData]="[item.doneCount, item.totalCount - item.doneCount]" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
   </div>
 </div>

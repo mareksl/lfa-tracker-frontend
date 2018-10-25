@@ -30,13 +30,21 @@ export class StatisticsItemComponent implements OnInit {
   toCanvas(el) {
     html2canvas(el).then(canvas => {
       const a = document.createElement('a');
-      a.href = canvas
-        .toDataURL('image/jpeg')
-        .replace('image/jpeg', 'image/octet-stream');
-      a.download = `${formatDate(new Date(), 'dd_MM_y', 'en_US')}_${
-        this.title ? this.title + '_' : ''
-      }${this.key}.jpg`;
+      a.setAttribute(
+        'href',
+        canvas
+          .toDataURL('image/jpeg')
+          .replace('image/jpeg', 'image/octet-stream')
+      );
+      a.setAttribute(
+        'download',
+        `${formatDate(new Date(), 'dd_MM_y', 'en_US')}_${
+          this.title ? this.title + '_' : ''
+        }${this.key}.jpg`
+      );
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
     });
   }
 }

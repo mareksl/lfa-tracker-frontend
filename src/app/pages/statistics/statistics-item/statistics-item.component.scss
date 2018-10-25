@@ -6,6 +6,11 @@
   position: relative;
 }
 
+.statistics-item__data {
+  width: 100%;
+  padding: 1rem;
+}
+
 .statistics-item__heading {
   margin-bottom: 1rem;
 }
@@ -25,8 +30,8 @@
 
 .statistics-item__export-button {
   position: absolute;
-  top: -2rem;
-  right: -2rem;
+  top: -1rem;
+  right: -1rem;
 
   width: 2rem;
   height: 2rem;
@@ -37,8 +42,7 @@
 
 .chart {
   padding-top: 2rem;
-  flex: 1 0 auto;
+  width: 100%;
   display: flex;
-  flex-flow: column;
-  justify-content: flex-end;
+  justify-content: center;
 }

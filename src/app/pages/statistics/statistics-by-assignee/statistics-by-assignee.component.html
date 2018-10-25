@@ -2,7 +2,6 @@
 <select class="select statistics-by-assignee__select" name="assignees" id="assignees" [(ngModel)]="assignees" multiple>
   <option *ngFor="let assignee of statistics | keyvalue" [value]="assignee.key">{{assignee.key}}</option>
 </select>
-<ng-select class="select statistics-by-assignee__select" [items]='assigneeList' [multiple]="true" [(ngModel)]="assignees"></ng-select>
 <ul class="statistics-by-assignee__list">
   <app-statistics-item *ngFor="let assignee of assignees" class="statistics-by-assignee__item" [item]="statistics[assignee]"
     [key]="assignee">

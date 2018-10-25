@@ -19,7 +19,6 @@ export class TotalPieChartComponent implements OnInit {
     responsive: true,
     legend: { display: true, position: 'left' }
   };
-  legendOptions = { display: true, position: 'left' };
 
   chartColors: any[];
 

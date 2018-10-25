@@ -5,7 +5,7 @@
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
   </header>
-  <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
+  <app-loading-overlay></app-loading-overlay>
   <ng-template #loaded>
     <div class="no-funds no-funds--danger" *ngIf="statistics.totalCount === 0; else content">
       <p>No statistics available!</p>

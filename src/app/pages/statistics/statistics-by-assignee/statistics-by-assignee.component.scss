@@ -6,10 +6,6 @@
   @include main-content__header;
 }
 
-.statistics-by-assignee__heading {
-  margin-bottom: 1rem;
-}
-
 .statistics-by-assignee__select {
   @include full-width;
   resize: vertical;
@@ -21,6 +17,7 @@
 
 .statistics-by-assignee__item {
   @include content-box;
+  padding: 0;
 }
 
 .statistics-by-assignee__list {
