@@ -1,5 +1,7 @@
-<h3 class="statistics-by-rank__header">Stats by rank:</h3>
+<div class="statistics-by-rank__header">
+  <h3>Stats by rank:</h3>
+</div>
 <ul class="statistics-by-rank__list">
-  <app-statistics-item class="statistics-by-rank__item" *ngFor="let rank of statistics | keyvalue" [item]="rank.value" [key]="rank.key"
-    title="rank"></app-statistics-item>
+  <app-statistics-item class="statistics-by-rank__item" *ngFor="let rank of statistics | keyvalue" [item]="rank.value"
+    [key]="rank.key" title="rank"></app-statistics-item>
 </ul>

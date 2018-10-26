@@ -9,10 +9,7 @@
 
 .funds__header {
   @include main-content__header;
-  position: sticky;
-  z-index: 1;
-  top: 6rem;
-  background-color: $color-shade-dark;
+  @include main-content__header--sticky;
 }
 
 .funds__list {
@@ -29,12 +26,6 @@
   justify-content: space-between;
   align-items: stretch;
   margin-top: 0.5rem;
-}
-
-@media screen and (min-width: $breakpoint-width) {
-  .funds__header {
-    top: 4rem;
-  }
 }
 
 @media screen and (min-width: $breakpoint-width-mid) {

@@ -14,6 +14,17 @@
   align-items: center;
 }
 
+@mixin main-content__header--sticky {
+  position: sticky;
+  z-index: 1;
+  top: 6rem;
+  background-color: $color-shade-dark;
+
+  @media screen and (min-width: $breakpoint-width) {
+    top: 4rem;
+  }
+}
+
 @mixin box-shadow-default {
   box-shadow: 0 0.125rem 0.125rem 0 rgba($color-box-shadow, 0.14),
     0 0.1875rem 0.0625rem -0.125rem rgba($color-box-shadow, 0.2),
