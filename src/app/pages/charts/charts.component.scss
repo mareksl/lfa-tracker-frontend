@@ -1,14 +1,19 @@
-@import '../../../../scss/base/variables';
-@import '../../../../scss/utils/mixins';
-@import '../../../../scss/base/grid';
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/base/grid';
+
+.charts {
+  @include main-content;
+  @include grid-container;
+}
 
 .charts__header {
   @include main-content__header;
 }
 
 .chart {
+  @include content-box;
   @include full-width;
-  padding: 1rem;
 }
 
 @media screen and (min-width: $breakpoint-width) {

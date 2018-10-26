@@ -20,9 +20,9 @@ import { FundsListItemComponent } from './pages/funds/funds-list/funds-list-item
 import { FundsListComponent } from './pages/funds/funds-list/funds-list.component';
 import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-pagination.component';
 import { FundsComponent } from './pages/funds/funds.component';
-import { ChartsComponent } from './pages/statistics/charts/charts.component';
-import { LineChartComponent } from './pages/statistics/charts/line-chart/line-chart.component';
-import { TotalPieChartComponent } from './pages/statistics/charts/total-pie-chart/total-pie-chart.component';
+import { ChartsComponent } from './pages/charts/charts.component';
+import { LineChartComponent } from './shared/components/charts/line-chart/line-chart.component';
+import { TotalPieChartComponent } from './shared/components/charts/total-pie-chart/total-pie-chart.component';
 import { StatisticsByAssigneeComponent } from './pages/statistics/statistics-by-assignee/statistics-by-assignee.component';
 import { StatisticsByDepartmentComponent } from './pages/statistics/statistics-by-department/statistics-by-department.component';
 import { StatisticsByRankComponent } from './pages/statistics/statistics-by-rank/statistics-by-rank.component';
@@ -35,6 +35,7 @@ import { LoadingOverlayComponent } from './shared/components/loading-overlay/loa
 import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
+import { MultiSelectComponent } from './shared/components/multi-select/multi-select.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { PercentageColorDirective } from './shared/directives/percentage-color.d
     StatisticsByUniverseComponent,
     StatisticsItemComponent,
     ButtonOpenComponent,
-    LoadingOverlayComponent
+    LoadingOverlayComponent,
+    MultiSelectComponent
   ],
   imports: [
     AppRoutingModule,

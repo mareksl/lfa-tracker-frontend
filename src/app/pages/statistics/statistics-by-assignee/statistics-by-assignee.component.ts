@@ -13,7 +13,15 @@ export class StatisticsByAssigneeComponent implements OnInit {
   assignees: string[];
 
   get assigneeList() {
-    return Object.keys(this.statistics);
+    return Object.keys(this.statistics).sort((a: string, b: string) => {
+      if (a.toLowerCase() > b.toLowerCase()) {
+        return 1;
+      }
+      if (a.toLowerCase() < b.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
   }
 
   constructor() {}

@@ -19,15 +19,20 @@ export class StatisticsItemComponent implements OnInit {
   @Input()
   key: string;
 
+  exporting: boolean;
+
   get title(): string {
     return this.titleInput ? `${this.titleInput} ` : '';
   }
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.exporting = false;
+  }
 
   toCanvas(el) {
+    this.exporting = true;
     html2canvas(el).then(canvas => {
       const a = document.createElement('a');
       a.setAttribute(
@@ -45,6 +50,7 @@ export class StatisticsItemComponent implements OnInit {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
+      this.exporting = false;
     });
   }
 }

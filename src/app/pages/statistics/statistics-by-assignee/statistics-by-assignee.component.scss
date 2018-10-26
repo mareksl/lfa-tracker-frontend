@@ -8,11 +8,6 @@
 
 .statistics-by-assignee__select {
   @include full-width;
-  resize: vertical;
-  height: 8rem;
-  option {
-    padding: 0.5rem;
-  }
 }
 
 .statistics-by-assignee__item {

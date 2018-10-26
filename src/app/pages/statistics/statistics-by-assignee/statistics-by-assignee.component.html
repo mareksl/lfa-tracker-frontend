@@ -1,7 +1,5 @@
-<h3 class="statistics-by-assignee__header">Stats by Assignee:</h3>
-<select class="select statistics-by-assignee__select" name="assignees" id="assignees" [(ngModel)]="assignees" multiple>
-  <option *ngFor="let assignee of statistics | keyvalue" [value]="assignee.key">{{assignee.key}}</option>
-</select>
+<h3 class="statistics-by-assignee__header">Stats by assignee:</h3>
+<app-multi-select class="statistics-by-assignee__select" [options]=" assigneeList" [(selected)]="assignees"></app-multi-select>
 <ul class="statistics-by-assignee__list">
   <app-statistics-item *ngFor="let assignee of assignees" class="statistics-by-assignee__item" [item]="statistics[assignee]"
     [key]="assignee">

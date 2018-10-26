@@ -1,12 +1,15 @@
-<div class="fund-details">
+<div class="fund-details" #statitem>
   <div class="no-funds no-funds--danger" *ngIf="!fund && !loading; else content">
     <p>Fund not available!</p>
   </div>
   <ng-template #content>
     <app-loading-overlay *ngIf="loading; else fundDetails"></app-loading-overlay>
-    <ng-template #fundDetails>
+    <ng-template #fundDetails >
       <div class="fund-details__header">
         <h2>{{fund.fundName}}</h2>
+        <button class="button button--accent button--square" (click)="toCanvas(statitem)" [disabled]="exporting">
+          <span class="fa fa-fw" [ngClass]="{'fa-refresh fa-spin': exporting, 'fa-file-image-o': !exporting}"></span>
+        </button>
       </div>
       <div class="fund-details__data col-8">
         <h3 class="fund-details__header">Fund data</h3>

@@ -1,0 +1,16 @@
+<button class="multi-select" (click)="toggleList()" (appClickOutside)="closeList()">
+  <div class="multi-select__placeholder" *ngIf="selected.length < 1">
+    <span>Select assignee</span>
+    <span class="fa fa-chevron-down multi-select__icon" [ngClass]="{'multi-select__icon--rotated': open}"></span>
+  </div>
+  <ul class="multi-select__selected">
+    <button class="multi-select__selected-item" *ngFor="let item of selected" (click)="toggleSelected(item)">{{item}}</button>
+    <button class="multi-select__selected-item multi-select__selected-item--accent" *ngIf="selected.length > 0" (click)="deselectAll()">Deselect
+      all</button>
+  </ul>
+  <ul class="multi-select__list" *ngIf="open">
+    <button class="multi-select__option" (click)="toggleSelectAll()" [ngClass]="{'multi-select__option--selected': allSelected}">{{allSelected
+      ? 'Deselect' : 'Select'}} all</button>
+    <button *ngFor="let option of options" class="multi-select__option" (click)="toggleSelected(option)" [ngClass]="{'multi-select__option--selected': isSelected(option)}">{{option}}</button>
+  </ul>
+</button>

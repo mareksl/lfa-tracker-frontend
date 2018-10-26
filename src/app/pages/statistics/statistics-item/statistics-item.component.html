@@ -1,7 +1,4 @@
 <div class="statistics-item">
-  <button class="button button--accent statistics-item__export-button" (click)="toCanvas(statitem)">
-    <span class="fa fa-fw fa-file-image-o"></span>
-  </button>
   <div class="statistics-item__data" #statitem>
     <h4 class="statistics-item__heading">{{title | titlecase}}{{key}}</h4>
     <ul>
@@ -28,4 +25,7 @@
     </ul>
     <app-total-pie-chart class="chart" [chartData]="[item.doneCount, item.totalCount - item.doneCount]" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
   </div>
+  <button class="button button--neutral statistics-item__export-button" (click)="toCanvas(statitem)" [disabled]="exporting">
+    <span class="fa fa-fw" [ngClass]="{'fa-refresh fa-spin': exporting, 'fa-file-image-o': !exporting}"></span>
+  </button>
 </div>

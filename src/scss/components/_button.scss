@@ -59,6 +59,12 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
   color: $color-shade-dark;
 }
 
+.button--neutral {
+  background-color: $color-shade-light;
+  border-color: $color-neutral;
+  color: $color-shade-dark;
+}
+
 .button--success {
   background-color: $color-success;
   color: $color-shade-light;

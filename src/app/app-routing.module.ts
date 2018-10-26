@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './core/not-found/not-found.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ChartsComponent } from './pages/charts/charts.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { FundDetailsComponent } from './pages/funds/fund-details/fund-details.component';
 import { FundsComponent } from './pages/funds/funds.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { AdminComponent } from './pages/admin/admin.component';
-import { FundDetailsComponent } from './pages/funds/fund-details/fund-details.component';
-import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,11 @@ const routes: Routes = [
     path: 'statistics',
     component: StatisticsComponent,
     data: { state: 'statistics' }
+  },
+  {
+    path: 'charts',
+    component: ChartsComponent,
+    data: { state: 'charts' }
   },
   {
     path: 'admin',
