@@ -35,7 +35,7 @@ export class FundsService {
         params: new HttpParams()
           .set('page', `${page}`)
           .set('limit', `${limit}`)
-          .set('q', `${query}`)
+          .set('fundName', `${query}`)
       })
       .pipe(
         map(fundsResponse => {

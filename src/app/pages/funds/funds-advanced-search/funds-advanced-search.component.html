@@ -8,38 +8,54 @@
   </div>
 
   <div class="advanced-search__input-group">
-    <label class="input-group__label" for="code">Code (Lipper ID / ISIN)</label>
-    <input id="code" type="text" class="input input--slim input-group__input">
+    <label class="input-group__label" for="lipperID">Lipper ID</label>
+    <input id="lipperID" type="text" class="input input--slim input-group__input">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label class="input-group__label" for="department">Department</label>
+    <input id="department" type="text" class="input input--slim input-group__input">
   </div>
 
   <div class="advanced-search__input-group">
     <label class="input-group__label" for="assignee">Assignee</label>
     <input id="assignee" type="text" class="input input--slim input-group__input">
   </div>
-  <fieldset class="advanced-search__input-group">
-    <legend>Ranks</legend>
+
+  <div class="advanced-search__input-group">
+    <label class="input-group__label" for="universe">Award Universe</label>
+    <input id="universe" type="text" class="input input--slim input-group__input">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label class="input-group__label">Ranks</label>
     <div class="advanced-search__ranks">
       <div class="ranks__item">
-        <input type="checkbox">
-        <label>1</label>
+        <input class="checkbox__box" id="rank_1" type="checkbox">
+        <label class="checkbox__label" for="rank_1">1</label>
       </div>
       <div class="ranks__item">
-        <input type="checkbox">
-        <label>2</label>
+        <input class="checkbox__box" id="rank_2" type="checkbox">
+        <label class="checkbox__label" for="rank_2">2</label>
       </div>
       <div class="ranks__item">
-        <input type="checkbox">
-        <label>3</label>
+        <input class="checkbox__box" id="rank_3" type="checkbox">
+        <label class="checkbox__label" for="rank_3">3</label>
       </div>
       <div class="ranks__item">
-        <input type="checkbox">
-        <label>4</label>
+        <input class="checkbox__box" id="rank_4" type="checkbox">
+        <label class="checkbox__label" for="rank_4">4</label>
       </div>
       <div class="ranks__item">
-        <input type="checkbox">
-        <label>5</label>
+        <input class="checkbox__box" id="rank_5" type="checkbox">
+        <label class="checkbox__label" for="rank_5">5</label>
       </div>
     </div>
-  </fieldset>
+  </div>
+
+  <div class="advanced-search__buttons">
+    <button class="button">Search</button>
+    <button class="button button--accent">Cancel</button>
+  </div>
 
 </form>
