@@ -42,7 +42,6 @@ $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
 
   &:disabled {
     filter: grayscale(1);
-    cursor: wait;
     pointer-events: none;
   }
 }

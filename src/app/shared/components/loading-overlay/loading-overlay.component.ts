@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { transition, trigger, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-loading-overlay',

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {
   FundsResponse,
@@ -53,7 +53,7 @@ export class FundsComponent implements OnInit, OnDestroy {
   fetchFunds() {
     this.loading = true;
     return this.fundsService
-      .getRange(this.page, this.limit, this.query)
+      .getRange(this.page, this.limit, { fundName: this.query })
       .subscribe((fundsResponse: FundsResponse) => {
         this.funds = <Fund[]>fundsResponse.funds;
         this.pageCount = fundsResponse.pages;

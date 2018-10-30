@@ -52,4 +52,8 @@ export class FundsPaginationComponent implements OnInit {
   search() {
     this.queryChange.emit(this.query);
   }
+
+  hideAdvancedSearch() {
+    this.advancedSearchOpen = false;
+  }
 }

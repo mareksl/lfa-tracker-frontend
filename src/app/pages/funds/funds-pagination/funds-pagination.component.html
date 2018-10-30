@@ -11,7 +11,7 @@
 </ul>
 <div class="input-float__wrapper pagination__search-wrapper">
   <input id="search" name="search" type="search" class="input input--slim input-float__input pagination__search"
-    (search)="search()" [(ngModel)]="query" placeholder="Search">
+    (search)="search()" [(ngModel)]="query" placeholder="Search" [disabled]="advancedSearchOpen">
   <label for="search" class="input-float__label">Search</label>
 </div>
 <div class="pagination__results-per-page">
@@ -25,4 +25,4 @@
   </select>
 </div>
 <app-button-open [(toggled)]="advancedSearchOpen"></app-button-open>
-<app-funds-advanced-search class="pagination__advanced-search" *ngIf="advancedSearchOpen"></app-funds-advanced-search>
+<app-funds-advanced-search class="pagination__advanced-search" *ngIf="advancedSearchOpen" (cancelled)="hideAdvancedSearch()"></app-funds-advanced-search>

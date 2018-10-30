@@ -16,6 +16,12 @@
     box-shadow: $button-shadow-dims-active $color-accent-light;
     background-color: $color-shade-lighter;
   }
+
+  &:disabled {
+    filter: grayscale(1) blur(1px);
+    pointer-events: none;
+
+  }
 }
 
 .input--slim {

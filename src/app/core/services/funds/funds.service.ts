@@ -19,6 +19,17 @@ export interface FundResponse {
   fund: IFund;
 }
 
+export interface FundQuery {
+  fundName?: string;
+  orderBy?: string;
+  desc?: string;
+  ranks?: string;
+  fundOwner?: string;
+  lipperID?: string;
+  awardUniverse?: string;
+  department?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -28,14 +39,11 @@ export class FundsService {
   getRange(
     page: number,
     limit: number,
-    query: string
+    query: FundQuery
   ): Observable<FundsResponse> {
     return this.http
       .get<FundsResponse>(`${config.apiUrl}/funds`, {
-        params: new HttpParams()
-          .set('page', `${page}`)
-          .set('limit', `${limit}`)
-          .set('fundName', `${query}`)
+        params: { page: `${page}`, limit: `${limit}`, ...query }
       })
       .pipe(
         map(fundsResponse => {
@@ -48,6 +56,7 @@ export class FundsService {
         catchError(handleError('getRange', { funds: [] }))
       );
   }
+
   getById(id: number): Observable<Fund> {
     return this.http.get<FundResponse>(`${config.apiUrl}/funds/${id}`).pipe(
       map(fundResponse => new Fund(fundResponse.fund)),

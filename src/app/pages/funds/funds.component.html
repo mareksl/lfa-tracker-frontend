@@ -6,7 +6,7 @@
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
     <app-funds-pagination class="funds__pagination" [pageCount]="pageCount" [currentPage]="page" (currentPageChange)="changePage($event)"
-      [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query" (queryChange)="search($event)"></app-funds-pagination>
+      [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query.fundName" (queryChange)="search($event)"></app-funds-pagination>
 
   </div>
   <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
