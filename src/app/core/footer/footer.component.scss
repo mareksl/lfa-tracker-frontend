@@ -7,11 +7,15 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   padding: 0 1rem;
 
   background-color: $color-shade-darker;
 
   @include box-shadow-inverse;
+}
+
+.footer__badge {
+  padding-left: 0.5rem;
 }
