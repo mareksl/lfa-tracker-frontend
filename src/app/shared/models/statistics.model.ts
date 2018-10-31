@@ -21,6 +21,7 @@ export interface IStatistics extends IStatisticsItem {
   statsByDepartment: IStatisticsByProperty;
   statsByAssignee: IStatisticsByProperty;
   statsByUniverse: IStatisticsByProperty;
+  date: Date;
 }
 
 // export class Statistics implements IStatistics {

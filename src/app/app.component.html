@@ -1,9 +1,1 @@
-<div class="container" [ngClass]="{'container--noNavbar': !navVisible}">
-  <app-header class="header" (navToggled)="toggleNav()"></app-header>
-  <app-sidebar class="sidebar" *ngIf="navVisible" (window:resize)="onResize($event)"></app-sidebar>
-  <div class="main" (click)="clickOutside()" [@routerTransition]="getState(o)">
-    <router-outlet #o="outlet"></router-outlet>
-  </div>
-  <app-footer class="footer"></app-footer>
-
-</div>
+<router-outlet></router-outlet>

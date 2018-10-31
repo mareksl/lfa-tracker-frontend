@@ -1,0 +1,37 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+
+.login-form {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+}
+
+.login-form__heading {
+  color: $color-shade-light;
+  background-color: $color-shade-dark;
+  font-size: 2.441rem;
+  padding: 1rem;
+  text-align: center;
+  @include box-shadow-default;
+}
+
+.login-form__group {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem 0;
+}
+
+.login-form__label {
+  padding-bottom: 0.5rem;
+}
+
+.login-form__buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 1rem;
+}
+
+.login-form__button {
+  margin: 0;
+}

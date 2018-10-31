@@ -15,10 +15,10 @@ export interface StatisticsResponse {
 export class StatisticsService {
   constructor(private http: HttpClient) {}
 
-  getAll() {
+  getLatest() {
     return this.http.get<StatisticsResponse>(`${config.apiUrl}/stats`).pipe(
       map((statsResponse: StatisticsResponse) => statsResponse.statistics),
-      catchError(handleError('getAll', {}))
+      catchError(handleError('getLatest', {}))
     );
   }
 }

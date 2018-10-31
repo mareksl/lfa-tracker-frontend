@@ -12,9 +12,14 @@
         type="file" accept=".xlsx,.xls,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         (change)="onFileChange($event)">
       <label for="file"><span class="fa fa-file button__icon"></span>{{file ? file.name : 'Choose File'}}</label>
-      <button [disabled]="!file || loading" type="submit" class="button" [ngClass]="{'button--success': success}"><span
-          class="fa button__icon" [ngClass]="{'fa-upload': !loading && !success, 'fa-refresh fa-spin': loading, 'fa-check': !loading && success} "></span>{{loading
-        ? 'Uploading' : (success ? 'Success' : 'Upload')}}</button>
+      <button [disabled]="!file || loading" type="submit" class="button" [ngClass]="{'button--success': fileStatus === 'success', 'button--danger': fileStatus === 'failure'}"><span
+          class="fa button__icon" [ngClass]="{
+            'fa-upload': !loading && !fileStatus,
+            'fa-refresh fa-spin': loading,
+            'fa-check': !loading && fileStatus === 'success',
+            'fa-warning': !loading && fileStatus === 'failure'
+          }"></span>
+        {{fileStatus || 'Upload'}}</button>
     </form>
   </div>
   <div class="admin__section admin__section--danger">

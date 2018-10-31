@@ -12,6 +12,10 @@ import { HeaderComponent } from './core/header/header.component';
 import { NotFoundComponent } from './core/not-found/not-found.component';
 import { SidebarComponent } from './core/sidebar/sidebar.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { AuthenticateComponent } from './pages/authenticate/authenticate.component';
+import { LoginComponent } from './pages/authenticate/login/login.component';
+import { RegisterComponent } from './pages/authenticate/register/register.component';
+import { ChartsComponent } from './pages/charts/charts.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PanelComponent } from './pages/dashboard/panel/panel.component';
 import { FundDetailsComponent } from './pages/funds/fund-details/fund-details.component';
@@ -20,9 +24,6 @@ import { FundsListItemComponent } from './pages/funds/funds-list/funds-list-item
 import { FundsListComponent } from './pages/funds/funds-list/funds-list.component';
 import { FundsPaginationComponent } from './pages/funds/funds-pagination/funds-pagination.component';
 import { FundsComponent } from './pages/funds/funds.component';
-import { ChartsComponent } from './pages/charts/charts.component';
-import { LineChartComponent } from './shared/components/charts/line-chart/line-chart.component';
-import { TotalPieChartComponent } from './shared/components/charts/total-pie-chart/total-pie-chart.component';
 import { StatisticsByAssigneeComponent } from './pages/statistics/statistics-by-assignee/statistics-by-assignee.component';
 import { StatisticsByDepartmentComponent } from './pages/statistics/statistics-by-department/statistics-by-department.component';
 import { StatisticsByRankComponent } from './pages/statistics/statistics-by-rank/statistics-by-rank.component';
@@ -31,11 +32,14 @@ import { StatisticsItemComponent } from './pages/statistics/statistics-item/stat
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import { TotalStatisticsComponent } from './pages/statistics/total-statistics/total-statistics.component';
 import { ButtonOpenComponent } from './shared/components/button-open/button-open.component';
+import { LineChartComponent } from './shared/components/charts/line-chart/line-chart.component';
+import { TotalPieChartComponent } from './shared/components/charts/total-pie-chart/total-pie-chart.component';
 import { LoadingOverlayComponent } from './shared/components/loading-overlay/loading-overlay.component';
+import { MultiSelectComponent } from './shared/components/multi-select/multi-select.component';
 import { ProgressBarComponent } from './shared/components/progress-bar/progress-bar.component';
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
-import { MultiSelectComponent } from './shared/components/multi-select/multi-select.component';
+import { MainComponent } from './core/main/main.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +73,11 @@ import { MultiSelectComponent } from './shared/components/multi-select/multi-sel
     StatisticsItemComponent,
     ButtonOpenComponent,
     LoadingOverlayComponent,
-    MultiSelectComponent
+    MultiSelectComponent,
+    AuthenticateComponent,
+    LoginComponent,
+    RegisterComponent,
+    MainComponent,
   ],
   imports: [
     AppRoutingModule,

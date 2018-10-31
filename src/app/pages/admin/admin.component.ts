@@ -13,7 +13,7 @@ import { FundsService } from 'src/app/core/services/funds/funds.service';
 export class AdminComponent implements OnInit {
   form: FormGroup;
   loading: boolean;
-  success: boolean;
+  fileStatus: string;
   file: File;
 
   downloadSub: Subscription;
@@ -26,7 +26,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.loading = false;
-    this.success = false;
+    this.fileStatus = '';
     this.createForm();
   }
 
@@ -48,11 +48,20 @@ export class AdminComponent implements OnInit {
 
   uploadFile() {
     const formModel = this.prepareSave();
+    this.fileStatus = 'uploading';
     this.loading = true;
-    this.success = true;
     this.filesService.upload(formModel).subscribe(res => {
-      this.loading = false;
-      this.success = true;
+      if (res.type === 'uploaded' && res.status === 'pending') {
+        this.fileStatus = 'processing';
+      }
+      if (res.status === 'succeeded') {
+        this.loading = false;
+        this.fileStatus = 'success';
+      }
+      if (res.status === 'failed') {
+        this.loading = false;
+        this.fileStatus = 'failure';
+      }
     });
   }
 

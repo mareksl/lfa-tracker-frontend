@@ -18,7 +18,8 @@ export class StatisticsComponent implements OnInit {
     statsByAssignee: {},
     statsByRank: {},
     statsByDepartment: {},
-    statsByUniverse: {}
+    statsByUniverse: {},
+    date: null
   };
 
   constructor(private statsService: StatisticsService) {}
@@ -30,7 +31,7 @@ export class StatisticsComponent implements OnInit {
 
   fetchStatistics() {
     this.loading = true;
-    return this.statsService.getAll().subscribe((stats: IStatistics) => {
+    return this.statsService.getLatest().subscribe((stats: IStatistics) => {
       this.statistics = stats;
       this.loading = false;
     });

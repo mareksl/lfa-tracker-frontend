@@ -1,0 +1,15 @@
+<h1 class="register-form__heading">Register</h1>
+<form class="register-form">
+  <div class="register-form__group">
+    <label class="register-form__label" for="userID">User ID</label>
+    <input class="input register-form__input" type="text" id="userID">
+  </div>
+  <div class="register-form__group">
+    <label class="register-form__label" for="password">Password</label>
+    <input class="input register-form__input" type="password" id="password">
+  </div>
+  <div class="register-form__buttons">
+    <button class="button register-form__button" type="submit">Register</button>
+    <button class="button button--accent register-form__button" [routerLink]="['../']">Log In</button>
+  </div>
+</form>
