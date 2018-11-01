@@ -7,7 +7,7 @@
   </header>
   <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
   <ng-template #loaded>
-    <div class="no-funds no-funds--danger" *ngIf="statistics.totalCount === 0; else content">
+    <div class="no-funds no-funds--danger" *ngIf="!statistics || statistics.totalCount === 0; else content">
       <p>No statistics available!</p>
     </div>
     <ng-template #content>

@@ -11,30 +11,24 @@ import { StatisticsService } from '../../core/services/statistics/statistics.ser
 export class StatisticsComponent implements OnInit {
   loading: boolean;
   statisticsSubscription: Subscription;
-  statistics: IStatistics = {
-    totalCount: 0,
-    doneCount: 0,
-    percentageDone: 0,
-    statsByAssignee: {},
-    statsByRank: {},
-    statsByDepartment: {},
-    statsByUniverse: {},
-    date: null
-  };
+  statistics: IStatistics;
 
   constructor(private statsService: StatisticsService) {}
 
   ngOnInit() {
     this.loading = false;
-    this.statisticsSubscription = this.fetchStatistics();
+    this.statisticsSubscription = this.statsService.statsChanged.subscribe(
+      (stats: IStatistics) => {
+        this.statistics = stats;
+        this.loading = false;
+      }
+    );
+    this.fetchStatistics();
   }
 
   fetchStatistics() {
     this.loading = true;
-    return this.statsService.getLatest().subscribe((stats: IStatistics) => {
-      this.statistics = stats;
-      this.loading = false;
-    });
+    this.statsService.getLatest();
   }
 
   refreshData() {

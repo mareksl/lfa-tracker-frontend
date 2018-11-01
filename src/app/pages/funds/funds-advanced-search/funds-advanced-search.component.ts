@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FundsService } from 'src/app/core/services/funds/funds.service';
 
 @Component({
   selector: 'app-funds-advanced-search',
@@ -20,7 +21,11 @@ export class FundsAdvancedSearchComponent implements OnInit {
     { id: 5, selected: true }
   ];
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private fundsService: FundsService
+  ) {}
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -56,10 +61,8 @@ export class FundsAdvancedSearchComponent implements OnInit {
         }, [])
         .join()
     });
-    console.log(formValue);
-    this.router.navigate(['./'], {
-      queryParams: formValue,
-      relativeTo: this.route
+    this.router.navigate(['/funds'], {
+      queryParams: formValue
     });
   }
 

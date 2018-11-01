@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FilesService } from 'src/app/core/services/files/files.service';
 import { Subscription } from 'rxjs';
 import { saveAs } from 'file-saver';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FundsService } from 'src/app/core/services/funds/funds.service';
+import { StatisticsService } from 'src/app/core/services/statistics/statistics.service';
+import { IStatistics } from 'src/app/shared/models/statistics.model';
 
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, OnDestroy {
   form: FormGroup;
   loading: boolean;
   fileStatus: string;
@@ -18,16 +20,31 @@ export class AdminComponent implements OnInit {
 
   downloadSub: Subscription;
 
+  historicalStats: IStatistics[];
+  historicalSub: Subscription;
+
   constructor(
     private filesService: FilesService,
     private fb: FormBuilder,
-    private fundsService: FundsService
+    private fundsService: FundsService,
+    private statsService: StatisticsService
   ) {}
 
   ngOnInit() {
     this.loading = false;
     this.fileStatus = '';
     this.createForm();
+
+    this.historicalSub = this.statsService.historicalStatsChanged.subscribe(
+      (stats: IStatistics[]) => {
+        this.historicalStats = stats;
+      }
+    );
+    this.statsService.getHistorical();
+  }
+
+  ngOnDestroy() {
+    this.historicalSub.unsubscribe();
   }
 
   createForm() {

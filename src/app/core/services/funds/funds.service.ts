@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Fund, IFund } from '../../../shared/models/fund.model';
 import { config } from '../../../config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 export interface FundsResponse {
   funds: IFund[];
@@ -34,13 +34,14 @@ export interface FundQuery {
   providedIn: 'root'
 })
 export class FundsService {
-  constructor(private http: HttpClient) {}
+  fundsResponse: FundsResponse;
+  fundsChanged: Subject<FundsResponse>;
 
-  getRange(
-    page: number,
-    limit: number,
-    query: FundQuery
-  ): Observable<FundsResponse> {
+  constructor(private http: HttpClient) {
+    this.fundsChanged = new Subject<FundsResponse>();
+  }
+
+  getRange(page: number, limit: number, query: FundQuery) {
     return this.http
       .get<FundsResponse>(`${config.apiUrl}/funds`, {
         params: { page: `${page}`, limit: `${limit}`, ...query }
@@ -54,7 +55,11 @@ export class FundsService {
           return fundsResponse;
         }),
         catchError(handleError('getRange', { funds: [] }))
-      );
+      )
+      .subscribe((response: FundsResponse) => {
+        this.fundsResponse = response;
+        this.fundsChanged.next(this.fundsResponse);
+      });
   }
 
   getById(id: number): Observable<Fund> {

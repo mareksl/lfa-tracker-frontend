@@ -36,32 +36,34 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.funds = [];
     this.query = '';
 
-    this.fundsSubscription = this.fetchFunds();
+    this.fundsSubscription = this.fundsService.fundsChanged.subscribe(
+      (response: FundsResponse) => {
+        this.funds = <Fund[]>response.funds;
+        this.pageCount = response.pages;
+        this.page = response.page || this.page;
+        this.limit = response.limit || this.limit;
+        this.fullFundCount = response.count;
+        this.loading = false;
+      }
+    );
 
     this.route.queryParams
       .pipe(filter(params => params.page || params.limit || params.q))
       .subscribe(params => {
-        this.loading = true;
         this.page = params.page || this.page;
         this.limit = params.limit || this.limit;
         this.query = params.q || this.query;
-        this.fundsSubscription.unsubscribe();
-        this.fundsSubscription = this.fetchFunds();
+        this.fetchFunds();
       });
+
+    this.fetchFunds();
   }
 
   fetchFunds() {
     this.loading = true;
-    return this.fundsService
-      .getRange(this.page, this.limit, { fundName: this.query })
-      .subscribe((fundsResponse: FundsResponse) => {
-        this.funds = <Fund[]>fundsResponse.funds;
-        this.pageCount = fundsResponse.pages;
-        this.page = fundsResponse.page || this.page;
-        this.limit = fundsResponse.limit || this.limit;
-        this.fullFundCount = fundsResponse.count;
-        this.loading = false;
-      });
+    this.fundsService.getRange(this.page, this.limit, {
+      fundName: this.query
+    });
   }
 
   changePage(page: number) {

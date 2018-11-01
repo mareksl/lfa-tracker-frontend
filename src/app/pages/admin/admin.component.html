@@ -26,4 +26,9 @@
     <h3 class="admin__header">Remove all funds</h3>
     <button class="button button--danger" (click)="removeAllFunds()"><span class="button__icon fa fa-trash"></span>Remove</button>
   </div>
+  <div class="admin__section">
+    <ul>
+      <li *ngFor="let stats of historicalStats">{{ stats.date }}</li>
+    </ul>
+  </div>
 </div>
