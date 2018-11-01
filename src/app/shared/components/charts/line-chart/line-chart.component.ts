@@ -9,32 +9,24 @@ export class LineChartComponent implements OnInit {
   @Input()
   title: string;
 
+  @Input()
+  chartData: { data: number[]; label: string }[];
+  @Input()
+  chartLabels: string[];
+
   chartOptions = {
     responsive: true,
-    scales: {
-      yAxes: [
-        {
-          stacked: true
-        }
-      ]
+    elements: {
+      line: {
+        tension: 0,
+        fill: false
+      },
+      point: {
+        radius: 4
+      }
     }
   };
 
-  chartData = [
-    { data: [0, 10, 25, 32, 61, 87, 100], label: 'Series A', lineTension: 0 },
-    { data: [0, 2, 8, 19, 22, 37, 49], label: 'Series B', lineTension: 0 },
-    { data: [0, 0, 3, 9, 13, 21, 32], label: 'Series C', lineTension: 0 }
-  ];
-
-  chartLabels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July'
-  ];
   constructor() {}
 
   ngOnInit() {}

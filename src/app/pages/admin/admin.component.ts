@@ -92,6 +92,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     if (event.target.files.length > 0) {
       this.file = event.target.files[0];
       this.form.get('file').setValue(this.file);
+      this.fileStatus = '';
     }
   }
 

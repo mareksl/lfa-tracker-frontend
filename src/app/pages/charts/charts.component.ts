@@ -1,40 +1,94 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy
-} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IStatistics } from 'src/app/shared/models/statistics.model';
+import { Subscription } from 'rxjs';
+import { StatisticsService } from 'src/app/core/services/statistics/statistics.service';
+import { formatDate } from '@angular/common';
+
+interface IChartData {
+  data: number[];
+  label: string;
+  lineTension: number;
+}
 
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./charts.component.scss']
 })
-export class ChartsComponent implements OnInit {
-  @Input()
-  statistics: IStatistics;
+export class ChartsComponent implements OnInit, OnDestroy {
+  loading: boolean;
 
-  get totalPieChartData(): number[] {
-    return [
-      this.statistics.doneCount,
-      this.statistics.totalCount - this.statistics.doneCount
+  selectedCharts: { property: string; title: string }[];
+  charts: { chartData: IChartData[]; chartLabels: string[]; title: string }[];
+
+  historicalStats: IStatistics[];
+  historicalSub: Subscription;
+
+  constructor(private statsService: StatisticsService) {}
+
+  ngOnInit() {
+    this.charts = [];
+    this.selectedCharts = [
+      { property: 'statsByRank', title: 'Rank' },
+      { property: 'statsByDepartment', title: 'Department' },
+      { property: 'statsByUniverse', title: 'Universe' }
     ];
+
+    this.loading = false;
+
+    this.historicalSub = this.statsService.historicalStatsChanged.subscribe(
+      (stats: IStatistics[]) => {
+        this.historicalStats = stats;
+        this.drawCharts();
+      }
+    );
+    this.fetchStatistics();
   }
 
-  get rankPieChartData() {
-    return Object.keys(this.statistics.statsByRank).reduce((result, key) => {
-      result[key] = [
-        this.statistics.statsByRank[key].doneCount,
-        this.statistics.statsByRank[key].totalCount -
-          this.statistics.statsByRank[key].doneCount
-      ];
-      return result;
-    }, {});
+  ngOnDestroy() {
+    this.historicalSub.unsubscribe();
   }
 
-  constructor() {}
+  fetchStatistics() {
+    this.loading = true;
+    this.statsService.getHistorical();
+  }
 
-  ngOnInit() {}
+  private drawCharts() {
+    this.charts = this.selectedCharts.map(chart => {
+      return { ...this.drawChart(chart.property), title: chart.title };
+    });
+    this.loading = false;
+  }
+
+  private drawChart(
+    property: string
+  ): { chartData: IChartData[]; chartLabels: string[] } {
+    return {
+      chartData: this.makeChartData(property),
+      chartLabels: this.makeChartLabels()
+    };
+  }
+
+  private makeChartData(property: string): IChartData[] {
+    return this.historicalStats
+      .sort((a, b) => {
+        return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
+      })
+      .reduce((result, stats) => {
+        Object.keys(stats[property]).forEach((key, i) => {
+          if (!result[i]) {
+            result[i] = { data: [], label: key };
+          }
+          result[i].data.push(stats[property][key].percentageDone);
+        });
+        return result;
+      }, []);
+  }
+
+  private makeChartLabels(): string[] {
+    return this.historicalStats.map(stats =>
+      formatDate(stats.date, 'dd/MM/y', 'en-US')
+    );
+  }
 }
