@@ -23,7 +23,8 @@ export class LineChartComponent implements OnInit {
     layout: { padding: 8 },
     elements: {
       line: {
-        tension: 0,
+        cubicInterpolationMode: 'monotone',
+        tension: 0.2,
         fill: false
       },
       point: {
