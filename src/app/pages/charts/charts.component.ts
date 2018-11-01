@@ -80,7 +80,9 @@ export class ChartsComponent implements OnInit, OnDestroy {
           if (!result[i]) {
             result[i] = { data: [], label: key };
           }
-          result[i].data.push(stats[property][key].percentageDone);
+          result[i].data.push(
+            (stats[property][key].percentageDone * 100).toFixed(2)
+          );
         });
         return result;
       }, []);

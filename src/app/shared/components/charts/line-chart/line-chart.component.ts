@@ -35,6 +35,43 @@ export class LineChartComponent implements OnInit {
         usePointStyle: false,
         boxWidth: 12
       }
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            min: 0,
+            max: 100,
+            callback: function(value) {
+              return value + '%';
+            }
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Percentage Done'
+          }
+        }
+      ],
+      xAxes: [
+        {
+          scaleLabel: {
+            display: true,
+            labelString: 'Date'
+          }
+        }
+      ]
+    },
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          return (
+            data.datasets[tooltipItem.datasetIndex].label +
+            ': ' +
+            tooltipItem.yLabel +
+            '%'
+          );
+        }
+      }
     }
   };
 
