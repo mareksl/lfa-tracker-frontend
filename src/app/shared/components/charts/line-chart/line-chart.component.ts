@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import html2canvas from 'html2canvas';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-line-chart',
@@ -6,6 +8,8 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit {
+  exporting: boolean;
+
   @Input()
   title: string;
 
@@ -16,6 +20,7 @@ export class LineChartComponent implements OnInit {
 
   chartOptions = {
     responsive: true,
+    layout: { padding: 8 },
     elements: {
       line: {
         tension: 0,
@@ -24,10 +29,41 @@ export class LineChartComponent implements OnInit {
       point: {
         radius: 4
       }
+    },
+    legend: {
+      labels: {
+        usePointStyle: false,
+        boxWidth: 12
+      }
     }
   };
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.exporting = false;
+  }
+
+  toCanvas(el) {
+    this.exporting = true;
+    html2canvas(el).then(canvas => {
+      const a = document.createElement('a');
+      a.setAttribute(
+        'href',
+        canvas
+          .toDataURL('image/jpeg')
+          .replace('image/jpeg', 'image/octet-stream')
+      );
+      a.setAttribute(
+        'download',
+        `${formatDate(new Date(), 'dd_MM_y', 'en_US')}_${
+          this.title ? this.title : ''
+        }.jpg`
+      );
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      this.exporting = false;
+    });
+  }
 }

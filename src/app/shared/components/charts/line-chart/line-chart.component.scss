@@ -1,4 +1,29 @@
+@import '../../../../../scss/base/variables';
+@import '../../../../../scss/utils/mixins';
+
+.chart {
+  padding: 1rem;
+}
+
 .chart__title {
   text-align: center;
   padding-bottom: 1rem;
+}
+
+.chart__canvas {
+  background-color: $color-shade-lighter;
+  border-radius: $border-radius-default;
+  @include box-shadow-default;
+}
+
+.chart__export-button {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  border-radius: 50%;
 }
