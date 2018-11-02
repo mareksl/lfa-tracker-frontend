@@ -1,17 +1,18 @@
 <div class="admin">
   <h2 class="admin__header">Admin</h2>
 
-  <div class="admin__section">
-    <h3 class="admin__header">Export funds</h3>
-    <button class="button" (click)="downloadFile()"><span class="fa fa-download button__icon"></span>Download</button>
-  </div>
-  <div class="admin__section">
+  <div class="admin__section admin__section--full-width">
     <h3 class="admin__header">Import Excel file</h3>
-    <form class="import__form" enctype="multipart/form-data" (submit)="uploadFile()">
+    <form [formGroup]="form" class="import__form" enctype="multipart/form-data" (submit)="uploadFile()">
       <input name="file" id="file" class="file-input import__file-input" [ngClass]="{'file-input--uploaded': file}"
         type="file" accept=".xlsx,.xls,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         (change)="onFileChange($event)">
       <label for="file"><span class="fa fa-file button__icon"></span>{{file ? file.name : 'Choose File'}}</label>
+      <input formControlName="date" class="input import__date" type="date" name="date" id="date">
+      <div class="import__overwrite-funds">
+        <input type="checkbox" class="checkbox__box" name="overwriteFunds" id="overwriteFunds" formControlName="overwriteFunds">
+        <label for="overwriteFunds" class="checkbox__label">Overwrite Funds</label>
+      </div>
       <button [disabled]="!file || loading" type="submit" class="button" [ngClass]="{'button--success': fileStatus === 'success', 'button--danger': fileStatus === 'failure'}"><span
           class="fa button__icon" [ngClass]="{
             'fa-upload': !loading && !fileStatus,
@@ -22,13 +23,21 @@
         {{fileStatus || 'Upload'}}</button>
     </form>
   </div>
+  <div class="admin__section">
+    <h3 class="admin__header">Export funds</h3>
+    <button class="button" (click)="downloadFile()"><span class="fa fa-download button__icon"></span>Download</button>
+  </div>
   <div class="admin__section admin__section--danger">
     <h3 class="admin__header">Remove all funds</h3>
     <button class="button button--danger" (click)="removeAllFunds()"><span class="button__icon fa fa-trash"></span>Remove</button>
   </div>
-  <div class="admin__section">
-    <ul>
-      <li *ngFor="let stats of historicalStats">{{ stats.date }}</li>
+  <div class="admin__section admin__section--full-width">
+    <h3 class="admin__header">Historical Statistics</h3>
+    <ul class="admin__statistics-list">
+      <li class="statistics-list__item" *ngFor="let stats of historicalStats">
+        <span class="statistics-list__date">Date: {{ stats.date | date:'dd/MM/y' }}</span>
+        <button class="button button--danger">Remove</button>
+      </li>
     </ul>
   </div>
 </div>

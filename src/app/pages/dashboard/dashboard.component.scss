@@ -11,48 +11,19 @@
   @include main-content__header;
 }
 
-.dashboard__images {
-  width: 100%;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  align-items: center;
+.dashboard__logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.4;
+  padding: 1rem;
+  filter: saturate(.8);
 }
 
-.dashboard__image {
-  height: 4rem;
+.logo {
+  height: 100%;
   width: auto;
-  margin: 2rem;
-  &--express {
-    height: 2rem;
-    margin: 3rem;
-  }
 }
 
-.changelog__item {
-  padding: 0.5rem 0;
-}
-
-.changelog__version {
-  &:before {
-    font-family: FontAwesome;
-    content: '\f126';
-    padding-right: 0.5rem;
-  }
-}
-
-.roadmap__item {
-  padding: 0.5rem 0;
-
-  &:before {
-    font-family: FontAwesome;
-    content: '\f096';
-    padding-right: 0.5rem;
-  }
-
-  &--complete {
-    &:before {
-      content: '\f046';
-    }
-  }
-}

@@ -40,6 +40,7 @@ import { ProgressBarComponent } from './shared/components/progress-bar/progress-
 import { ClickOutsideDirective } from './shared/directives/click-outside.directive';
 import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
 import { MainComponent } from './core/main/main.component';
+import { AboutComponent } from './pages/about/about.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MainComponent } from './core/main/main.component';
     LoginComponent,
     RegisterComponent,
     MainComponent,
+    AboutComponent,
   ],
   imports: [
     AppRoutingModule,

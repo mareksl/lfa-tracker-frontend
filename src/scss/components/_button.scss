@@ -3,12 +3,13 @@ $button-shadow-dims-active: 0 0.5rem 0.5rem -0.5rem;
 $button-shadow-dims-inset: inset 0 0 1rem -0.25rem;
 
 .button {
+  display: inline-block;
+
   cursor: pointer;
 
   font-family: 'Roboto', 'Helvetica', sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
-  // font-weight: 700;
 
   padding: 0.75rem 1.5rem;
   margin: 0.25rem;

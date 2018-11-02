@@ -8,7 +8,7 @@ import {
   animate
 } from '@angular/animations';
 
-export const routerTransition = trigger('routerTransition', [
+const routerTransition = trigger('routerTransition', [
   transition('* <=> *', [
     query(
       ':enter, :leave',

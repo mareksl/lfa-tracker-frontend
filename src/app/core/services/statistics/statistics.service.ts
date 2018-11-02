@@ -58,4 +58,6 @@ export class StatisticsService {
         this.historicalStatsChanged.next(this.historicalStats);
       });
   }
+
+  removeHistorical(date: Date) {}
 }

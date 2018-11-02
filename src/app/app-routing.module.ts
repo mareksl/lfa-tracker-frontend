@@ -12,6 +12,7 @@ import { LoginComponent } from './pages/authenticate/login/login.component';
 import { RegisterComponent } from './pages/authenticate/register/register.component';
 import { MainComponent } from './core/main/main.component';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
         path: 'admin',
         component: AdminComponent,
         data: { state: 'admin' }
+      }, {
+        path: 'about',
+        component: AboutComponent,
+        data: {state: 'about'}
       }
     ]
   },

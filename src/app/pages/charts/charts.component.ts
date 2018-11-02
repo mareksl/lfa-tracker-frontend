@@ -71,18 +71,28 @@ export class ChartsComponent implements OnInit, OnDestroy {
   }
 
   private makeChartData(property: string): IChartData[] {
+    const propertyNames = [];
     return this.historicalStats
       .sort((a, b) => {
         return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
       })
-      .reduce((result, stats) => {
-        Object.keys(stats[property]).forEach((key, i) => {
-          if (!result[i]) {
-            result[i] = { data: [], label: key };
+      .reduce((result, stats, j) => {
+        const props = Object.keys(stats[property]);
+
+        props.forEach((key, i) => {
+          if (propertyNames.indexOf(key) === -1) {
+            propertyNames.push(key);
           }
-          result[i].data.push(
-            (stats[property][key].percentageDone * 100).toFixed(2)
-          );
+
+          if (!result[i]) {
+            result[i] = { data: [], label: key, spanGaps: true };
+          }
+        });
+
+        propertyNames.forEach((key, i) => {
+          result[i].data[j] = stats[property][key]
+            ? (stats[property][key].percentageDone * 100).toFixed(2)
+            : null;
         });
         return result;
       }, []);

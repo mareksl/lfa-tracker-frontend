@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { FundsService } from 'src/app/core/services/funds/funds.service';
 import { StatisticsService } from 'src/app/core/services/statistics/statistics.service';
 import { IStatistics } from 'src/app/shared/models/statistics.model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-admin',
@@ -48,7 +49,11 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   createForm() {
-    this.form = this.fb.group({ file: null });
+    this.form = this.fb.group({
+      file: null,
+      date: formatDate(new Date(), 'yyyy-MM-dd', 'en_US'),
+      overwriteFunds: true
+    });
   }
 
   downloadFile() {
@@ -74,6 +79,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       if (res.status === 'succeeded') {
         this.loading = false;
         this.fileStatus = 'success';
+        this.statsService.getHistorical();
       }
       if (res.status === 'failed') {
         this.loading = false;
@@ -84,7 +90,11 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   prepareSave() {
     const input = new FormData();
+    const date = new Date(this.form.get('date').value);
     input.append('file', this.form.get('file').value);
+    input.append('date', date.toISOString());
+    input.append('overwriteFunds', this.form.get('overwriteFunds').value);
+    console.log(input.get('overwriteFunds'));
     return input;
   }
 

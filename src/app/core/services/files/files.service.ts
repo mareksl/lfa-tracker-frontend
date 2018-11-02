@@ -43,7 +43,7 @@ export class FilesService {
   }
 
   upload(form: FormData) {
-    const file: File = <File>form.get('file');
+    // const file: File = <File>form.get('file');
     const req = new HttpRequest('POST', `${config.apiUrl}/files`, form, {
       reportProgress: true
     });
