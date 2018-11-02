@@ -2,6 +2,33 @@ import { Component, OnInit, Input } from '@angular/core';
 import html2canvas from 'html2canvas';
 import { formatDate } from '@angular/common';
 
+const hideOtherDatasets = (ci, index) => {
+  const alreadyHidden =
+    ci.getDatasetMeta(index).hidden === null
+      ? false
+      : ci.getDatasetMeta(index).hidden;
+  ci.data.datasets.forEach(function(_e, i) {
+    const meta = ci.getDatasetMeta(i);
+    if (i !== index) {
+      if (!alreadyHidden) {
+        meta.hidden = meta.hidden === null ? !meta.hidden : null;
+      } else if (meta.hidden === null) {
+        meta.hidden = true;
+      }
+    } else if (i === index) {
+      meta.hidden = null;
+    }
+  });
+  return ci.update();
+};
+
+const hideDataSet = (ci, index) => {
+  const chartMeta = ci.getDatasetMeta(index);
+  chartMeta.hidden =
+    chartMeta.hidden === null ? !ci.data.datasets[index].hidden : null;
+  ci.update();
+};
+
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
@@ -23,6 +50,7 @@ export class LineChartComponent implements OnInit {
     layout: { padding: 8 },
     elements: {
       line: {
+        borderWidth: 2,
         cubicInterpolationMode: 'monotone',
         tension: 0.2,
         fill: false
@@ -35,6 +63,15 @@ export class LineChartComponent implements OnInit {
       labels: {
         usePointStyle: false,
         boxWidth: 12
+      },
+      onClick(e, legendItem) {
+        const ci = this.chart;
+        const index = legendItem.datasetIndex;
+
+        if (e.ctrlKey) {
+          return hideOtherDatasets(ci, index);
+        }
+        return hideDataSet(ci, index);
       }
     },
     scales: {
@@ -71,6 +108,17 @@ export class LineChartComponent implements OnInit {
             tooltipItem.yLabel +
             '%'
           );
+        }
+      }
+    },
+    onClick(e) {
+      const ci = this.chart;
+      const activePoints = ci.getElementAtEvent(e);
+
+      if (activePoints.length > 0) {
+        const index = activePoints[0]._datasetIndex;
+        if (e.ctrlKey) {
+          return hideOtherDatasets(ci, index);
         }
       }
     }
