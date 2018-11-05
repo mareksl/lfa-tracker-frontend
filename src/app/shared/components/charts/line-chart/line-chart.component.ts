@@ -48,6 +48,7 @@ export class LineChartComponent implements OnInit {
   chartOptions = {
     responsive: true,
     maintainAspectRatio: true,
+    fontFamily: 'serif',
     layout: { padding: 8 },
     elements: {
       line: {

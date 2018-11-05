@@ -59,5 +59,11 @@ export class StatisticsService {
       });
   }
 
-  removeHistorical(date: Date) {}
+  removeById(id: string) {
+    return this.http
+      .delete<StatisticsResponse>(`${config.apiUrl}/stats/${id}`)
+      .subscribe((stats: StatisticsResponse) => {
+        return this.getHistorical();
+      });
+  }
 }

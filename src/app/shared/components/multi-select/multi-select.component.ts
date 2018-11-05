@@ -44,8 +44,10 @@ export class MultiSelectComponent implements OnInit {
     return this.selected.indexOf(option) > -1;
   }
 
-  toggleList() {
-    this.open = !this.open;
+  toggleList(e: MouseEvent) {
+    if (!e.ctrlKey && !e.shiftKey) {
+      this.open = !this.open;
+    }
   }
   closeList() {
     this.open = false;

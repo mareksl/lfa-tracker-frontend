@@ -22,6 +22,7 @@ export interface IStatistics extends IStatisticsItem {
   statsByAssignee: IStatisticsByProperty;
   statsByUniverse: IStatisticsByProperty;
   date: Date;
+  _id: string;
 }
 
 // export class Statistics implements IStatistics {

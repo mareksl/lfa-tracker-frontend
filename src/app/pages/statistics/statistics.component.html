@@ -1,7 +1,7 @@
 <div class="statistics">
   <header class="statistics__header">
     <h2>Statistics</h2>
-    <button class="button button--square button--accent" (click)="refreshData()" [disabled]="loading">
+    <button class="button button--square button--accent button--refresh" (click)="refreshData()" [disabled]="loading">
       <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
     </button>
   </header>

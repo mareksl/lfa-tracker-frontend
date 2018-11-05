@@ -3,6 +3,7 @@
   height: 2.8125rem;
   font-family: 'Roboto', 'Helvetica', sans-serif;
   font-size: 1rem;
+  font-weight: 300;
 
   padding: 0.75rem;
   margin: 0.25rem;
@@ -128,11 +129,10 @@
   transform-origin: top;
 }
 
-::-webkit-input-placeholder {
-  opacity: 0;
-}
-
 .input-float__input {
+  &::placeholder {
+    opacity: 0;
+  }
   &:focus + label,
   &:not(:placeholder-shown) + label {
     transform: translateY(-100%);

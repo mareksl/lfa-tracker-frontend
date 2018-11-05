@@ -4,6 +4,7 @@ html {
 
 body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 300;
   font-size: 100%;
   color: $color-shade-light;
 }
@@ -36,15 +37,20 @@ p {
 }
 
 h2 {
-  font-size: 2.441em;
+  font-size: 1.424em;
+  text-transform: uppercase;
 }
 
 h3 {
-  font-size: 1.953em;
+  font-size: 1.266em;
+  text-transform: uppercase;
+  color: $color-primary;
 }
 
 h4 {
-  font-size: 1.563em;
+  font-size: 1.125em;
+  text-transform: uppercase;
+  color: $color-primary;
 }
 
 small,
@@ -52,8 +58,9 @@ small,
   font-size: 0.8rem;
 }
 
-.text--accent {
-  font-weight: 700;
+.text--accent,
+b {
+  font-weight: 500;
 }
 
 .text--success {
@@ -66,4 +73,11 @@ small,
 
 .text--danger {
   color: $color-danger;
+}
+
+hr {
+  display: block;
+  border: none;
+  border-top: 1px solid $color-neutral;
+  margin: 1rem 0;
 }

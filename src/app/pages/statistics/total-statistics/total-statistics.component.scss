@@ -7,16 +7,36 @@
 }
 .total-statistics__list {
   @include full-width;
+  @include box-shadow-default;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  // border: 1px solid $color-neutral;
+  border-radius: $border-radius-default;
 }
 
 .total-statistics__datapoint {
-  margin-bottom: 1rem;
+  flex: 1 1 auto;
+  padding: 1rem;
+
+  border-right: 1px solid $color-neutral;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
   &:last-child {
-    margin: 0;
+    border-right: none;
   }
-  &--accent {
-    font-weight: 700;
-  }
+}
+
+.datapoint__title {
+  margin-bottom: 0.5rem;
+}
+
+.datapoint__data {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .total-statistics__progress {

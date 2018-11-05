@@ -32,5 +32,8 @@
   .funds__pagination {
     flex-flow: row wrap;
     align-items: center;
+    position: sticky;
+    top: 7.25rem;
+    z-index: 1;
   }
 }

@@ -1,13 +1,29 @@
-<h3 class="total-statistics__header">Total stats as of {{statistics.date | date:'dd/MM/y'}}:</h3>
+<h3 class="total-statistics__header">Total stats as of {{statistics.date | date:'dd/MM/y'}}</h3>
 <ul class="total-statistics__list">
   <li class="total-statistics__datapoint">
-    Total Fund Count: {{statistics.totalCount}}
+    <span class="datapoint__title">
+      Total Fund Count
+    </span>
+    <span class="datapoint__data">
+      {{statistics.totalCount}}
+    </span>
   </li>
   <li class="total-statistics__datapoint">
-    Checked Funds: {{statistics.doneCount}}
+    <span class="datapoint__title">
+      Checked Funds
+    </span>
+    <span class="datapoint__data">
+      {{statistics.doneCount}}
+    </span>
   </li>
   <li class="total-statistics__datapoint total-statistics__datapoint--accent">
-    Checked Percentage: {{statistics.percentageDone | percent:'1.0-2'}}
+    <span class="datapoint__title">
+      Checked Percentage
+    </span>
+    <span class="datapoint__data">
+      {{statistics.percentageDone | percent:'1.0-2'}}
+    </span>
   </li>
 </ul>
+
 <app-progress-bar [value]="statistics.percentageDone" class="total-statistics__progress"></app-progress-bar>

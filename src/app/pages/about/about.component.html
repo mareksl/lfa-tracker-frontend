@@ -2,37 +2,37 @@
   <h2 class="about__header">About</h2>
 
   <app-panel class="col-12">
-    <h3>Project</h3>
+    <h3 class="about__header">Project</h3>
     <p>Links to repo:</p>
     <ul>
       <li>Front-End: <a class="link link--inverse" href="https://gitlab.com/mareksl/lfa-tracker-frontend">https://gitlab.com/mareksl/lfa-tracker-frontend</a></li>
       <li>Back-End: <a href="https://gitlab.com/mareksl/lfa-tracker-backend" class="link link--inverse">https://gitlab.com/mareksl/lfa-tracker-backend</a></li>
     </ul>
-    <p>Developed by: Marek Sładczyk</p>
+    <hr>
+    <p>
+      <a href="https://opensource.org/licenses/MIT"><img class="footer__badge" src="https://img.shields.io/badge/License-MIT-yellow.svg"
+          alt="License: MIT"></a>
+    </p>
+    <p>Developed by: Marek Sładczyk; GitHub: <a class="link link--inverse" href="https://github.com/mareksl">https://github.com/mareksl</a></p>
   </app-panel>
 
-  <app-panel class="col-12" type="info">
-    <h3>Changelog</h3>
+  <app-panel class="col-12">
+    <h3 class="about__header">Changelog</h3>
     <ul class="changelog">
       <li class="changelog__item">
         <h4 class="changelog__version">v 0.1.0</h4>
         <p>Development</p>
       </li>
     </ul>
-    <h3>Roadmap</h3>
+    <hr>
+    <h3 class="about__header">Roadmap</h3>
     <ul class="roadmap">
-      <li class="roadmap__item">Fix fund list upload</li>
-      <li class="roadmap__item">Fix statistics export</li>
-      <li class="roadmap__item">Historical statistics</li>
-      <li class="roadmap__item">User accounts with roles</li>
-      <li class="roadmap__item">Comments</li>
-      <li class="roadmap__item">Notifications</li>
-      <li class="roadmap__item">Documentation</li>
+      <li *ngFor="let item of roadmapItems" class="roadmap__item" [ngClass]="{'roadmap__item--complete': item.complete}">{{item.title}}</li>
     </ul>
   </app-panel>
 
   <app-panel class="col-12">
-    <h3>Technologies</h3>
+    <h3 class="about__header">Technologies</h3>
     <div class="about__images">
       <a href="https://www.mongodb.com/">
         <img class="about__image" src="assets/images/mongodb.png" alt="MongoDB">

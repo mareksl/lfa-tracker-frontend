@@ -33,10 +33,10 @@
   </div>
   <div class="admin__section admin__section--full-width">
     <h3 class="admin__header">Historical Statistics</h3>
-    <ul class="admin__statistics-list">
+    <ul class="admin__statistics-list" *ngIf="historicalStats.length > 0">
       <li class="statistics-list__item" *ngFor="let stats of historicalStats">
         <span class="statistics-list__date">Date: {{ stats.date | date:'dd/MM/y' }}</span>
-        <button class="button button--danger">Remove</button>
+        <button class="button button--danger" (click)="removeStatistics(stats)">Remove</button>
       </li>
     </ul>
   </div>

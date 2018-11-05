@@ -5,6 +5,7 @@
 .multi-select {
   @include full-width;
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   text-align: left;
   width: 100%;
@@ -44,11 +45,13 @@
   height: 100%;
   width: 100%;
   align-items: center;
+
 }
 
 .multi-select__selected-item {
   font-family: 'Roboto', 'Helvetica', sans-serif;
   font-size: 1rem;
+  font-weight: 300;
   cursor: pointer;
   position: relative;
   padding: 0.25rem 0.5rem;
@@ -112,6 +115,7 @@
   color: $color-shade-dark;
   text-align: left;
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 300;
   font-size: 1rem;
   display: block;
   border: none;

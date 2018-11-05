@@ -115,4 +115,18 @@ export class AdminComponent implements OnInit, OnDestroy {
       });
     }
   }
+
+  removeStatistics(stats: IStatistics) {
+    if (
+      confirm(
+        `Remove statistics as of: ${formatDate(
+          stats.date,
+          'dd/MM/y',
+          'en_US'
+        )}?`
+      )
+    ) {
+      this.statsService.removeById(stats._id);
+    }
+  }
 }

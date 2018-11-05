@@ -12,7 +12,8 @@
 }
 
 .statistics-item__heading {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .statistics-item__datapoint {
@@ -24,7 +25,7 @@
     margin: 0;
   }
   &--accent {
-    font-weight: 700;
+    font-weight: 500;
   }
 }
 
