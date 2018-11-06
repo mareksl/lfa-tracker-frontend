@@ -1,15 +1,15 @@
-<h1 class="register-form__heading">Register</h1>
-<form class="register-form">
+<h2 class="register-form__heading">Register</h2>
+<form class="register-form" (submit)="onSubmit(f)" #f="ngForm">
   <div class="register-form__group">
     <label class="register-form__label" for="userID">User ID</label>
-    <input class="input register-form__input" type="text" id="userID">
+    <input class="input register-form__input" type="text" id="userID" name="userID" ngModel required>
   </div>
   <div class="register-form__group">
     <label class="register-form__label" for="password">Password</label>
-    <input class="input register-form__input" type="password" id="password">
+    <input class="input register-form__input" type="password" id="password" name="password" ngModel required>
   </div>
   <div class="register-form__buttons">
-    <button class="button register-form__button" type="submit">Register</button>
-    <button class="button button--accent register-form__button" [routerLink]="['../']">Log In</button>
+    <button class="button register-form__button" type="submit" [disabled]="f.invalid">Register</button>
+    <button class="button button--accent register-form__button" type="button" [routerLink]="['../']">Log In</button>
   </div>
 </form>
