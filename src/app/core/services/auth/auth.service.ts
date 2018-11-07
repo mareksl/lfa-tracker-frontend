@@ -12,6 +12,8 @@ export interface User {
   userID: number;
   role: string;
   token: string;
+  firstName?: string;
+  lastName?: string;
 }
 
 @Injectable({
@@ -24,20 +26,22 @@ export class AuthService {
     const token = response.headers.get('x-auth');
     const resUserID = response.body.userID;
     const role = response.body.role;
-    const user = { userID: resUserID, role, token };
+    const firstName = response.body.firstName;
+    const lastName = response.body.lastName;
+    const user = { userID: resUserID, role, token, firstName, lastName };
 
     localStorage.setItem('currentUser', JSON.stringify(user));
     return user;
   }
 
-  register(userID: string, password: string) {
-    const id = userID;
+  register(user: {
+    userID: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  }) {
     return this.http
-      .post(
-        `${config.apiUrl}/users`,
-        { userID: id, password },
-        { observe: 'response' }
-      )
+      .post(`${config.apiUrl}/users`, user, { observe: 'response' })
       .pipe(map(this.setUser));
   }
 

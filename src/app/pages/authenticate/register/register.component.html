@@ -8,6 +8,16 @@
     <label class="register-form__label" for="password">Password</label>
     <input class="input register-form__input" type="password" id="password" name="password" ngModel required>
   </div>
+
+
+  <div class="register-form__group">
+    <label class="register-form__label" for="firstName">First Name</label>
+    <input class="input register-form__input" type="text" id="firstName" name="firstName" ngModel>
+  </div>
+  <div class="register-form__group">
+    <label class="register-form__label" for="lastName">Last Name</label>
+    <input class="input register-form__input" type="text" id="lastName" name="lastName" ngModel>
+  </div>
   <div class="register-form__buttons">
     <button class="button register-form__button" type="submit" [disabled]="f.invalid">Register</button>
     <button class="button button--accent register-form__button" type="button" [routerLink]="['../']"

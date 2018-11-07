@@ -17,6 +17,9 @@
         <button class="header__button" (click)="toggleDropdown()"><span class="fa fa-fw fa-user"></span></button>
         <app-dropdown *ngIf="dropdownVisible" class="header__dropdown" @toggleDropdown>
           <ul class="dropdown__list">
+            <li *ngIf="user.firstName && user.lastName" class="dropdown__list-item dropdown__list-item--text">
+              {{ user.firstName }} {{ user.lastName }}
+            </li>
             <li class="dropdown__list-item dropdown__list-item--text">
               <span>User ID </span>
               <span class="text--accent">{{ user.userID }}</span>
