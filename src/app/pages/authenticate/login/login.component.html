@@ -8,6 +8,7 @@
     <label class="login-form__label" for="password">Password</label>
     <input class="input login-form__input" type="password" id="password" name="password" ngModel required>
   </div>
+  <p class="text--danger login-form__error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
   <div class="login-form__buttons">
     <button class="button login-form__button" type="submit" [disabled]="f.invalid">Log in</button>
     <button class="button button--accent login-form__button" type="button" [routerLink]="['register']"

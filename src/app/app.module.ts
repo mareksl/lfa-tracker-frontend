@@ -41,6 +41,7 @@ import { ClickOutsideDirective } from './shared/directives/click-outside.directi
 import { PercentageColorDirective } from './shared/directives/percentage-color.directive';
 import { MainComponent } from './core/main/main.component';
 import { AboutComponent } from './pages/about/about.component';
+import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { AboutComponent } from './pages/about/about.component';
     RegisterComponent,
     MainComponent,
     AboutComponent,
+    DropdownComponent,
   ],
   imports: [
     AppRoutingModule,

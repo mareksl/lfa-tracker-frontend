@@ -10,9 +10,29 @@
   <div class="header__buttons">
     <button class="header__button" (click)="toggleNav()"><span class="fa fa-fw fa-bars"></span></button>
     <ul class="header__controls">
-      <li><button class="header__button"><span class="fa fa-fw fa-bell"></span></button></li>
-      <li><button class="header__button" (click)="logout()"><span class="fa fa-fw fa-cog"></span></button></li>
-      <li><span class="fa fa-fw fa-circle header__status" [ngClass]="{'header__status--connected': connected}"></span></li>
+      <!-- <li class="header__controls-item">
+        <button class="header__button"><span class="fa fa-fw fa-bell"></span></button>
+      </li> -->
+      <li class="header__controls-item" (appClickOutside)="hideDropdown()">
+        <button class="header__button" (click)="toggleDropdown()"><span class="fa fa-fw fa-user"></span></button>
+        <app-dropdown *ngIf="dropdownVisible" class="header__dropdown" @toggleDropdown>
+          <ul class="dropdown__list">
+            <li class="dropdown__list-item dropdown__list-item--text">
+              <span>User ID </span>
+              <span class="text--accent">{{ user.userID }}</span>
+            </li>
+            <li class="dropdown__list-item">
+              <a class="link link--inverse dropdown__link" (click)="logout()">Log Out <span class="fa fa-fw fa-sign-out"></span></a>
+            </li>
+            <li class="dropdown__list-item">
+              <a class="link link--inverse dropdown__link" [routerLink]="['/']">Settings <span class="fa fa-fw fa-cog"></span></a>
+            </li>
+          </ul>
+        </app-dropdown>
+      </li>
+      <li class="header__controls-item" [title]="connected ? 'Online' : 'Offline'">
+        <span class="fa fa-fw fa-circle header__status" [ngClass]="{'header__status--connected': connected}"></span>
+      </li>
     </ul>
   </div>
 

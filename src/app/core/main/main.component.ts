@@ -5,13 +5,14 @@ import {
   transition,
   style,
   query,
-  animate
+  animate,
+  group
 } from '@angular/animations';
 
 const routerTransition = trigger('routerTransition', [
   transition('* <=> *', [
     query(
-      ':enter, :leave',
+      ':leave',
       style({
         position: 'absolute',
         width: '100%',
@@ -21,13 +22,37 @@ const routerTransition = trigger('routerTransition', [
       { optional: true }
     ),
     query(
-      ':leave',
-      [
-        style({ transform: 'translateX(0)' }),
-        animate('.8s ease', style({ transform: 'translateX(100%)' }))
-      ],
+      ':enter, :leave',
+      style({
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        zIndex: '1',
+        opacity: 0
+      }),
       { optional: true }
-    )
+    ),
+    group([
+      query(
+        ':leave',
+        [
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate(
+            '.8s ease',
+            style({ transform: 'translateX(100%)', opacity: 0 })
+          )
+        ],
+        { optional: true }
+      ),
+      query(
+        ':enter',
+        [
+          style({ transform: 'translateX(-100%)', opacity: 0 }),
+          animate('.8s ease', style({ transform: 'translateX(0)', opacity: 1 }))
+        ],
+        { optional: true }
+      )
+    ])
   ])
 ]);
 

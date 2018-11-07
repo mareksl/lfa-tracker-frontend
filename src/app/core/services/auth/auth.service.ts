@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpResponse,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { config } from 'src/app/config/app-settings.config';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 export interface User {
   userID: number;
@@ -43,7 +48,12 @@ export class AuthService {
         { userID, password },
         { observe: 'response' }
       )
-      .pipe(map(this.setUser));
+      .pipe(
+        map(this.setUser),
+        catchError((res: HttpErrorResponse) => {
+          return throwError(res.error);
+        })
+      );
   }
 
   logOut() {

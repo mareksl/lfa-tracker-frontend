@@ -10,6 +10,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   returnUrl: string;
+  errorMessage: string;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -21,14 +23,20 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/']);
     }
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.errorMessage = '';
   }
 
   onSubmit(form: NgForm) {
     const userID: string = form.value.userID;
     const password: string = form.value.password;
 
-    this.authService.logIn(userID, password).subscribe((user: User) => {
-      this.router.navigate([this.returnUrl]);
-    });
+    this.authService.logIn(userID, password).subscribe(
+      (user: User) => {
+        this.router.navigate([this.returnUrl]);
+      },
+      (err: string) => {
+        this.errorMessage = err;
+      }
+    );
   }
 }

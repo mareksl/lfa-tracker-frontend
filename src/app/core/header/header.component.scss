@@ -37,15 +37,6 @@
   width: auto;
 }
 
-@media screen and (min-width: $breakpoint-width) {
-  .header__logo {
-    display: flex;
-  }
-  .header__brand {
-    flex: 0 1 16rem;
-  }
-}
-
 .header__button {
   display: flex;
   justify-content: center;
@@ -88,6 +79,9 @@
 .header__controls {
   display: flex;
 }
+.header__controls-item {
+  position: relative;
+}
 
 .header__status {
   display: flex;
@@ -105,5 +99,27 @@
   &--connected {
     color: $color-success;
     animation: none;
+  }
+}
+
+.header__dropdown {
+  position: fixed;
+  width: 100%;
+  top: 6rem;
+  right: 0;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .header__logo {
+    display: flex;
+  }
+  .header__brand {
+    flex: 0 1 16rem;
+  }
+  .header__dropdown {
+    position: absolute;
+    width: auto;
+    top: 100%;
+    right: 0;
   }
 }
