@@ -62,14 +62,10 @@ export class AuthService {
 
   logOut() {
     const user = <User>JSON.parse(localStorage.getItem('currentUser'));
-    return this.http
-      .delete(`${config.apiUrl}/users/me/token`, {
-        headers: { 'x-auth': user.token }
-      })
-      .pipe(
-        tap(() => {
-          localStorage.removeItem('currentUser');
-        })
-      );
+    localStorage.removeItem('currentUser');
+
+    return this.http.delete(`${config.apiUrl}/users/me/token`, {
+      headers: { 'x-auth': user.token }
+    });
   }
 }
