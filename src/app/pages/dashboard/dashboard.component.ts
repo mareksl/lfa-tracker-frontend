@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor() { }
+  user: User;
+  constructor() {}
 
   ngOnInit() {
+    this.user = <User>JSON.parse(localStorage.getItem('currentUser'));
   }
-
 }

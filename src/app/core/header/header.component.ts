@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Observable, merge, of, fromEvent } from 'rxjs';
 import { mapTo } from 'rxjs/operators';
+import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +15,7 @@ export class HeaderComponent implements OnInit {
   connected: boolean;
   online$: Observable<boolean>;
 
-  constructor() {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.online$ = merge(
@@ -29,5 +31,11 @@ export class HeaderComponent implements OnInit {
 
   toggleNav() {
     this.navToggled.emit();
+  }
+
+  logout() {
+    this.authService.logOut().subscribe(() => {
+      this.router.navigate(['/auth']);
+    });
   }
 }

@@ -2,7 +2,7 @@
 <form class="login-form" (submit)="onSubmit(f)" #f="ngForm">
   <div class="login-form__group">
     <label class="login-form__label" for="userID">User ID</label>
-    <input class="input login-form__input" type="text" id="userID" name="userID" ngModel required>
+    <input class="input login-form__input" type="text" id="userID" name="userID" ngModel required pattern="^[0-9]{7}$">
   </div>
   <div class="login-form__group">
     <label class="login-form__label" for="password">Password</label>
@@ -10,6 +10,7 @@
   </div>
   <div class="login-form__buttons">
     <button class="button login-form__button" type="submit" [disabled]="f.invalid">Log in</button>
-    <button class="button button--accent login-form__button" type="button" [routerLink]="['register']">Register</button>
+    <button class="button button--accent login-form__button" type="button" [routerLink]="['register']"
+      queryParamsHandling="preserve">Register</button>
   </div>
 </form>

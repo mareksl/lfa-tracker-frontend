@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/authenticate/register/register.compon
 import { MainComponent } from './core/main/main.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
+import { RoleGuard } from './shared/guards/role.guard';
 
 const routes: Routes = [
   {
@@ -47,11 +48,13 @@ const routes: Routes = [
       {
         path: 'admin',
         component: AdminComponent,
-        data: { state: 'admin' }
-      }, {
+        data: { state: 'admin', allowed: ['admin', 'super'] },
+        canActivate: [RoleGuard]
+      },
+      {
         path: 'about',
         component: AboutComponent,
-        data: {state: 'about'}
+        data: { state: 'about' }
       }
     ]
   },

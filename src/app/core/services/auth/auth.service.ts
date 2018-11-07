@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { config } from 'src/app/config/app-settings.config';
-import { Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
-interface User {
-  userID: string;
+export interface User {
+  userID: number;
   role: string;
   token: string;
 }
@@ -13,25 +13,49 @@ interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn = new Subject<User>();
-  private user: User;
-
   constructor(private http: HttpClient) {}
 
-  register(userID: string, password: string) {
-    const id = +userID;
-    this.http
-      .post(`${config.apiUrl}/users`, { userID: id, password })
-      .subscribe((response: HttpResponse<User>) => {
-        const token = response.headers.get('x-auth');
-        const resUserID = response.body.userID;
-        const role = response.body.role;
+  private setUser(response: HttpResponse<User>) {
+    const token = response.headers.get('x-auth');
+    const resUserID = response.body.userID;
+    const role = response.body.role;
+    const user = { userID: resUserID, role, token };
 
-        this.user = { userID: resUserID, role, token };
-      });
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    return user;
+  }
+
+  register(userID: string, password: string) {
+    const id = userID;
+    return this.http
+      .post(
+        `${config.apiUrl}/users`,
+        { userID: id, password },
+        { observe: 'response' }
+      )
+      .pipe(map(this.setUser));
   }
 
   logIn(userID: string, password: string) {
-    console.log('logging in:', userID, password);
+    return this.http
+      .post(
+        `${config.apiUrl}/users/login`,
+        { userID, password },
+        { observe: 'response' }
+      )
+      .pipe(map(this.setUser));
+  }
+
+  logOut() {
+    const user = <User>JSON.parse(localStorage.getItem('currentUser'));
+    return this.http
+      .delete(`${config.apiUrl}/users/me/token`, {
+        headers: { 'x-auth': user.token }
+      })
+      .pipe(
+        tap(() => {
+          localStorage.removeItem('currentUser');
+        })
+      );
   }
 }

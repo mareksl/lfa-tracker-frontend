@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { AuthService, User } from 'src/app/core/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,26 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  returnUrl: string;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (localStorage.getItem('currentUser')) {
+      this.router.navigate(['/']);
+    }
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
 
   onSubmit(form: NgForm) {
     const userID: string = form.value.userID;
     const password: string = form.value.password;
 
-    this.authService.logIn(userID, password);
+    this.authService.logIn(userID, password).subscribe((user: User) => {
+      this.router.navigate([this.returnUrl]);
+    });
   }
 }
