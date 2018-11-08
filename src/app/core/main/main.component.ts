@@ -16,19 +16,18 @@ const routerTransition = trigger('routerTransition', [
       style({
         position: 'absolute',
         width: '100%',
-        height: '100%',
-        zIndex: '1'
+        height: '100%'
       }),
       { optional: true }
     ),
     query(
-      ':enter, :leave',
+      ':enter',
       style({
         position: 'absolute',
         width: '100%',
         height: '100%',
-        zIndex: '1',
-        opacity: 0
+        opacity: 0,
+        'z-index': '-1'
       }),
       { optional: true }
     ),
