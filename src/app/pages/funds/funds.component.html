@@ -7,7 +7,7 @@
     </button>
   </div>
   <app-funds-pagination class="funds__pagination" [pageCount]="pageCount" [currentPage]="page" (currentPageChange)="changePage($event)"
-    [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query.fundName" (queryChange)="search($event)"></app-funds-pagination>
+    [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query" (queryChange)="search($event)"></app-funds-pagination>
   <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
   <ng-template #loaded>
     <div class="no-funds no-funds--danger" *ngIf="funds.length === 0; else content">
