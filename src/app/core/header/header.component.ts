@@ -52,8 +52,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logOut().subscribe(() => {});
-    this.router.navigate(['/auth']);
+    this.authService.logOut().subscribe(() => {
+      this.router.navigate(['/auth']);
+    });
   }
 
   toggleDropdown() {

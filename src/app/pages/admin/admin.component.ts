@@ -94,7 +94,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     input.append('file', this.form.get('file').value);
     input.append('date', date.toISOString());
     input.append('overwriteFunds', this.form.get('overwriteFunds').value);
-    console.log(input.get('overwriteFunds'));
     return input;
   }
 

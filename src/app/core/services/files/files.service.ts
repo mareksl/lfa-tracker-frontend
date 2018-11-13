@@ -2,11 +2,13 @@ import {
   HttpClient,
   HttpEvent,
   HttpEventType,
-  HttpRequest
+  HttpRequest,
+  HttpHeaders
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { config } from 'src/app/config/app-settings.config';
+import { User } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'

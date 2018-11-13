@@ -5,7 +5,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { config } from 'src/app/config/app-settings.config';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
 export interface User {
@@ -61,11 +61,10 @@ export class AuthService {
   }
 
   logOut() {
-    const user = <User>JSON.parse(localStorage.getItem('currentUser'));
-    localStorage.removeItem('currentUser');
-
-    return this.http.delete(`${config.apiUrl}/users/me/token`, {
-      headers: { 'x-auth': user.token }
-    });
+    return this.http.delete(`${config.apiUrl}/users/me/token`).pipe(
+      map(res => {
+        localStorage.removeItem('currentUser');
+      })
+    );
   }
 }

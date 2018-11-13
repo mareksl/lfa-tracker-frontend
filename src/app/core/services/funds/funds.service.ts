@@ -5,6 +5,7 @@ import { config } from '../../../config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
 import { Observable, Subject } from 'rxjs';
+import { User } from '../auth/auth.service';
 
 export interface FundsResponse {
   funds: IFund[];

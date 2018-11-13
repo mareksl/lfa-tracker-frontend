@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -42,6 +42,7 @@ import { PercentageColorDirective } from './shared/directives/percentage-color.d
 import { MainComponent } from './core/main/main.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
+import { AuthTokenInterceptor } from './shared/interceptors/auth-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,7 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     RegisterComponent,
     MainComponent,
     AboutComponent,
-    DropdownComponent,
+    DropdownComponent
   ],
   imports: [
     AppRoutingModule,
@@ -92,7 +93,9 @@ import { DropdownComponent } from './shared/components/dropdown/dropdown.compone
     ChartsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
