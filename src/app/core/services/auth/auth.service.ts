@@ -7,6 +7,7 @@ import {
 import { config } from 'src/app/config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 export interface User {
   userID: number;
@@ -20,7 +21,7 @@ export interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   private setUser(response: HttpResponse<User>) {
     const token = response.headers.get('x-auth');
@@ -60,10 +61,19 @@ export class AuthService {
       );
   }
 
+  private removeUserAndNavigate() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/auth']);
+  }
+
   logOut() {
     return this.http.delete(`${config.apiUrl}/users/me/token`).pipe(
       map(res => {
-        localStorage.removeItem('currentUser');
+        this.removeUserAndNavigate();
+      }),
+      catchError(err => {
+        this.removeUserAndNavigate();
+        return throwError(err.message);
       })
     );
   }
