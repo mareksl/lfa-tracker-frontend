@@ -12,7 +12,8 @@ import { environment } from 'src/environments/environment';
 export interface User {
   userID: number;
   role: string;
-  token: string;
+  token?: string;
+  active?: boolean;
   firstName?: string;
   lastName?: string;
 }

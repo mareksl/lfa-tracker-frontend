@@ -43,6 +43,7 @@ import { MainComponent } from './core/main/main.component';
 import { AboutComponent } from './pages/about/about.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { AuthTokenInterceptor } from './shared/interceptors/auth-token.interceptor';
+import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { AuthTokenInterceptor } from './shared/interceptors/auth-token.intercept
     RegisterComponent,
     MainComponent,
     AboutComponent,
-    DropdownComponent
+    DropdownComponent,
+    UsersComponent
   ],
   imports: [
     AppRoutingModule,

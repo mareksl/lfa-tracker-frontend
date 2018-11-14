@@ -1,0 +1,41 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/base/grid';
+@import '../../../scss/utils/mixins';
+
+.users {
+  @include main-content;
+  @include grid-container;
+}
+
+.users__header {
+  @include main-content__header;
+}
+
+.users__section {
+  @include content-box;
+  @include full-width;
+}
+
+.users__list {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid $color-accent-dark;
+  border-radius: $border-radius-default;
+}
+
+.users-list__item {
+  border-bottom: 1px solid $color-accent-dark;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.users-list__datapoint {
+  padding: 1rem;
+  flex: 0 1 20%;
+}

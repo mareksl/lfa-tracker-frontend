@@ -15,6 +15,9 @@
     <li class="nav-list__item" routerLinkActive="nav-list__item--active" *ngIf="checkRole()">
       <a [routerLink]="['/', 'admin']" class="link nav-list__link">Admin <span class="fa fa-fw fa-wrench"></span></a>
     </li>
+    <li class="nav-list__item" routerLinkActive="nav-list__item--active" *ngIf="checkRole()">
+      <a [routerLink]="['/', 'users']" class="link nav-list__link">Users <span class="fa fa-fw fa-users"></span></a>
+    </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">
       <a [routerLink]="['/', 'about']" class="link nav-list__link">About <span class="fa fa-fw fa-info-circle"></span></a>
     </li>
