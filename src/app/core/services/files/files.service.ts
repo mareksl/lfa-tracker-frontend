@@ -2,13 +2,11 @@ import {
   HttpClient,
   HttpEvent,
   HttpEventType,
-  HttpRequest,
-  HttpHeaders
+  HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { config } from 'src/app/config/app-settings.config';
-import { User } from '../auth/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +36,7 @@ export class FilesService {
   }
 
   download() {
-    return this.http.get(`${config.apiUrl}/files`, {
+    return this.http.get(`${environment.API_URL}/files`, {
       responseType: 'blob',
       observe: 'response'
     });
@@ -46,7 +44,7 @@ export class FilesService {
 
   upload(form: FormData) {
     // const file: File = <File>form.get('file');
-    const req = new HttpRequest('POST', `${config.apiUrl}/files`, form, {
+    const req = new HttpRequest('POST', `${environment.API_URL}/files`, form, {
       reportProgress: true
     });
     return this.http.request(req).pipe(map(this.getEventMessage));

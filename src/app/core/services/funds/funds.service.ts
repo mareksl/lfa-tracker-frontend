@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Fund, IFund } from '../../../shared/models/fund.model';
-import { config } from '../../../config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
 import { Observable, Subject } from 'rxjs';
-import { User } from '../auth/auth.service';
+import { environment } from 'src/environments/environment.prod';
 
 export interface FundsResponse {
   funds: IFund[];
@@ -44,7 +43,7 @@ export class FundsService {
 
   getRange(page: number, limit: number, query: FundQuery) {
     return this.http
-      .get<FundsResponse>(`${config.apiUrl}/funds`, {
+      .get<FundsResponse>(`${environment.API_URL}/funds`, {
         params: { page: `${page}`, limit: `${limit}`, ...query }
       })
       .pipe(
@@ -64,13 +63,15 @@ export class FundsService {
   }
 
   getById(id: number): Observable<Fund> {
-    return this.http.get<FundResponse>(`${config.apiUrl}/funds/${id}`).pipe(
-      map(fundResponse => new Fund(fundResponse.fund)),
-      catchError(handleError('getById', null))
-    );
+    return this.http
+      .get<FundResponse>(`${environment.API_URL}/funds/${id}`)
+      .pipe(
+        map(fundResponse => new Fund(fundResponse.fund)),
+        catchError(handleError('getById', null))
+      );
   }
 
   removeAll() {
-    return this.http.delete(`${config.apiUrl}/funds`);
+    return this.http.delete(`${environment.API_URL}/funds`);
   }
 }

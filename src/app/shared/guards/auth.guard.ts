@@ -6,10 +6,10 @@ import {
   CanActivateChild
 } from '@angular/router';
 import { Observable, throwError } from 'rxjs';
-import { config } from 'src/app/config/app-settings.config';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/core/services/auth/auth.service';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivateChild {
     const token = (<User>JSON.parse(currentUser)).token;
 
     return this.http
-      .get(`${config.apiUrl}/users/me`, {
+      .get(`${environment.API_URL}/users/me`, {
         headers: { 'x-auth': token }
       })
       .pipe(

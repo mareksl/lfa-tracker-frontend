@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IStatistics } from '../../../shared/models/statistics.model';
-import { config } from '../../../config/app-settings.config';
 import { catchError, map } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface StatisticsResponse {
   statistics: IStatistics;
@@ -33,7 +33,7 @@ export class StatisticsService {
 
   getLatest() {
     return this.http
-      .get<StatisticsResponse>(`${config.apiUrl}/stats`)
+      .get<StatisticsResponse>(`${environment.API_URL}/stats`)
       .pipe(
         map((statsResponse: StatisticsResponse) => statsResponse.statistics),
         catchError(handleError('getLatest', {}))
@@ -46,7 +46,7 @@ export class StatisticsService {
 
   getHistorical() {
     return this.http
-      .get<HistoricalStatisticsResponse>(`${config.apiUrl}/stats/history`)
+      .get<HistoricalStatisticsResponse>(`${environment.API_URL}/stats/history`)
       .pipe(
         map(
           (hsResponse: HistoricalStatisticsResponse) => hsResponse.statistics
@@ -61,7 +61,7 @@ export class StatisticsService {
 
   removeById(id: string) {
     return this.http
-      .delete<StatisticsResponse>(`${config.apiUrl}/stats/${id}`)
+      .delete<StatisticsResponse>(`${environment.API_URL}/stats/${id}`)
       .subscribe((stats: StatisticsResponse) => {
         return this.getHistorical();
       });

@@ -4,10 +4,10 @@ import {
   HttpResponse,
   HttpErrorResponse
 } from '@angular/common/http';
-import { config } from 'src/app/config/app-settings.config';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 export interface User {
   userID: number;
@@ -42,14 +42,14 @@ export class AuthService {
     lastName: string;
   }) {
     return this.http
-      .post(`${config.apiUrl}/users`, user, { observe: 'response' })
+      .post(`${environment.API_URL}/users`, user, { observe: 'response' })
       .pipe(map(this.setUser));
   }
 
   logIn(userID: string, password: string) {
     return this.http
       .post(
-        `${config.apiUrl}/users/login`,
+        `${environment.API_URL}/users/login`,
         { userID, password },
         { observe: 'response' }
       )
@@ -67,7 +67,7 @@ export class AuthService {
   }
 
   logOut() {
-    return this.http.delete(`${config.apiUrl}/users/me/token`).pipe(
+    return this.http.delete(`${environment.API_URL}/users/me/token`).pipe(
       map(res => {
         this.removeUserAndNavigate();
       }),
