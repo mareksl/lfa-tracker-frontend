@@ -1,0 +1,48 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+
+.panel {
+  z-index: 0;
+  @include content-box;
+  position: relative;
+  overflow: hidden;
+  border-color: $color-primary;
+
+  &:before {
+    z-index: -1;
+    content: '';
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    opacity: 0.2;
+    // filter: blur(0.125rem);
+    font-size: 8rem;
+  }
+
+  &--info {
+    &:before {
+      content: '\f05a';
+      color: $color-primary;
+    }
+  }
+
+  &--success {
+    &:before {
+      content: '\f058';
+      color: $color-success;
+    }
+  }
+  &--warning {
+    &:before {
+      content: '\f06a';
+      color: $color-warning;
+    }
+  }
+  &--danger {
+    &:before {
+      content: '\f057';
+      color: $color-danger;
+    }
+  }
+}

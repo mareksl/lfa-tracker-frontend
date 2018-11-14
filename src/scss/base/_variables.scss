@@ -1,0 +1,25 @@
+$color-primary: #2a5f96;
+
+$color-accent-dark: #859cb5;
+$color-accent-light: #85bbcd;
+
+$color-shade-dark: #222c50;
+$color-shade-darker: rgb(20, 25, 43);
+$color-box-shadow: rgb(0, 0, 0);
+
+$color-shade-light: #fcfafb;
+$color-shade-lighter: #fff;
+
+$color-neutral: lighten(desaturate($color-accent-light, 100%), 20%);
+
+$color-success: #429765;
+$color-warning: #bf872d;
+$color-danger: #f67166;
+
+$transition-duration: 0.4s;
+$pulse-duration: 2s;
+
+$breakpoint-width: 40rem;
+$breakpoint-width-mid: 70rem;
+
+$border-radius-default: 0.125rem;

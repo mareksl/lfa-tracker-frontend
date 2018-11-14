@@ -1,0 +1,59 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.fund-details {
+  @include main-content;
+  @include grid-container;
+}
+
+.fund-details__header {
+  @include main-content__header;
+}
+
+.fund-details__data {
+  @include content-box;
+}
+
+.fund-details__status {
+  @include content-box;
+}
+
+.fund-status-icon {
+  width: 2rem;
+  text-align: center;
+  color: $color-danger;
+
+  &--pending {
+    color: $color-warning;
+  }
+
+  &--done {
+    color: $color-success;
+  }
+}
+
+.data-point {
+  display: flex;
+  padding-bottom: 0.5rem;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.data-point--status {
+  flex-flow: row nowrap;
+}
+
+.data-point__title {
+  font-weight: 500;
+}
+
+.data-point__data {
+  text-align: right;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .data-point {
+    flex-flow: row nowrap;
+  }
+}

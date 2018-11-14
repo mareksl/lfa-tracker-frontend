@@ -1,0 +1,86 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+  color: $color-shade-light;
+}
+
+a {
+  text-decoration: none;
+  transition: color $transition-duration;
+}
+
+.link {
+  cursor: pointer;
+
+  color: $color-shade-light;
+
+  &:focus,
+  &:hover {
+    color: $color-accent-light;
+  }
+}
+
+.link--inverse {
+  color: $color-primary;
+}
+
+p {
+  line-height: 1.45;
+  padding-bottom: 0.5rem;
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+}
+
+h2 {
+  font-size: 1.424em;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1.266em;
+  text-transform: uppercase;
+  color: $color-primary;
+}
+
+h4 {
+  font-size: 1.125em;
+  text-transform: uppercase;
+  color: $color-primary;
+}
+
+small,
+.text--small {
+  font-size: 0.8rem;
+}
+
+.text--accent,
+b {
+  font-weight: 500;
+}
+
+.text--success {
+  color: $color-success;
+}
+
+.text--warning {
+  color: $color-warning;
+}
+
+.text--danger {
+  font-weight: 500;
+  color: $color-danger;
+}
+
+hr {
+  display: block;
+  border: none;
+  border-top: 1px solid $color-neutral;
+  margin: 1rem 0;
+}

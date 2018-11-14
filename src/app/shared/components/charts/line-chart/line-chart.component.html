@@ -1,0 +1,8 @@
+<div class="chart" #chart>
+  <h3 class="chart__title">{{title | titlecase}}</h3>
+  <canvas baseChart chartType="line" [datasets]="chartData" [labels]="chartLabels" [options]="chartOptions" [legend]="true"
+    class="chart__canvas"></canvas>
+</div>
+<button class="button button--neutral chart__export-button" (click)="toCanvas(chart)" [disabled]="exporting">
+  <span class="fa fa-fw" [ngClass]="{'fa-refresh fa-spin': exporting, 'fa-file-image-o': !exporting}"></span>
+</button>

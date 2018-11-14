@@ -1,0 +1,31 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.statistics-by-assignee__header {
+  @include main-content__header;
+}
+
+.statistics-by-assignee__select {
+  @include full-width;
+}
+
+.statistics-by-assignee__item {
+  @include content-box;
+  padding: 0;
+}
+
+.statistics-by-assignee__list {
+  @include full-width;
+  @include grid-box-list;
+}
+
+.statistics-by-assignee__datapoint {
+  margin-bottom: 1rem;
+  &:last-child {
+    margin: 0;
+  }
+  &--accent {
+    font-weight: 500;
+  }
+}

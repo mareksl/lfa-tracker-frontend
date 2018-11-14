@@ -1,0 +1,25 @@
+.select {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+
+  padding: 0.75rem;
+
+  border: 1px solid $color-accent-light;
+  border-radius: $border-radius-default;
+  background-color: $color-shade-light;
+
+  transition: box-shadow $transition-duration,
+    background-color $transition-duration;
+
+  &:focus {
+    outline: none;
+    box-shadow: $button-shadow-dims-active $color-accent-light;
+    background-color: $color-shade-lighter;
+  }
+}
+
+.select--slim {
+  padding: 0.5rem;
+  height: 2.5rem;
+}

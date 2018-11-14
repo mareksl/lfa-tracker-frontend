@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './scss/base/reset';
+@import './scss/base/variables';
+@import './scss/utils/mixins';
+@import './scss/base/typography';
+@import './scss/base/grid';
+
+@import './scss/components/button';
+@import './scss/components/toggle-icon';
+@import './scss/components/input';
+@import './scss/components/checkbox';
+@import './scss/components/select';
+@import './scss/components/progress';
+@import './scss/components/dropdown';
+
+@import './scss/utils/animations';
+@import './scss/utils/utils';

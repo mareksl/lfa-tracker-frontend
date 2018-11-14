@@ -1,0 +1,82 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+
+.nav {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background-color: $color-shade-darker;
+
+  @include box-shadow-inset-side;
+}
+
+.nav-list {
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 4rem;
+
+  flex-flow: row wrap;
+
+  @include box-shadow-default;
+}
+
+.nav-list__item {
+  overflow: hidden;
+  position: relative;
+  flex: 1 0 100%;
+
+  background-color: $color-shade-darker;
+  border-left: 0.25rem solid $color-accent-dark;
+
+  transition: border-color $transition-duration,
+    background-color $transition-duration;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -0.25rem;
+    top: 0;
+    height: 100%;
+    width: 0.25rem;
+
+    border-radius: 50%;
+    background-color: $color-shade-light;
+
+    transition: box-shadow $transition-duration;
+    box-shadow: none;
+  }
+
+  &:focus,
+  &:hover {
+    &:before {
+      box-shadow: 0 0 1rem $color-shade-light;
+    }
+  }
+
+  &--active {
+    background-color: $color-shade-dark;
+    border-color: $color-shade-light;
+
+    &:before {
+      box-shadow: 0 0 1rem $color-shade-light;
+    }
+  }
+}
+
+.nav-list__link {
+  color: $color-shade-light;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 3rem;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .nav-list {
+    flex-flow: column;
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.statistics-item {
+  position: relative;
+}
+
+.statistics-item__data {
+  width: 100%;
+  padding: 1rem;
+}
+
+.statistics-item__heading {
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.statistics-item__datapoint {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  &:last-child {
+    margin: 0;
+  }
+  &--accent {
+    font-weight: 500;
+  }
+}
+
+.statistics-item__export-button {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  border-radius: 50%;
+}
+
+.chart {
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

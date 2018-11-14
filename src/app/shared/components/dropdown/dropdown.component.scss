@@ -1,0 +1,8 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/base/grid';
+@import '../../../../scss/utils/mixins';
+
+.dropdown {
+  @include content-box;
+  padding: 0;
+}

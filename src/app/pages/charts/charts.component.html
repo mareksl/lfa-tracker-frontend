@@ -1,0 +1,11 @@
+<div class="charts">
+  <div class="charts__header">
+    <h2>Charts</h2>
+  </div>
+  <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
+  <ng-template #loaded>
+    <div class="chart chart--large" *ngFor="let chart of charts">
+      <app-line-chart title="Stats by {{ chart.title }}" [chartData]="chart.chartData" [chartLabels]="chart.chartLabels"></app-line-chart>
+    </div>
+  </ng-template>
+</div>

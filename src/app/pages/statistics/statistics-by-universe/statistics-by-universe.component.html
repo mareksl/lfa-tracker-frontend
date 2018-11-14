@@ -1,0 +1,15 @@
+<div class="statistics-by-universe__header">
+  <h3>Stats by universe</h3>
+  <app-button-open [(toggled)]="statsVisible"></app-button-open>
+</div>
+
+<div *ngIf="statsVisible" class="input-float__wrapper statistics-by-universe__search-wrapper">
+  <input id="search" name="search" type="search" class="input input-float__input statistics-by-universe__search"
+    placeholder="Filter by universe" [(ngModel)]="search">
+  <label for="search" class="input-float__label">Filter by universe</label>
+</div>
+
+<ul *ngIf="statsVisible" class="statistics-by-universe__list">
+  <app-statistics-item class="statistics-by-universe__item" *ngFor="let universe of statisticsFiltered | keyvalue"
+    [item]="universe.value" [key]="universe.key"></app-statistics-item>
+</ul>

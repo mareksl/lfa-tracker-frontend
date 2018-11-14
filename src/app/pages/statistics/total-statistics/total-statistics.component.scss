@@ -1,0 +1,44 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.total-statistics__header {
+  @include main-content__header;
+}
+.total-statistics__list {
+  @include full-width;
+  @include box-shadow-default;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  // border: 1px solid $color-neutral;
+  border-radius: $border-radius-default;
+}
+
+.total-statistics__datapoint {
+  flex: 1 1 auto;
+  padding: 1rem;
+
+  border-right: 1px solid $color-neutral;
+
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.datapoint__title {
+  margin-bottom: 0.5rem;
+}
+
+.datapoint__data {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.total-statistics__progress {
+  @include full-width;
+}

@@ -1,0 +1,93 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.advanced-search {
+  @include content-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.advanced-search__heading {
+  grid-column-end: span 1;
+  padding-bottom: 1rem;
+}
+
+.advanced-search__input-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  &--full-width {
+    grid-column-end: span 1;
+  }
+}
+
+.input-group__label {
+  flex: 0 1 20%;
+  padding: 1rem;
+  &--full-width {
+    flex: 0 1 20%;
+  }
+}
+
+.input-group__input {
+  flex: 1 1 80%;
+  &--full-width {
+    flex: 1 1 80%;
+  }
+}
+
+.advanced-search__ranks {
+  flex: 1 1 80%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  min-height: 2.5rem;
+}
+
+.ranks__item {
+  display: block;
+  flex: 0 1 20%;
+}
+
+.advanced-search__buttons {
+  grid-column-end: span 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .advanced-search {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .advanced-search__heading {
+    grid-column-end: span 2;
+  }
+
+  .advanced-search__input-group {
+    flex-flow: row nowrap;
+    &--full-width {
+      grid-column-end: span 2;
+    }
+  }
+
+  .input-group__label {
+    &--full-width {
+      flex: 0 1 10%;
+    }
+  }
+
+  .input-group__input {
+    &--full-width {
+      flex: 1 1 90%;
+    }
+  }
+
+  .advanced-search__buttons {
+    grid-column-end: span 2;
+  }
+}

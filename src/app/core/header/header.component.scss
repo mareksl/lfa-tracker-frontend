@@ -1,0 +1,125 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+
+.header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+
+  background-color: $color-shade-darker;
+  @include box-shadow-default;
+}
+
+.header__brand {
+  flex: 1 0 100%;
+  padding: 0.5rem;
+  font-weight: 300;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__logo {
+  height: 2rem;
+  padding: 0 1rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__image {
+  height: 100%;
+  width: auto;
+}
+
+.header__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  font-size: 1.5rem;
+
+  width: 3rem;
+  height: 3rem;
+  margin: 0.5rem;
+
+  background-color: transparent;
+  color: $color-shade-light;
+
+  border: none;
+
+  transition: color $transition-duration, transform $transition-duration;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: $color-accent-light;
+  }
+
+  &:active {
+    color: $color-success;
+    transform: scale(0.9);
+    transition: color 0s, transform 0s;
+  }
+}
+
+.header__buttons {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__controls {
+  display: flex;
+}
+.header__controls-item {
+  position: relative;
+}
+
+.header__status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+
+  transition: color $transition-duration;
+
+  color: $color-danger;
+  animation: pulse__text--danger $pulse-duration infinite;
+
+  &--connected {
+    color: $color-success;
+    animation: none;
+  }
+}
+
+.header__dropdown {
+  position: fixed;
+  width: 100%;
+  top: 6rem;
+  right: 0;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .header__logo {
+    display: flex;
+  }
+  .header__brand {
+    flex: 0 1 16rem;
+  }
+  .header__dropdown {
+    position: absolute;
+    width: auto;
+    top: 100%;
+    right: 0;
+  }
+}

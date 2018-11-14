@@ -1,0 +1,25 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.statistics-by-department__header {
+  @include main-content__header;
+  margin-bottom: 0;
+}
+
+.statistics-by-department__list {
+  @include full-width;
+  @include grid-box-list;
+}
+
+.statistics-by-department__item {
+  @include content-box;
+  padding: 0;
+}
+
+.statistics-by-department__search-wrapper {
+  @include full-width;
+}
+.statistics-by-department__search {
+  width: 100%;
+}

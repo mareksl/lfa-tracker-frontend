@@ -1,0 +1,25 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/base/grid';
+
+.statistics {
+  @include main-content;
+  @include grid-container;
+}
+
+.statistics__header {
+  @include main-content__header;
+  @include main-content__header--sticky;
+}
+
+.statistics__data {
+  @include content-box;
+  @include grid-container;
+  @include full-width;
+}
+
+.statistics__charts {
+  @include content-box;
+  @include grid-container;
+  @include full-width;
+}

@@ -1,0 +1,29 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/base/grid';
+
+.dashboard {
+  @include main-content;
+  @include grid-container;
+}
+
+.dashboard__header {
+  @include main-content__header;
+}
+
+.dashboard__logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.4;
+  padding: 1rem;
+  filter: saturate(.8);
+}
+
+.logo {
+  height: 100%;
+  width: auto;
+}
+

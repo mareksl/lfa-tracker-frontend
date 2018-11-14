@@ -1,0 +1,18 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+@import '../../../../scss/base/grid';
+
+.statistics-by-rank__header {
+  @include main-content__header;
+}
+
+.statistics-by-rank__list {
+  @include full-width;
+  @include grid-box-list;
+
+}
+
+.statistics-by-rank__item {
+  @include content-box;
+  padding: 0;
+}

@@ -1,0 +1,58 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/base/grid';
+
+.about {
+  @include main-content;
+  @include grid-container;
+}
+
+.about__header {
+  @include main-content__header;
+}
+
+.about__images {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.about__image {
+  height: 4rem;
+  width: auto;
+  margin: 2rem;
+  &--express {
+    height: 2rem;
+    margin: 3rem;
+  }
+}
+
+.changelog__item {
+  padding: 0.5rem 0;
+}
+
+.changelog__version {
+  &:before {
+    font-family: FontAwesome;
+    content: '\f126';
+    padding-right: 0.5rem;
+  }
+}
+
+.roadmap__item {
+  padding: 0.5rem 0;
+
+  &:before {
+    font-family: FontAwesome;
+    content: '\f096';
+    padding-right: .5rem;
+  }
+
+  &--complete {
+    &:before {
+      content: '\f046';
+    }
+  }
+}

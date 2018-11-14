@@ -1,0 +1,39 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+@import '../../../scss/base/grid';
+
+.funds {
+  @include main-content;
+  @include grid-container;
+}
+
+.funds__header {
+  @include main-content__header;
+  @include main-content__header--sticky;
+}
+
+.funds__list {
+  @include content-box;
+  @include full-width;
+}
+
+.funds__pagination {
+  @include content-box--slim;
+  @include full-width;
+  flex: 0 1 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 0.5rem;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .funds__pagination {
+    flex-flow: row wrap;
+    align-items: center;
+    position: sticky;
+    top: 7.25rem;
+    z-index: 1;
+  }
+}

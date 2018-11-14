@@ -1,0 +1,51 @@
+<form class="advanced-search" [formGroup]="searchForm" (submit)="search()">
+  <h3 class="advanced-search__heading">Advanced Search</h3>
+
+  <div class="advanced-search__input-group advanced-search__input-group--full-width">
+    <label for="fundName" class="input-group__label input-group__label--full-width">Fund Name</label>
+    <input id="fundName" type="text" class="input input--slim input-group__input input-group__input--full-width"
+      formControlName="fundName">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label for="lipperID" class="input-group__label">Lipper ID</label>
+    <input id="lipperID" type="text" class="input input--slim input-group__input" formControlName="lipperID">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label for="department" class="input-group__label">Department</label>
+    <input id="department" type="text" class="input input--slim input-group__input" formControlName="department">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label for="assignee" class="input-group__label">Assignee</label>
+    <input id="assignee" type="text" class="input input--slim input-group__input" formControlName="assignee">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label for="universe" class="input-group__label">Award Universe</label>
+    <input id="universe" type="text" class="input input--slim input-group__input" formControlName="universe">
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label class="input-group__label">Ranks</label>
+    <div class="advanced-search__ranks">
+      <div class="ranks__item" *ngFor="let r of ranks.controls; let i = index" formGroupName="ranks">
+        <input class="checkbox__box" [id]="'rank_' + rankOptions[i].id" type="checkbox" [formControl]="r">
+        <label class="checkbox__label" [for]="'rank_' + rankOptions[i].id">{{rankOptions[i].id}}</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="advanced-search__input-group">
+    <label for="order" class="input-group__label">Order By</label>
+    <select id="order" class="select select--slim input-group__input" formControlName="order">
+    </select>
+  </div>
+
+  <div class="advanced-search__buttons">
+    <button class="button" type="submit" [disabled]="!searchForm.dirty">Search</button>
+    <button class="button button--accent" (click)="cancel()">Cancel</button>
+  </div>
+
+</form>
