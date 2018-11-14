@@ -4,7 +4,7 @@ import { Fund, IFund } from '../../../shared/models/fund.model';
 import { map, catchError } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
 import { Observable, Subject } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 export interface FundsResponse {
   funds: IFund[];

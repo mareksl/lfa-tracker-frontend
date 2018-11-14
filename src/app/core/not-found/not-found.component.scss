@@ -1,0 +1,14 @@
+@import '../../../scss/base/variables';
+@import '../../../scss/utils/mixins';
+
+.not-found {
+  @include main-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.not-found__link {
+  padding: 2rem;
+}

@@ -17,6 +17,14 @@ import { RoleGuard } from './shared/guards/role.guard';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    component: AuthenticateComponent,
+    children: [
+      { path: '', component: LoginComponent },
+      { path: 'register', component: RegisterComponent }
+    ]
+  },
+  {
     path: '',
     component: MainComponent,
     canActivateChild: [AuthGuard],
@@ -55,21 +63,13 @@ const routes: Routes = [
         path: 'about',
         component: AboutComponent,
         data: { state: 'about' }
+      },
+      {
+        path: '**',
+        component: NotFoundComponent,
+        data: { state: 'notfound' }
       }
     ]
-  },
-  {
-    path: 'auth',
-    component: AuthenticateComponent,
-    children: [
-      { path: '', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
-    ]
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-    data: { state: 'notfound' }
   }
 ];
 
