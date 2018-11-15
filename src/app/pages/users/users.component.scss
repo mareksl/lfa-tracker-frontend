@@ -18,24 +18,34 @@
 
 .users__list {
   display: flex;
-  flex-flow: column;
-  border: 1px solid $color-accent-dark;
+  flex-flow: row wrap;
   border-radius: $border-radius-default;
+  border: 1px solid $color-accent-dark;
 }
 
 .users-list__item {
-  border-bottom: 1px solid $color-accent-dark;
+  padding: 0.5rem;
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: center;
-
-  &:last-of-type {
-    border-bottom: none;
-  }
+  flex-flow: column;
+  align-items: flex-start;
 }
 
 .users-list__datapoint {
-  padding: 1rem;
   flex: 0 1 20%;
+  padding: 0.5rem;
+}
+
+@media screen and (min-width: $breakpoint-width) {
+  .users__list {
+    flex-flow: column;
+  }
+  .users-list__item {
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid $color-accent-dark;
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
 }

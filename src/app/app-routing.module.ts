@@ -15,6 +15,7 @@ import { AuthGuard } from './shared/guards/auth.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { RoleGuard } from './shared/guards/role.guard';
 import { UsersComponent } from './pages/users/users.component';
+import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
 
 const routes: Routes = [
   {
@@ -42,7 +43,8 @@ const routes: Routes = [
       },
       {
         path: 'funds/:id',
-        component: FundDetailsComponent
+        component: FundDetailsComponent,
+        data: { state: 'fund-details' }
       },
       {
         path: 'statistics',
@@ -64,6 +66,12 @@ const routes: Routes = [
         path: 'users',
         component: UsersComponent,
         data: { state: 'users', allowed: ['admin', 'super'] },
+        canActivate: [RoleGuard]
+      },
+      {
+        path: 'users/:id',
+        component: UserDetailsComponent,
+        data: { state: 'user-details', allowed: ['admin', 'super'] },
         canActivate: [RoleGuard]
       },
       {

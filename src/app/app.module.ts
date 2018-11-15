@@ -44,6 +44,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { DropdownComponent } from './shared/components/dropdown/dropdown.component';
 import { AuthTokenInterceptor } from './shared/interceptors/auth-token.interceptor';
 import { UsersComponent } from './pages/users/users.component';
+import { UserDetailsComponent } from './pages/users/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { UsersComponent } from './pages/users/users.component';
     MainComponent,
     AboutComponent,
     DropdownComponent,
-    UsersComponent
+    UsersComponent,
+    UserDetailsComponent
   ],
   imports: [
     AppRoutingModule,

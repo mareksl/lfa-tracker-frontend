@@ -17,7 +17,10 @@
           }"
           >{{ (user.active ? 'active' : 'inactive') | titlecase }}</span
         >
-        <button class="button button--square button--success">
+        <button
+          class="button button--square button--success users-list__button"
+          [routerLink]="['/', 'users', user.userID]"
+        >
           <span class="fa fa-pencil"></span>
         </button>
       </li>
