@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { FundsComponent } from '../pages/funds/funds.component';
-import { FundDetailsComponent } from '../pages/funds/fund-details/fund-details.component';
-import { StatisticsComponent } from '../pages/statistics/statistics.component';
-import { ChartsComponent } from '../pages/charts/charts.component';
-import { AdminComponent } from '../pages/admin/admin.component';
-import { RoleGuard } from '../shared/guards/role.guard';
-import { UsersComponent } from '../pages/users/users.component';
-import { UserDetailsComponent } from '../pages/users/user-details/user-details.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../pages/about/about.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { MainComponent } from './main/main.component';
+import { AdminComponent } from '../pages/admin/admin.component';
+import { ChartsComponent } from '../pages/charts/charts.component';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
+import { FundsModule } from '../pages/funds/funds.module';
+import { StatisticsModule } from '../pages/statistics/statistics.module';
+import { UserDetailsComponent } from '../pages/users/user-details/user-details.component';
+import { UsersComponent } from '../pages/users/users.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { RoleGuard } from '../shared/guards/role.guard';
+import { MainComponent } from './main/main.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { UsersModule } from '../pages/users/users.module';
 
 const routes: Routes = [
   {
@@ -27,18 +27,11 @@ const routes: Routes = [
       },
       {
         path: 'funds',
-        component: FundsComponent,
-        data: { state: 'funds' }
-      },
-      {
-        path: 'funds/:id',
-        component: FundDetailsComponent,
-        data: { state: 'fund-details' }
+        loadChildren: '../pages/funds/funds.module#FundsModule'
       },
       {
         path: 'statistics',
-        component: StatisticsComponent,
-        data: { state: 'statistics' }
+        loadChildren: '../pages/statistics/statistics.module#StatisticsModule'
       },
       {
         path: 'charts',
@@ -53,15 +46,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        component: UsersComponent,
-        data: { state: 'users', allowed: ['admin', 'super'] },
-        canActivate: [RoleGuard]
-      },
-      {
-        path: 'users/:id',
-        component: UserDetailsComponent,
-        data: { state: 'user-details', allowed: ['admin', 'super'] },
-        canActivate: [RoleGuard]
+        loadChildren: '../pages/users/users.module#UsersModule'
       },
       {
         path: 'about',
