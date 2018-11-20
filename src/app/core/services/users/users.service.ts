@@ -37,4 +37,8 @@ export class UsersService {
       })
       .pipe(map(response => response.user));
   }
+
+  delete(id: number) {
+    return this.http.delete<UserResponse>(`${environment.API_URL}/users/${id}`);
+  }
 }

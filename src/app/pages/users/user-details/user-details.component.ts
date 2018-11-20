@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/services/auth/auth.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private usersService: UsersService
   ) {}
 
@@ -44,5 +45,19 @@ export class UserDetailsComponent implements OnInit {
         this.user = user;
         this.loading = false;
       });
+  }
+
+  deleteUser() {
+    if (
+      confirm(
+        `Do you want to remove user ${this.user.userID}: ${
+          this.user.firstName
+        } ${this.user.lastName}?`
+      )
+    ) {
+      this.usersService.delete(this.user.userID).subscribe(() => {
+        this.router.navigate(['../'], { relativeTo: this.route });
+      });
+    }
   }
 }
