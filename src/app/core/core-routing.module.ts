@@ -4,15 +4,10 @@ import { AboutComponent } from '../pages/about/about.component';
 import { AdminComponent } from '../pages/admin/admin.component';
 import { ChartsComponent } from '../pages/charts/charts.component';
 import { DashboardComponent } from '../pages/dashboard/dashboard.component';
-import { FundsModule } from '../pages/funds/funds.module';
-import { StatisticsModule } from '../pages/statistics/statistics.module';
-import { UserDetailsComponent } from '../pages/users/user-details/user-details.component';
-import { UsersComponent } from '../pages/users/users.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { RoleGuard } from '../shared/guards/role.guard';
 import { MainComponent } from './main/main.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { UsersModule } from '../pages/users/users.module';
 
 const routes: Routes = [
   {
