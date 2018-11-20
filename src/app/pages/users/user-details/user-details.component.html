@@ -1,1 +1,47 @@
-<p>{{ userID }}</p>
+<div class="user-details" #statitem>
+  <div
+    class="no-users no-users--danger"
+    *ngIf="!user && !loading; else: content"
+  >
+    <p>User not available!</p>
+  </div>
+  <ng-template #content>
+    <app-loading-overlay
+      *ngIf="loading; else: userDetails"
+    ></app-loading-overlay>
+    <ng-template #userDetails>
+      <div class="user-details__header">
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      </div>
+      <div class="user-details__data col-12">
+        <h3 class="user-details__header">User data</h3>
+        <ul>
+          <li class="data-point">
+            <span class="data-point__title">UserID</span>
+            <span class="data-point__data">{{ user.userID }}</span>
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">Role</span>
+            <span class="data-point__data">{{ user.role }}</span>
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">Status</span>
+            <span class="data-point__data">{{
+              user.active ? 'Active' : 'Inactive'
+            }}</span>
+          </li>
+        </ul>
+        <button
+          class="button"
+          [ngClass]="{
+            'button--success': user.active,
+            'button--danger': !user.active
+          }"
+          (click)="toggleActive()"
+        >
+          {{ user.active ? 'Deactivate' : 'Activate' }}
+        </button>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

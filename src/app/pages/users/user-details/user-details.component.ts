@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/services/auth/auth.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'app-user-details',
@@ -13,7 +14,10 @@ export class UserDetailsComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit() {
     this.loading = true;
@@ -24,6 +28,21 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getUser(id: number) {
-    console.log(id);
+    this.usersService.getById(id).subscribe(user => {
+      this.user = user;
+      this.loading = false;
+    });
+  }
+
+  toggleActive() {
+    this.loading = true;
+
+    const toggleTo = !this.user.active;
+    this.usersService
+      .toggleActive(this.user.userID, toggleTo)
+      .subscribe(user => {
+        this.user = user;
+        this.loading = false;
+      });
   }
 }
