@@ -1,0 +1,12 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/base/grid';
+@import '../../../../scss/utils/mixins';
+
+.user-settings {
+  @include main-content;
+  @include grid-container;
+}
+
+.user-settings__heading {
+  @include main-content__header;
+}

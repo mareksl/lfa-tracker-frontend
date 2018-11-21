@@ -1,6 +1,6 @@
-<div class="user-details" #statitem>
+<div class="user-details">
   <div
-    class="no-users no-users--danger"
+    class="no-data no-data--danger"
     *ngIf="!user && !loading; else: content"
   >
     <p>User not available!</p>
@@ -13,7 +13,7 @@
       <div class="user-details__header">
         <h2>{{ user.firstName }} {{ user.lastName }}</h2>
       </div>
-      <div class="user-details__data col-12">
+      <div class="user-details__data col-10">
         <h3 class="user-details__header">User data</h3>
         <ul>
           <li class="data-point">
@@ -31,19 +31,30 @@
             }}</span>
           </li>
         </ul>
-        <button
-          class="button"
-          [ngClass]="{
-            'button--success': !user.active,
-            'button--danger': user.active
-          }"
-          (click)="toggleActive()"
-        >
-          {{ user.active ? 'Deactivate' : 'Activate' }}
-        </button>
-        <button class="button button--danger" (click)="deleteUser()">
-          Delete
-        </button>
+      </div>
+      <div class="user-details__actions col-2">
+        <ul class="user-details__buttons">
+          <li>
+            <button
+              class="button user-details__button"
+              [ngClass]="{
+                'button--success': !user.active,
+                'button--danger': user.active
+              }"
+              (click)="toggleActive()"
+            >
+              {{ user.active ? 'Deactivate' : 'Activate' }}
+            </button>
+          </li>
+          <li>
+            <button
+              class="button user-details__button button--danger"
+              (click)="deleteUser()"
+            >
+              Delete
+            </button>
+          </li>
+        </ul>
       </div>
     </ng-template>
   </ng-template>

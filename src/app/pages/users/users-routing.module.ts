@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { RoleGuard } from 'src/app/shared/guards/role.guard';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
     component: UsersComponent,
     data: { state: 'users', allowed: ['admin', 'super'] },
     canActivate: [RoleGuard]
+  },
+  {
+    path: 'me',
+    component: UserSettingsComponent,
+    data: { state: 'user-settings' }
   },
   {
     path: ':id',

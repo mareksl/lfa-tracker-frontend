@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../auth/auth.service';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
+import { handleError } from 'src/app/shared/handlers/error.handler';
 
 interface UserResponse {
   user: User;
@@ -27,7 +28,10 @@ export class UsersService {
   getById(id: number) {
     return this.http
       .get<UserResponse>(`${environment.API_URL}/users/${id}`)
-      .pipe(map(response => response.user));
+      .pipe(
+        map(response => response.user),
+        catchError(handleError('getById', null))
+      );
   }
 
   toggleActive(id: number, toggleTo: boolean) {
