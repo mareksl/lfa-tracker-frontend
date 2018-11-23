@@ -11,6 +11,7 @@ import { MultiSelectComponent } from './components/multi-select/multi-select.com
 import { ChartsModule } from 'ng2-charts';
 import { PercentageColorDirective } from './directives/percentage-color.directive';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
 
 @NgModule({
   imports: [CommonModule, ChartsModule],
@@ -23,7 +24,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     MultiSelectComponent,
     ProgressBarComponent,
     ClickOutsideDirective,
-    PercentageColorDirective
+    PercentageColorDirective,
+    BarChartComponent
   ],
   exports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
     MultiSelectComponent,
     ProgressBarComponent,
     ClickOutsideDirective,
-    PercentageColorDirective
+    PercentageColorDirective,
+    BarChartComponent
   ]
 })
 export class SharedModule {}
