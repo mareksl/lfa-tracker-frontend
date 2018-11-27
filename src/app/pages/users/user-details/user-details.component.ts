@@ -14,6 +14,8 @@ export class UserDetailsComponent implements OnInit {
 
   loading: boolean;
 
+  roles: string[];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,6 +28,8 @@ export class UserDetailsComponent implements OnInit {
       this.userID = +params['id'];
       this.getUser(this.userID);
     });
+
+    this.roles = ['super', 'admin', 'manager', 'analyst'];
   }
 
   getUser(id: number) {
@@ -59,5 +63,13 @@ export class UserDetailsComponent implements OnInit {
         this.router.navigate(['../'], { relativeTo: this.route });
       });
     }
+  }
+
+  setUserRole(role) {
+    this.loading = true;
+    this.usersService.setRole(this.user.userID, role).subscribe(user => {
+      this.user = user;
+      this.loading = false;
+    });
   }
 }

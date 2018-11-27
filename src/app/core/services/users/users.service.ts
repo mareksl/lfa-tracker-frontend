@@ -45,4 +45,12 @@ export class UsersService {
   delete(id: number) {
     return this.http.delete<UserResponse>(`${environment.API_URL}/users/${id}`);
   }
+
+  setRole(id: number, role: string) {
+    return this.http
+      .patch<UserResponse>(`${environment.API_URL}/users/${id}`, {
+        role
+      })
+      .pipe(map(response => response.user));
+  }
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: UsersComponent,
-    data: { state: 'users', allowed: ['admin', 'super'] },
+    data: { state: 'users', allowed: ['super'] },
     canActivate: [RoleGuard]
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   {
     path: ':id',
     component: UserDetailsComponent,
-    data: { state: 'user-details', allowed: ['admin', 'super'] },
+    data: { state: 'user-details', allowed: ['super'] },
     canActivate: [RoleGuard]
   }
 ];

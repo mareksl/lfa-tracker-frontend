@@ -48,7 +48,6 @@ export class FundsService {
       }
       return result;
     }, {});
-    console.log(q);
     return this.http
       .get<FundsResponse>(`${environment.API_URL}/funds`, {
         params: { page: `${page}`, limit: `${limit}`, ...q }

@@ -1,8 +1,5 @@
 <div class="user-details">
-  <div
-    class="no-data no-data--danger"
-    *ngIf="!user && !loading; else: content"
-  >
+  <div class="no-data no-data--danger" *ngIf="!user && !loading; else: content">
     <p>User not available!</p>
   </div>
   <ng-template #content>
@@ -22,7 +19,7 @@
           </li>
           <li class="data-point">
             <span class="data-point__title">Role</span>
-            <span class="data-point__data">{{ user.role }}</span>
+            <span class="data-point__data">{{ user.role | titlecase }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Status</span>
@@ -32,9 +29,27 @@
           </li>
         </ul>
       </div>
-      <div class="user-details__actions col-2">
-        <ul class="user-details__buttons">
-          <li>
+      <div class="user-details__data col-2">
+        <ul class="user-details__actions">
+          <li class="user-details__action">
+            <select
+              class="select user-details__role-select"
+              [ngModel]="user.role"
+              #roleSelect="ngModel"
+            >
+              <option *ngFor="let role of roles" [value]="role">{{
+                role | titlecase
+              }}</option>
+            </select>
+            <button
+              class="button user-details__role-set"
+              (click)="setUserRole(roleSelect.value)"
+              [disabled]="!roleSelect.dirty"
+            >
+              Set
+            </button>
+          </li>
+          <li class="user-details__action">
             <button
               class="button user-details__button"
               [ngClass]="{
@@ -46,7 +61,7 @@
               {{ user.active ? 'Deactivate' : 'Activate' }}
             </button>
           </li>
-          <li>
+          <li class="user-details__action">
             <button
               class="button user-details__button button--danger"
               (click)="deleteUser()"

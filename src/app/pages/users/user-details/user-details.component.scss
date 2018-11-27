@@ -16,17 +16,26 @@
 }
 
 .user-details__actions {
-  @include content-box;
-}
-
-.user-details__buttons {
   display: flex;
   flex-flow: column;
   align-items: stretch;
 }
 
+.user-details__action {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .user-details__button {
   width: 100%;
+}
+
+.user-details__role-select {
+  margin: 0.25rem;
+  flex: 1 0 auto;
+}
+.user-details__role-set {
+  flex: 1 1 auto;
 }
 
 .data-point {
