@@ -34,6 +34,15 @@ export class UsersService {
       );
   }
 
+  getMe() {
+    return this.http
+      .get<UserResponse>(`${environment.API_URL}/users/me`)
+      .pipe(
+        map(response => response.user),
+        catchError(handleError('getMe', null))
+      );
+  }
+
   toggleActive(id: number, toggleTo: boolean) {
     return this.http
       .patch<UserResponse>(`${environment.API_URL}/users/${id}`, {
@@ -50,6 +59,14 @@ export class UsersService {
     return this.http
       .patch<UserResponse>(`${environment.API_URL}/users/${id}`, {
         role
+      })
+      .pipe(map(response => response.user));
+  }
+
+  changePassword(password: string) {
+    return this.http
+      .patch<UserResponse>(`${environment.API_URL}/users/me`, {
+        password
       })
       .pipe(map(response => response.user));
   }

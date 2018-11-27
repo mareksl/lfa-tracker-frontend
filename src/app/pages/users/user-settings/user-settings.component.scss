@@ -7,6 +7,36 @@
   @include grid-container;
 }
 
-.user-settings__heading {
+.user-settings__header {
   @include main-content__header;
+}
+
+.user-settings__data {
+  @include content-box;
+}
+
+.user-settings__form {
+  display: flex;
+  flex-flow: column;
+}
+
+.data-point {
+  display: flex;
+  padding-bottom: 0.5rem;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
+.data-point__title {
+  font-weight: 500;
+}
+
+.data-point__data {
+  text-align: right;
+}
+
+@media screen and (min-width: $breakpoint-width-mid) {
+  .data-point {
+    flex-flow: row nowrap;
+  }
 }
