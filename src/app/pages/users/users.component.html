@@ -1,0 +1,29 @@
+<div class="users">
+  <h2 class="users__header">Users</h2>
+
+  <div class="users__section">
+    <ul class="users__list" *ngIf="users.length > 0">
+      <li class="users-list__item" *ngFor="let user of users">
+        <span class="users-list__datapoint">{{ user.userID }}</span>
+        <span class="users-list__datapoint"
+          >{{ user.firstName }} {{ user.lastName }}</span
+        >
+        <span class="users-list__datapoint">{{ user.role | titlecase }}</span>
+        <span
+          class="users-list__datapoint"
+          [ngClass]="{
+            'text--success': user.active,
+            'text--danger': !user.active
+          }"
+          >{{ (user.active ? 'active' : 'inactive') | titlecase }}</span
+        >
+        <button
+          class="button button--square button--success users-list__button"
+          [routerLink]="['/', 'users', user.userID]"
+        >
+          <span class="fa fa-pencil"></span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

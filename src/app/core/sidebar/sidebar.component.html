@@ -1,22 +1,57 @@
 <nav class="nav">
   <ul class="nav-list">
-    <li class="nav-list__item" routerLinkActive="nav-list__item--active" [routerLinkActiveOptions]="{exact: true}">
-      <a [routerLink]="['/']" class="link nav-list__link">Dashboard <span class="fa fa-fw fa-dashboard"></span></a>
+    <li
+      class="nav-list__item"
+      routerLinkActive="nav-list__item--active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <a [routerLink]="['/']" class="link nav-list__link"
+        >Dashboard <span class="fa fa-fw fa-dashboard"></span
+      ></a>
     </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">
-      <a [routerLink]="['/', 'funds']" class="link nav-list__link">Funds <span class="fa fa-fw fa-list-alt"></span></a>
+      <a [routerLink]="['/', 'funds']" class="link nav-list__link"
+        >Funds <span class="fa fa-fw fa-list-alt"></span
+      ></a>
     </li>
-    <li class="nav-list__item nav-list__item--expandable" routerLinkActive="nav-list__item--active">
-      <a [routerLink]="['/', 'statistics']" class="link nav-list__link">Statistics <span class="fa fa-fw fa-pie-chart"></span></a>
+    <li
+      class="nav-list__item nav-list__item--expandable"
+      routerLinkActive="nav-list__item--active"
+    >
+      <a [routerLink]="['/', 'statistics']" class="link nav-list__link"
+        >Statistics <span class="fa fa-fw fa-pie-chart"></span
+      ></a>
     </li>
-    <li class="nav-list__item nav-list__item--expandable" routerLinkActive="nav-list__item--active">
-      <a [routerLink]="['/', 'charts']" class="link nav-list__link">Charts <span class="fa fa-fw fa-line-chart"></span></a>
+    <li
+      class="nav-list__item nav-list__item--expandable"
+      routerLinkActive="nav-list__item--active"
+    >
+      <a [routerLink]="['/', 'charts']" class="link nav-list__link"
+        >Charts <span class="fa fa-fw fa-line-chart"></span
+      ></a>
     </li>
-    <li class="nav-list__item" routerLinkActive="nav-list__item--active" *ngIf="checkRole()">
-      <a [routerLink]="['/', 'admin']" class="link nav-list__link">Admin <span class="fa fa-fw fa-wrench"></span></a>
+    <li
+      class="nav-list__item"
+      routerLinkActive="nav-list__item--active"
+      *ngIf="checkRole(['super', 'admin'])"
+    >
+      <a [routerLink]="['/', 'admin']" class="link nav-list__link"
+        >Admin <span class="fa fa-fw fa-wrench"></span
+      ></a>
+    </li>
+    <li
+      class="nav-list__item"
+      routerLinkActive="nav-list__item--active"
+      *ngIf="checkRole(['super'])"
+    >
+      <a [routerLink]="['/', 'users']" class="link nav-list__link"
+        >Users <span class="fa fa-fw fa-users"></span
+      ></a>
     </li>
     <li class="nav-list__item" routerLinkActive="nav-list__item--active">
-      <a [routerLink]="['/', 'about']" class="link nav-list__link">About <span class="fa fa-fw fa-info-circle"></span></a>
+      <a [routerLink]="['/', 'about']" class="link nav-list__link"
+        >About <span class="fa fa-fw fa-info-circle"></span
+      ></a>
     </li>
   </ul>
 </nav>

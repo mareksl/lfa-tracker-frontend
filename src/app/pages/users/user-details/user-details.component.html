@@ -1,0 +1,76 @@
+<div class="user-details">
+  <div class="no-data no-data--danger" *ngIf="!user && !loading; else: content">
+    <p>User not available!</p>
+  </div>
+  <ng-template #content>
+    <app-loading-overlay
+      *ngIf="loading; else: userDetails"
+    ></app-loading-overlay>
+    <ng-template #userDetails>
+      <div class="user-details__header">
+        <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+      </div>
+      <div class="user-details__data col-10">
+        <h3 class="user-details__header">User data</h3>
+        <ul>
+          <li class="data-point">
+            <span class="data-point__title">UserID</span>
+            <span class="data-point__data">{{ user.userID }}</span>
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">Role</span>
+            <span class="data-point__data">{{ user.role | titlecase }}</span>
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">Status</span>
+            <span class="data-point__data">{{
+              user.active ? 'Active' : 'Inactive'
+            }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="user-details__data col-2">
+        <ul class="user-details__actions">
+          <li class="user-details__action">
+            <select
+              class="select user-details__role-select"
+              [ngModel]="user.role"
+              #roleSelect="ngModel"
+            >
+              <option *ngFor="let role of roles" [value]="role">{{
+                role | titlecase
+              }}</option>
+            </select>
+            <button
+              class="button user-details__role-set"
+              (click)="setUserRole(roleSelect.value)"
+              [disabled]="!roleSelect.dirty"
+            >
+              Set
+            </button>
+          </li>
+          <li class="user-details__action">
+            <button
+              class="button user-details__button"
+              [ngClass]="{
+                'button--success': !user.active,
+                'button--danger': user.active
+              }"
+              (click)="toggleActive()"
+            >
+              {{ user.active ? 'Deactivate' : 'Activate' }}
+            </button>
+          </li>
+          <li class="user-details__action">
+            <button
+              class="button user-details__button button--danger"
+              (click)="deleteUser()"
+            >
+              Delete
+            </button>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

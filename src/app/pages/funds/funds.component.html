@@ -1,16 +1,34 @@
 <div class="funds">
   <div class="funds__header">
     <h2>Funds</h2>
-    <span>Results: {{fullFundCount}}</span>
-    <button class="button button--square button--accent button--refresh" (click)="fetchFunds()" [disabled]="loading">
-      <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
+    <span>Results: {{ fullFundCount }}</span>
+    <button
+      class="button button--square button--accent button--refresh"
+      (click)="fetchFunds()"
+      [disabled]="loading"
+    >
+      <span
+        class="fa fa-fw fa-refresh"
+        [ngClass]="{ 'fa-spin': loading }"
+      ></span>
     </button>
   </div>
-  <app-funds-pagination class="funds__pagination" [pageCount]="pageCount" [currentPage]="page" (currentPageChange)="changePage($event)"
-    [resultsPerPage]="limit" (resultsPerPageChange)="changeLimit($event)" [query]="query" (queryChange)="search($event)"></app-funds-pagination>
-  <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
+  <app-funds-pagination
+    class="funds__pagination"
+    [pageCount]="pageCount"
+    [currentPage]="page"
+    (currentPageChange)="changePage($event)"
+    [resultsPerPage]="limit"
+    (resultsPerPageChange)="changeLimit($event)"
+    [query]="fundName"
+    (queryChange)="search($event)"
+  ></app-funds-pagination>
+  <app-loading-overlay *ngIf="loading; else: loaded"></app-loading-overlay>
   <ng-template #loaded>
-    <div class="no-funds no-funds--danger" *ngIf="funds.length === 0; else content">
+    <div
+      class="no-data no-data--danger"
+      *ngIf="funds.length === 0; else: content"
+    >
       <p>No funds available!</p>
     </div>
     <ng-template #content>

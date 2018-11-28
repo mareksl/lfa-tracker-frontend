@@ -23,7 +23,6 @@ export class FundsAdvancedSearchComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private fundsService: FundsService
   ) {}
 
@@ -33,9 +32,9 @@ export class FundsAdvancedSearchComponent implements OnInit {
       order: new FormControl(null),
       lipperID: new FormControl(null),
       department: new FormControl(null),
-      assignee: new FormControl(null),
-      universe: new FormControl(null),
-      ranks: this.buildRanks()
+      fundOwner: new FormControl(null),
+      awardUniverse: new FormControl(null),
+      highestRank: this.buildRanks()
     });
   }
 
@@ -46,13 +45,13 @@ export class FundsAdvancedSearchComponent implements OnInit {
     return new FormArray(arr);
   }
 
-  get ranks(): FormArray {
-    return <FormArray>this.searchForm.get('ranks');
+  get highestRank(): FormArray {
+    return <FormArray>this.searchForm.get('highestRank');
   }
 
   search() {
     const formValue = Object.assign({}, this.searchForm.value, {
-      ranks: this.searchForm.value['ranks']
+      highestRank: this.searchForm.value['highestRank']
         .reduce((result, selected, i) => {
           if (selected) {
             result.push(this.rankOptions[i].id);
@@ -61,6 +60,7 @@ export class FundsAdvancedSearchComponent implements OnInit {
         }, [])
         .join()
     });
+    this.fundsService.getRange(1, 10, formValue);
     this.router.navigate(['/funds'], {
       queryParams: formValue
     });

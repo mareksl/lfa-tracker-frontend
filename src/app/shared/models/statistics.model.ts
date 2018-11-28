@@ -3,6 +3,10 @@ export interface IStatisticsItem {
   totalCount: number;
   doneCount: number;
   percentageDone: number;
+  extendedLGCVerified: number;
+  performanceVerified: number;
+  profileDataVerified: number;
+  timeseriesDataVerified: number;
 }
 interface IStatisticsByRank {
   [name: string]: IStatisticsItem;
@@ -13,6 +17,10 @@ interface IStatisticsByProperty {
     totalCount: number;
     doneCount: number;
     percentageDone: number;
+    extendedLGCVerified: number;
+    performanceVerified: number;
+    profileDataVerified: number;
+    timeseriesDataVerified: number;
   };
 }
 
