@@ -21,7 +21,7 @@ export class FundsComponent implements OnInit, OnDestroy {
   pageCount: number;
   limit: number;
   fullFundCount: number;
-  query: string;
+  fundName: string;
 
   constructor(
     private fundsService: FundsService,
@@ -34,7 +34,7 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.page = 1;
     this.limit = 10;
     this.funds = [];
-    this.query = '';
+    this.fundName = '';
 
     this.fundsSubscription = this.fundsService.fundsChanged.subscribe(
       (response: FundsResponse) => {
@@ -52,7 +52,7 @@ export class FundsComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         this.page = params.page || this.page;
         this.limit = params.limit || this.limit;
-        this.query = params.q || this.query;
+        this.fundName = params.fundName || this.fundName;
         this.fetchFunds();
       });
 
@@ -62,7 +62,7 @@ export class FundsComponent implements OnInit, OnDestroy {
   fetchFunds() {
     this.loading = true;
     this.fundsService.getRange(this.page, this.limit, {
-      fundName: this.query
+      fundName: this.fundName
     });
   }
 
@@ -82,11 +82,11 @@ export class FundsComponent implements OnInit, OnDestroy {
     });
   }
 
-  search(query: string) {
-    this.query = query;
+  search(fundName: string) {
+    this.fundName = fundName;
     this.router.navigate(['/funds'], {
       queryParamsHandling: 'merge',
-      queryParams: { q: query, page: 1 }
+      queryParams: { fundName, page: 1 }
     });
   }
 

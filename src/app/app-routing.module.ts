@@ -6,7 +6,10 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: './pages/authenticate/authenticate.module#AuthenticateModule'
   },
-  { path: '', loadChildren: './core/core.module#CoreModule' }
+  {
+    path: '',
+    loadChildren: './core/core.module#CoreModule'
+  }
 ];
 
 @NgModule({

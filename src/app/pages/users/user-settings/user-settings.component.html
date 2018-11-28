@@ -1,0 +1,79 @@
+<div class="user-settings">
+  <div class="no-data no-data--danger" *ngIf="!user && !loading; else: content">
+    <p>User not available!</p>
+  </div>
+  <ng-template #content>
+    <app-loading-overlay
+      *ngIf="loading; else: userDetails"
+    ></app-loading-overlay>
+    <ng-template #userDetails>
+      <div class="user-settings__header"><h2>User Settings</h2></div>
+      <div class="user-settings__data col-8">
+        <h3 class="user-settings__header">User data</h3>
+        <ul>
+          <li class="data-point">
+            <span class="data-point__title">Name</span>
+            <span class="data-point__data"
+              >{{ user.firstName }} {{ user.lastName }}</span
+            >
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">UserID</span>
+            <span class="data-point__data">{{ user.userID }}</span>
+          </li>
+          <li class="data-point">
+            <span class="data-point__title">Role</span>
+            <span class="data-point__data">{{ user.role | titlecase }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="user-settings__data col-4">
+        <form
+          #passwordForm="ngForm"
+          class="user-settings__form"
+          (submit)="changePassword(passwordForm)"
+          appValidateEqualPassword
+        >
+          <label class="label" for="password">New Password</label>
+          <input
+            id="password"
+            type="password"
+            class="input"
+            ngModel
+            name="password"
+            #password="ngModel"
+            required
+            pattern="^\S.{4,}\S$"
+          />
+          <label class="label" for="passwordConf">Confirm New Password</label>
+          <input
+            id="passwordConf"
+            type="password"
+            class="input"
+            ngModel
+            name="passwordConf"
+            #passwordConf="ngModel"
+            required
+          />
+          <span
+            *ngIf="
+              password.touched &&
+              passwordConf.touched &&
+              passwordForm.hasError('validateEqualPassword')
+            "
+            class="invalid-helper text--danger"
+          >
+            Passwords do not match
+          </span>
+          <button
+            type="submit"
+            class="button"
+            [disabled]="passwordForm.invalid"
+          >
+            Change Password
+          </button>
+        </form>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

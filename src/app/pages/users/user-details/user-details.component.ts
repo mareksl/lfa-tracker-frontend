@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/services/auth/auth.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { UsersService } from 'src/app/core/services/users/users.service';
 
 @Component({
   selector: 'app-user-details',
@@ -13,7 +14,13 @@ export class UserDetailsComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private route: ActivatedRoute) {}
+  roles: string[];
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private usersService: UsersService
+  ) {}
 
   ngOnInit() {
     this.loading = true;
@@ -21,9 +28,48 @@ export class UserDetailsComponent implements OnInit {
       this.userID = +params['id'];
       this.getUser(this.userID);
     });
+
+    this.roles = ['super', 'admin', 'manager', 'analyst'];
   }
 
   getUser(id: number) {
-    console.log(id);
+    this.usersService.getById(id).subscribe(user => {
+      this.user = user;
+      this.loading = false;
+    });
+  }
+
+  toggleActive() {
+    this.loading = true;
+
+    const toggleTo = !this.user.active;
+    this.usersService
+      .toggleActive(this.user.userID, toggleTo)
+      .subscribe(user => {
+        this.user = user;
+        this.loading = false;
+      });
+  }
+
+  deleteUser() {
+    if (
+      confirm(
+        `Do you want to remove user ${this.user.userID}: ${
+          this.user.firstName
+        } ${this.user.lastName}?`
+      )
+    ) {
+      this.usersService.delete(this.user.userID).subscribe(() => {
+        this.router.navigate(['../'], { relativeTo: this.route });
+      });
+    }
+  }
+
+  setUserRole(role) {
+    this.loading = true;
+    this.usersService.setRole(this.user.userID, role).subscribe(user => {
+      this.user = user;
+      this.loading = false;
+    });
   }
 }

@@ -23,7 +23,7 @@ export interface FundQuery {
   fundName?: string;
   orderBy?: string;
   desc?: string;
-  ranks?: string;
+  highestRank?: string;
   fundOwner?: string;
   lipperID?: string;
   awardUniverse?: string;
@@ -42,9 +42,15 @@ export class FundsService {
   }
 
   getRange(page: number, limit: number, query: FundQuery) {
+    const q = Object.keys(query).reduce((result, key) => {
+      if (query[key] !== null && query[key] !== '') {
+        result[key] = query[key];
+      }
+      return result;
+    }, {});
     return this.http
       .get<FundsResponse>(`${environment.API_URL}/funds`, {
-        params: { page: `${page}`, limit: `${limit}`, ...query }
+        params: { page: `${page}`, limit: `${limit}`, ...q }
       })
       .pipe(
         map(fundsResponse => {

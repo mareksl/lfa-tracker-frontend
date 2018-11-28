@@ -8,7 +8,7 @@ import { User } from '../services/auth/auth.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
 
@@ -16,9 +16,8 @@ export class SidebarComponent implements OnInit {
     return this.router.url.includes(route);
   }
 
-  checkRole() {
+  checkRole(roles: string[]) {
     const user = <User>JSON.parse(localStorage.getItem('currentUser'));
-    const allowedRoles = ['super', 'admin'];
-    return allowedRoles.includes(user.role);
+    return roles.includes(user.role);
   }
 }

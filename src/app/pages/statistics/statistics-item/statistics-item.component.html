@@ -1,31 +1,70 @@
 <div class="statistics-item">
   <div class="statistics-item__data" #statitem>
-    <h4 class="statistics-item__heading">{{title | titlecase}}{{key}}</h4>
+    <h4 class="statistics-item__heading">{{ title | titlecase }}{{ key }}</h4>
     <ul>
       <li class="statistics-item__datapoint">
-        <span>Total Fund Count:</span>
-        <span>{{item.totalCount}}</span>
+        <span>Total Fund Count:</span> <span>{{ item.totalCount }}</span>
       </li>
       <li class="statistics-item__datapoint">
-        <span>Checked Funds: </span>
-        <span>{{item.doneCount}}</span>
+        <span>Checked Funds: </span> <span>{{ item.doneCount }}</span>
       </li>
-      <li *ngFor="let rank of item.statsByRank | keyvalue" class="statistics-item__datapoint">
-        <span>Rank {{rank.key}}: {{rank.value.doneCount}}/{{rank.value.totalCount}}</span>
-        <span class="text--accent" [appPercentageColor]="rank.value.percentageDone">
-          {{rank.value.percentageDone | percent:'1.0-2'}}
+      <li
+        *ngFor="let rank of (item.statsByRank | keyvalue)"
+        class="statistics-item__datapoint"
+      >
+        <span
+          >Rank {{ rank.key }}: {{ rank.value.doneCount }}/{{
+            rank.value.totalCount
+          }}</span
+        >
+        <span
+          class="text--accent"
+          [appPercentageColor]="rank.value.percentageDone"
+        >
+          {{ rank.value.percentageDone | percent: '1.0-2' }}
         </span>
       </li>
       <li class="statistics-item__datapoint statistics-item__datapoint--accent">
         <span>Total: </span>
         <span [appPercentageColor]="item.percentageDone">
-          {{item.percentageDone | percent:'1.0-2'}}
+          {{ item.percentageDone | percent: '1.0-2' }}
         </span>
       </li>
     </ul>
-    <app-total-pie-chart class="chart" [chartData]="[item.doneCount, item.totalCount - item.doneCount]" [chartLabels]="['Checked', 'Unchecked']"></app-total-pie-chart>
+    <app-total-pie-chart
+      class="chart"
+      [chartData]="[item.doneCount, item.totalCount - item.doneCount]"
+      [chartLabels]="['Checked', 'Unchecked']"
+    ></app-total-pie-chart>
+    <h5 class="statistics-item__verified-heading">Verified:</h5>
+    <app-bar-chart
+      class="chart"
+      [chartData]="[
+        item.profileDataVerified,
+        item.extendedLGCVerified,
+        item.timeseriesDataVerified,
+        item.performanceVerified
+      ]"
+      [chartLabels]="[
+        'Profile Data',
+        'Extended LGC',
+        'Time Series',
+        'Performance'
+      ]"
+      [max]="item.totalCount"
+    ></app-bar-chart>
   </div>
-  <button class="button button--neutral statistics-item__export-button" (click)="toCanvas(statitem)" [disabled]="exporting">
-    <span class="fa fa-fw" [ngClass]="{'fa-refresh fa-spin': exporting, 'fa-file-image-o': !exporting}"></span>
+  <button
+    class="button button--neutral statistics-item__export-button"
+    (click)="toCanvas(statitem)"
+    [disabled]="exporting"
+  >
+    <span
+      class="fa fa-fw"
+      [ngClass]="{
+        'fa-refresh fa-spin': exporting,
+        'fa-file-image-o': !exporting
+      }"
+    ></span>
   </button>
 </div>

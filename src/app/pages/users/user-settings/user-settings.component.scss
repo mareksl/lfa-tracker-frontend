@@ -1,41 +1,23 @@
 @import '../../../../scss/base/variables';
-@import '../../../../scss/utils/mixins';
 @import '../../../../scss/base/grid';
+@import '../../../../scss/utils/mixins';
 
-.user-details {
+.user-settings {
   @include main-content;
   @include grid-container;
 }
 
-.user-details__header {
+.user-settings__header {
   @include main-content__header;
 }
 
-.user-details__data {
+.user-settings__data {
   @include content-box;
 }
 
-.user-details__actions {
+.user-settings__form {
   display: flex;
   flex-flow: column;
-  align-items: stretch;
-}
-
-.user-details__action {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.user-details__button {
-  width: 100%;
-}
-
-.user-details__role-select {
-  margin: 0.25rem;
-  flex: 1 0 auto;
-}
-.user-details__role-set {
-  flex: 1 1 auto;
 }
 
 .data-point {
