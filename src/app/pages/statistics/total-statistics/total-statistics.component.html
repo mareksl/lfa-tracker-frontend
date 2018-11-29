@@ -1,29 +1,74 @@
-<h3 class="total-statistics__header">Total stats as of {{statistics.date | date:'dd/MM/y'}}</h3>
+<h3 class="total-statistics__header">
+  Total stats as of {{ statistics.date | date: 'dd/MM/y' }}
+</h3>
 <ul class="total-statistics__list">
   <li class="total-statistics__datapoint">
-    <span class="datapoint__title">
-      Total Fund Count
-    </span>
-    <span class="datapoint__data">
-      {{statistics.totalCount}}
-    </span>
+    <span class="datapoint__title">Total Fund Count</span>
+    <span class="datapoint__data">{{ statistics.totalCount }}</span>
   </li>
   <li class="total-statistics__datapoint">
-    <span class="datapoint__title">
-      Checked Funds
-    </span>
-    <span class="datapoint__data">
-      {{statistics.doneCount}}
-    </span>
+    <span class="datapoint__title">Checked Funds</span>
+    <span class="datapoint__data">{{ statistics.doneCount }}</span>
   </li>
   <li class="total-statistics__datapoint total-statistics__datapoint--accent">
-    <span class="datapoint__title">
-      Checked Percentage
-    </span>
+    <span class="datapoint__title">Checked Percentage</span>
     <span class="datapoint__data">
-      {{statistics.percentageDone | percent:'1.0-2'}}
+      {{ statistics.percentageDone | percent: '1.0-2' }}
     </span>
   </li>
 </ul>
 
-<app-progress-bar [value]="statistics.percentageDone" class="total-statistics__progress"></app-progress-bar>
+<app-progress-bar
+  [value]="statistics.percentageDone"
+  class="total-statistics__progress"
+></app-progress-bar>
+
+<ul class="total-statistics__list">
+  <li class="total-statistics__datapoint">
+    <span class="datapoint__title datapoint__title--small"
+      >Profile Data Verified</span
+    >
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.profileDataVerified
+    }}</span>
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.profileDataVerified / statistics.totalCount | percent: '1.0-2'
+    }}</span>
+  </li>
+  <li class="total-statistics__datapoint">
+    <span class="datapoint__title datapoint__title--small"
+      >Extended LGC Verified</span
+    >
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.extendedLGCVerified
+    }}</span>
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.extendedLGCVerified / statistics.totalCount | percent: '1.0-2'
+    }}</span>
+  </li>
+  <li class="total-statistics__datapoint">
+    <span class="datapoint__title datapoint__title--small"
+      >Timeseries Data Verified</span
+    >
+    <span class="datapoint__data datapoint__data--small">
+      {{ statistics.timeseriesDataVerified }}
+    </span>
+    <span class="datapoint__data datapoint__data--small">
+      {{
+        statistics.timeseriesDataVerified / statistics.totalCount
+          | percent: '1.0-2'
+      }}
+    </span>
+  </li>
+  <li class="total-statistics__datapoint">
+    <span class="datapoint__title datapoint__title--small"
+      >Performance Verified</span
+    >
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.performanceVerified
+    }}</span>
+    <span class="datapoint__data datapoint__data--small">{{
+      statistics.performanceVerified / statistics.totalCount | percent: '1.0-2'
+    }}</span>
+  </li>
+</ul>
