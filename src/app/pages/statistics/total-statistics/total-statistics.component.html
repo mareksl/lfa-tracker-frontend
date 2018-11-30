@@ -51,11 +51,11 @@
       >Timeseries Data Verified</span
     >
     <span class="datapoint__data datapoint__data--small">
-      {{ statistics.timeseriesDataVerified }}
+      {{ statistics.timeSeriesVerified }}
     </span>
     <span class="datapoint__data datapoint__data--small">
       {{
-        statistics.timeseriesDataVerified / statistics.totalCount
+        statistics.timeSeriesVerified / statistics.totalCount
           | percent: '1.0-2'
       }}
     </span>
