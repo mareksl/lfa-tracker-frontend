@@ -6,7 +6,7 @@ export interface IStatisticsItem {
   extendedLGCVerified: number;
   performanceVerified: number;
   profileDataVerified: number;
-  timeseriesDataVerified: number;
+  timeSeriesVerified: number;
 }
 interface IStatisticsByRank {
   [name: string]: IStatisticsItem;
@@ -20,7 +20,7 @@ interface IStatisticsByProperty {
     extendedLGCVerified: number;
     performanceVerified: number;
     profileDataVerified: number;
-    timeseriesDataVerified: number;
+    timeSeriesVerified: number;
   };
 }
 

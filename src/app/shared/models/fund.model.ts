@@ -20,7 +20,7 @@ export interface IFund {
   extendedLGCVerified: boolean;
   performanceVerified: boolean;
   profileDataVerified: boolean;
-  timeseriesDataVerified: boolean;
+  timeSeriesVerified: boolean;
 }
 
 export class Fund implements IFund {
@@ -45,7 +45,7 @@ export class Fund implements IFund {
   extendedLGCVerified: boolean;
   performanceVerified: boolean;
   profileDataVerified: boolean;
-  timeseriesDataVerified: boolean;
+  timeSeriesVerified: boolean;
 
   constructor(data: IFund) {
     this.lipperID = data.lipperID;
@@ -69,7 +69,7 @@ export class Fund implements IFund {
     this.extendedLGCVerified = data.extendedLGCVerified;
     this.performanceVerified = data.performanceVerified;
     this.profileDataVerified = data.profileDataVerified;
-    this.timeseriesDataVerified = data.timeseriesDataVerified;
+    this.timeSeriesVerified = data.timeSeriesVerified;
   }
 
   get fundStatus(): string {
@@ -77,7 +77,7 @@ export class Fund implements IFund {
       this.extendedLGCVerified,
       this.performanceVerified,
       this.profileDataVerified,
-      this.timeseriesDataVerified
+      this.timeSeriesVerified
     ];
 
     return statuses.every(v => v)
