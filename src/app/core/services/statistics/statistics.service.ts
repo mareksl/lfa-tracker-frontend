@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IStatistics } from '../../../shared/models/statistics.model';
 import { catchError, map } from 'rxjs/operators';
 import { handleError } from '../../../shared/handlers/error.handler';
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 export interface StatisticsResponse {
@@ -18,17 +18,17 @@ export interface HistoricalStatisticsResponse {
 })
 export class StatisticsService {
   stats: IStatistics;
-  statsChanged: BehaviorSubject<IStatistics>;
+  statsChanged: Subject<IStatistics>;
 
   historicalStats: IStatistics[];
-  historicalStatsChanged: BehaviorSubject<IStatistics[]>;
+  historicalStatsChanged: Subject<IStatistics[]>;
 
   constructor(private http: HttpClient) {
     this.stats = null;
-    this.statsChanged = new BehaviorSubject<IStatistics>(null);
+    this.statsChanged = new Subject<IStatistics>();
 
     this.historicalStats = [];
-    this.historicalStatsChanged = new BehaviorSubject<IStatistics[]>([]);
+    this.historicalStatsChanged = new Subject<IStatistics[]>();
   }
 
   getLatest() {
@@ -55,7 +55,7 @@ export class StatisticsService {
       )
       .subscribe((stats: IStatistics[]) => {
         this.historicalStats = stats;
-        this.historicalStatsChanged.next(this.historicalStats);
+        this.historicalStatsChanged.next(stats);
       });
   }
 
