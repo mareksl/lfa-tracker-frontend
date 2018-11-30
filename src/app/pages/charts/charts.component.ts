@@ -7,7 +7,7 @@ import { formatDate } from '@angular/common';
 interface IChartData {
   data: number[];
   label: string;
-  lineTension: number;
+  spanGaps: boolean;
 }
 
 @Component({
@@ -34,7 +34,7 @@ export class ChartsComponent implements OnInit, OnDestroy {
       { property: 'statsByUniverse', title: 'Universe' }
     ];
 
-    this.loading = false;
+    this.loading = true;
 
     this.historicalSub = this.statsService.historicalStatsChanged.subscribe(
       (stats: IStatistics[]) => {
@@ -76,22 +76,22 @@ export class ChartsComponent implements OnInit, OnDestroy {
       .sort((a, b) => {
         return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
       })
-      .reduce((result, stats, j) => {
+      .reduce((result: IChartData[], stats, j) => {
         const props = Object.keys(stats[property]);
 
-        props.forEach((key, i) => {
+        props.forEach(key => {
           if (propertyNames.indexOf(key) === -1) {
             propertyNames.push(key);
           }
 
-          if (!result[i]) {
-            result[i] = { data: [], label: key, spanGaps: true };
+          if (!result.some(el => el.label === key)) {
+            result.push({ data: [], label: key, spanGaps: true });
           }
         });
 
-        propertyNames.forEach((key, i) => {
-          result[i].data[j] = stats[property][key]
-            ? (stats[property][key].percentageDone * 100).toFixed(2)
+        propertyNames.forEach((key: string) => {
+          result.find(el => el.label === key).data[j] = stats[property][key]
+            ? +(stats[property][key].percentageDone * 100).toFixed(2)
             : null;
         });
         return result;
