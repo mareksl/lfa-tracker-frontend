@@ -14,15 +14,16 @@ export class FundsAdvancedSearchComponent implements OnInit {
 
   searchForm: FormGroup;
   rankOptions = [
-    { id: 1, selected: true },
-    { id: 2, selected: true },
-    { id: 3, selected: true },
-    { id: 4, selected: true },
-    { id: 5, selected: true }
+    { id: 1, selected: false },
+    { id: 2, selected: false },
+    { id: 3, selected: false },
+    { id: 4, selected: false },
+    { id: 5, selected: false }
   ];
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private fundsService: FundsService
   ) {}
 
@@ -35,6 +36,24 @@ export class FundsAdvancedSearchComponent implements OnInit {
       fundOwner: new FormControl(null),
       awardUniverse: new FormControl(null),
       highestRank: this.buildRanks()
+    });
+
+    this.route.queryParams.subscribe(params => {
+      this.searchForm.patchValue({
+        fundName: params.fundName,
+        order: params.order,
+        lipperID: params.lipperID,
+        department: params.department,
+        fundOwner: params.fundOwner,
+        awardUniverse: params.awardUniverse
+      });
+      if (params.highestRank) {
+        params.highestRank.split(',').forEach(rank => {
+          (<FormArray>this.searchForm.controls['highestRank'])
+            .at(rank - 1)
+            .patchValue(true);
+        });
+      }
     });
   }
 

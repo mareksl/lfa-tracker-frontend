@@ -6,7 +6,46 @@ import {
   FundsService
 } from '../../core/services/funds/funds.service';
 import { Fund } from '../../shared/models/fund.model';
-import { filter } from 'rxjs/operators';
+
+export class SearchQuery {
+  fundName: string;
+  order: string;
+  lipperID: string;
+  department: string;
+  fundOwner: string;
+  awardUniverse: string;
+  highestRank: string;
+
+  constructor() {
+    this.fundName = '';
+    this.order = '';
+    this.lipperID = '';
+    this.department = '';
+    this.fundOwner = '';
+    this.awardUniverse = '';
+    this.highestRank = '';
+  }
+
+  build(params) {
+    this.fundName = params.fundName || '';
+    this.order = params.order || '';
+    this.lipperID = params.lipperID || '';
+    this.department = params.department || '';
+    this.fundOwner = params.fundOwner || '';
+    this.awardUniverse = params.awardUniverse || '';
+    this.highestRank = params.highestRank || '';
+  }
+
+  merge(params) {
+    this.fundName = params.fundName || this.fundName;
+    this.order = params.order || this.order;
+    this.lipperID = params.lipperID || this.lipperID;
+    this.department = params.department || this.department;
+    this.fundOwner = params.fundOwner || this.fundOwner;
+    this.awardUniverse = params.awardUniverse || this.awardUniverse;
+    this.highestRank = params.highestRank || this.highestRank;
+  }
+}
 
 @Component({
   selector: 'app-funds',
@@ -21,7 +60,8 @@ export class FundsComponent implements OnInit, OnDestroy {
   pageCount: number;
   limit: number;
   fullFundCount: number;
-  fundName: string;
+
+  query: SearchQuery;
 
   constructor(
     private fundsService: FundsService,
@@ -34,7 +74,7 @@ export class FundsComponent implements OnInit, OnDestroy {
     this.page = 1;
     this.limit = 10;
     this.funds = [];
-    this.fundName = '';
+    this.query = new SearchQuery();
 
     this.fundsSubscription = this.fundsService.fundsChanged.subscribe(
       (response: FundsResponse) => {
@@ -47,23 +87,21 @@ export class FundsComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.route.queryParams
-      .pipe(filter(params => params.page || params.limit || params.q))
-      .subscribe(params => {
-        this.page = params.page || this.page;
-        this.limit = params.limit || this.limit;
-        this.fundName = params.fundName || this.fundName;
-        this.fetchFunds();
-      });
+    this.route.queryParams.subscribe(params => {
+      this.page = params.page || this.page;
+      this.limit = params.limit || this.limit;
+
+      this.query.merge(params);
+
+      this.fetchFunds();
+    });
 
     this.fetchFunds();
   }
 
   fetchFunds() {
     this.loading = true;
-    this.fundsService.getRange(this.page, this.limit, {
-      fundName: this.fundName
-    });
+    this.fundsService.getRange(this.page, this.limit, this.query);
   }
 
   changePage(page: number) {
@@ -83,10 +121,10 @@ export class FundsComponent implements OnInit, OnDestroy {
   }
 
   search(fundName: string) {
-    this.fundName = fundName;
+    this.query.build({ fundName });
     this.router.navigate(['/funds'], {
       queryParamsHandling: 'merge',
-      queryParams: { fundName, page: 1 }
+      queryParams: { ...this.query, page: 1 }
     });
   }
 
