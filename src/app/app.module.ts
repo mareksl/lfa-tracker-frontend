@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthTokenInterceptor } from './shared/interceptors/auth-token.interceptor';
 import { SharedModule } from './shared/shared.module';
+import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,16 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

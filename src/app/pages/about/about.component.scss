@@ -41,13 +41,23 @@
   }
 }
 
+.changelog__feature {
+  padding: 0.5rem 0;
+
+  &:before {
+    font-family: FontAwesome;
+    content: '\f00c';
+    padding-right: 0.5rem;
+  }
+}
+
 .roadmap__item {
   padding: 0.5rem 0;
 
   &:before {
     font-family: FontAwesome;
     content: '\f096';
-    padding-right: .5rem;
+    padding-right: 0.5rem;
   }
 
   &--complete {

@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.loading = false;
     this.fileStatus = '';
+    this.historicalStats = [];
     this.createForm();
 
     this.historicalSub = this.statsService.historicalStatsChanged.subscribe(
@@ -57,6 +58,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   downloadFile() {
+    this.loading = true;
+
     this.filesService.download().subscribe(res => {
       const filename = res.headers
         .get('Content-Disposition')
@@ -65,13 +68,14 @@ export class AdminComponent implements OnInit, OnDestroy {
         .replace(/['"]/g, '');
       const blob = new Blob([res.body], { type: res.body.type });
       saveAs(blob, filename);
+      this.loading = false;
     });
   }
 
   uploadFile() {
+    this.loading = true;
     const formModel = this.prepareSave();
     this.fileStatus = 'uploading';
-    this.loading = true;
     this.filesService.upload(formModel).subscribe(res => {
       if (res.type === 'uploaded' && res.status === 'pending') {
         this.fileStatus = 'processing';

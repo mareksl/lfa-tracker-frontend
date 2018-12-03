@@ -5,15 +5,38 @@
     <h3 class="about__header">Project</h3>
     <p>Links to repo:</p>
     <ul>
-      <li>Front-End: <a class="link link--inverse" href="https://gitlab.com/mareksl/lfa-tracker-frontend">https://gitlab.com/mareksl/lfa-tracker-frontend</a></li>
-      <li>Back-End: <a href="https://gitlab.com/mareksl/lfa-tracker-backend" class="link link--inverse">https://gitlab.com/mareksl/lfa-tracker-backend</a></li>
+      <li>
+        Front-End:
+        <a
+          class="link link--inverse"
+          href="https://gitlab.com/mareksl/lfa-tracker-frontend"
+          >https://gitlab.com/mareksl/lfa-tracker-frontend</a
+        >
+      </li>
+      <li>
+        Back-End:
+        <a
+          href="https://gitlab.com/mareksl/lfa-tracker-backend"
+          class="link link--inverse"
+          >https://gitlab.com/mareksl/lfa-tracker-backend</a
+        >
+      </li>
     </ul>
-    <hr>
+    <hr />
     <p>
-      <a href="https://opensource.org/licenses/MIT"><img class="footer__badge" src="https://img.shields.io/badge/License-MIT-yellow.svg"
-          alt="License: MIT"></a>
+      <a href="https://opensource.org/licenses/MIT"
+        ><img
+          class="footer__badge"
+          src="https://img.shields.io/badge/License-MIT-yellow.svg"
+          alt="License: MIT"
+      /></a>
     </p>
-    <p>Developed by: Marek Sładczyk; GitHub: <a class="link link--inverse" href="https://github.com/mareksl">https://github.com/mareksl</a></p>
+    <p>
+      Developed by: Marek Sładczyk; GitHub:
+      <a class="link link--inverse" href="https://github.com/mareksl"
+        >https://github.com/mareksl</a
+      >
+    </p>
   </app-panel>
 
   <app-panel class="col-12">
@@ -21,13 +44,35 @@
     <ul class="changelog">
       <li class="changelog__item">
         <h4 class="changelog__version">v 0.1.0</h4>
-        <p>Development</p>
+        <ul class="changelog__feature-list">
+          <li class="changelog__feature">Development</li>
+        </ul>
+      </li>
+      <li class="changelog__item">
+        <h4 class="changelog__version">v 0.2.0</h4>
+        <ul class="changelog__feature-list">
+          <li class="changelog__feature">Code split into modules</li>
+          <li class="changelog__feature">User accounts and management</li>
+        </ul>
+      </li>
+      <li class="changelog__item">
+        <h4 class="changelog__version">v 0.3.0</h4>
+        <ul class="changelog__feature-list">
+          <li class="changelog__feature">Statistics for Verified flags</li>
+          <li class="changelog__feature">Advanced Fund Search</li>
+        </ul>
       </li>
     </ul>
-    <hr>
+    <hr />
     <h3 class="about__header">Roadmap</h3>
     <ul class="roadmap">
-      <li *ngFor="let item of roadmapItems" class="roadmap__item" [ngClass]="{'roadmap__item--complete': item.complete}">{{item.title}}</li>
+      <li
+        *ngFor="let item of roadmapItems"
+        class="roadmap__item"
+        [ngClass]="{ 'roadmap__item--complete': item.complete }"
+      >
+        {{ item.title }}
+      </li>
     </ul>
   </app-panel>
 
@@ -35,16 +80,32 @@
     <h3 class="about__header">Technologies</h3>
     <div class="about__images">
       <a href="https://www.mongodb.com/">
-        <img class="about__image" src="assets/images/mongodb.png" alt="MongoDB">
+        <img
+          class="about__image"
+          src="assets/images/mongodb.png"
+          alt="MongoDB"
+        />
       </a>
       <a href="https://expressjs.com/">
-        <img class="about__image dashboard__image--express" src="assets/images/express.png" alt="Express">
+        <img
+          class="about__image dashboard__image--express"
+          src="assets/images/express.png"
+          alt="Express"
+        />
       </a>
       <a href="https://angular.io/">
-        <img class="about__image" src="assets/images/angular.png" alt="Angular">
+        <img
+          class="about__image"
+          src="assets/images/angular.png"
+          alt="Angular"
+        />
       </a>
       <a href="https://nodejs.org/">
-        <img class="about__image" src="assets/images/nodejs.png" alt="Node.js">
+        <img
+          class="about__image"
+          src="assets/images/nodejs.png"
+          alt="Node.js"
+        />
       </a>
     </div>
   </app-panel>
