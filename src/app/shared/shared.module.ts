@@ -13,6 +13,7 @@ import { PercentageColorDirective } from './directives/percentage-color.directiv
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
 import { ValidateEqualPasswordDirective } from './directives/validate-equal-password.directive';
+import { NotificationsComponent } from './components/notifications/notifications.component';
 
 @NgModule({
   imports: [CommonModule, ChartsModule],
@@ -27,7 +28,8 @@ import { ValidateEqualPasswordDirective } from './directives/validate-equal-pass
     ClickOutsideDirective,
     PercentageColorDirective,
     BarChartComponent,
-    ValidateEqualPasswordDirective
+    ValidateEqualPasswordDirective,
+    NotificationsComponent
   ],
   exports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { ValidateEqualPasswordDirective } from './directives/validate-equal-pass
     ClickOutsideDirective,
     PercentageColorDirective,
     BarChartComponent,
-    ValidateEqualPasswordDirective
+    ValidateEqualPasswordDirective,
+    NotificationsComponent
   ]
 })
 export class SharedModule {}

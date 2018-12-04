@@ -1,0 +1,18 @@
+<div class="notifications">
+  <aside *ngFor="let notif of (notifications | async)">
+    <div
+      (click)="dismiss(notif)"
+      class="notification"
+      [ngClass]="{
+        'notification--success': notif.status === 'success',
+        'notification--warning': notif.status === 'warning',
+        'notification--danger': notif.status === 'danger'
+      }"
+    >
+      {{ notif.message }}
+      <span *ngIf="notif.persistent" class="text--small notification__info-text"
+        >(Click to dismiss)</span
+      >
+    </div>
+  </aside>
+</div>
