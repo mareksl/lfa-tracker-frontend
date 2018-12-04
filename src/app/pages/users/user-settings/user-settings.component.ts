@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/services/auth/auth.service';
 import { UsersService } from 'src/app/core/services/users/users.service';
 import { NgForm } from '@angular/forms';
+import { NotificationsService } from 'src/app/core/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -13,7 +14,10 @@ export class UserSettingsComponent implements OnInit {
 
   loading: boolean;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private notifService: NotificationsService
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -33,6 +37,9 @@ export class UserSettingsComponent implements OnInit {
       .changePassword(form.controls['password'].value)
       .subscribe(user => {
         this.user = user;
+        this.notifService.notify('Password successfully changed', {
+          status: 'success'
+        });
         this.loading = false;
       });
   }

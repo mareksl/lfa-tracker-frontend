@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/core/services/auth/auth.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UsersService } from 'src/app/core/services/users/users.service';
+import { NotificationsService } from 'src/app/core/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-user-details',
@@ -19,7 +20,8 @@ export class UserDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit() {
@@ -47,6 +49,9 @@ export class UserDetailsComponent implements OnInit {
       .toggleActive(this.user.userID, toggleTo)
       .subscribe(user => {
         this.user = user;
+        this.notifService.notify(`User ${toggleTo ? '' : 'de'}activated`, {
+          status: 'success'
+        });
         this.loading = false;
       });
   }
@@ -60,6 +65,9 @@ export class UserDetailsComponent implements OnInit {
       )
     ) {
       this.usersService.delete(this.user.userID).subscribe(() => {
+        this.notifService.notify(`User deleted`, {
+          status: 'success'
+        });
         this.router.navigate(['../'], { relativeTo: this.route });
       });
     }
@@ -69,6 +77,9 @@ export class UserDetailsComponent implements OnInit {
     this.loading = true;
     this.usersService.setRole(this.user.userID, role).subscribe(user => {
       this.user = user;
+      this.notifService.notify('User role set', {
+        status: 'success'
+      });
       this.loading = false;
     });
   }

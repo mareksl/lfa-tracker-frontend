@@ -7,6 +7,7 @@ import { FundsService } from 'src/app/core/services/funds/funds.service';
 import { StatisticsService } from 'src/app/core/services/statistics/statistics.service';
 import { IStatistics } from 'src/app/shared/models/statistics.model';
 import { formatDate } from '@angular/common';
+import { NotificationsService } from 'src/app/core/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-admin',
@@ -28,7 +29,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private filesService: FilesService,
     private fb: FormBuilder,
     private fundsService: FundsService,
-    private statsService: StatisticsService
+    private statsService: StatisticsService,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit() {
@@ -59,6 +61,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   downloadFile() {
     this.loading = true;
+    this.notifService.notify('Exporting file...');
 
     this.filesService.download().subscribe(res => {
       const filename = res.headers
@@ -83,11 +86,17 @@ export class AdminComponent implements OnInit, OnDestroy {
       if (res.status === 'succeeded') {
         this.loading = false;
         this.fileStatus = 'success';
+        this.notifService.notify('File uploaded successfully', {
+          status: 'success'
+        });
         this.statsService.getHistorical();
       }
       if (res.status === 'failed') {
         this.loading = false;
         this.fileStatus = 'failure';
+        this.notifService.notify('File upload failed', {
+          status: 'danger'
+        });
       }
     });
   }
@@ -113,7 +122,7 @@ export class AdminComponent implements OnInit, OnDestroy {
     if (confirm('Remove all funds?')) {
       this.loading = true;
       this.fundsService.removeAll().subscribe(response => {
-        alert('All funds removed');
+        this.notifService.notify('All funds removed', { status: 'success' });
         this.loading = false;
       });
     }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService, User } from 'src/app/core/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NotificationsService } from 'src/app/core/services/notifications/notifications.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private notifService: NotificationsService
   ) {}
 
   ngOnInit() {
@@ -33,9 +35,13 @@ export class LoginComponent implements OnInit {
     this.authService.logIn(userID, password).subscribe(
       (user: User) => {
         this.router.navigate([this.returnUrl]);
+        this.notifService.notify(`Logged in as ${userID}`, {
+          status: 'success'
+        });
       },
       (err: string) => {
         this.errorMessage = err;
+        this.notifService.notify(err, { status: 'danger' });
       }
     );
   }
