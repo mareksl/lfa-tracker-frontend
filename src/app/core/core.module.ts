@@ -30,7 +30,7 @@ import { BreadcrumbsComponent } from './footer/breadcrumbs/breadcrumbs.component
     AdminComponent,
     AboutComponent,
     PanelComponent,
-    BreadcrumbsComponent
+    BreadcrumbsComponent,
   ]
 })
 export class CoreModule {}

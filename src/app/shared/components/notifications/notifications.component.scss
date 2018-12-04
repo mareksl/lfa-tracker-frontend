@@ -1,0 +1,29 @@
+@import '../../../../scss/base/variables';
+@import '../../../../scss/utils/mixins';
+
+.notifications {
+  position: fixed;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.notification {
+  margin-top: 1rem;
+  @include content-box;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  pointer-events: auto;
+}
+
+.notification__info-text {
+  display: block;
+  padding-top: 1rem;
+}

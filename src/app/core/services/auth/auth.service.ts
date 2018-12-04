@@ -8,6 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { NotificationsService } from '../notifications/notifications.service';
 
 export interface User {
   userID: number;
@@ -22,7 +23,11 @@ export interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private notifService: NotificationsService
+  ) {}
 
   private setUser(response: HttpResponse<User>) {
     const token = response.headers.get('x-auth');
@@ -44,7 +49,7 @@ export class AuthService {
   }) {
     return this.http
       .post(`${environment.API_URL}/users`, user, { observe: 'response' })
-      .pipe(map(this.setUser));
+      .pipe(map((res: HttpResponse<User>) => res.body.userID));
   }
 
   logIn(userID: string, password: string) {
