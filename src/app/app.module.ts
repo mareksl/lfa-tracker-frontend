@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { AuthTokenInterceptor } from './shared/interceptors/auth-token.interceptor';
 import { SharedModule } from './shared/shared.module';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,7 +20,8 @@ import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized.inte
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     {
