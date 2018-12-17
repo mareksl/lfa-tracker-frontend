@@ -1,3 +1,10 @@
+export enum FundStatus {
+  'none',
+  'pending',
+  'done',
+  'doneWithPerf'
+}
+
 export interface IFund {
   lipperID: number;
   awardUniverse: string[];
@@ -72,18 +79,25 @@ export class Fund implements IFund {
     this.timeSeriesVerified = data.timeSeriesVerified;
   }
 
-  get fundStatus(): string {
-    const statuses = [
-      this.extendedLGCVerified,
-      this.performanceVerified,
-      this.profileDataVerified,
+  get fundStatus(): FundStatus {
+    if (
+      this.extendedLGCVerified &&
+      this.profileDataVerified &&
       this.timeSeriesVerified
-    ];
+    ) {
+      return this.performanceVerified
+        ? FundStatus.doneWithPerf
+        : FundStatus.done;
+    }
 
-    return statuses.every(v => v)
-      ? 'done'
-      : statuses.some(v => v)
-        ? 'pending'
-        : 'none';
+    if (
+      this.extendedLGCVerified ||
+      this.profileDataVerified ||
+      this.timeSeriesVerified
+    ) {
+      return FundStatus.pending;
+    }
+
+    return FundStatus.none;
   }
 }

@@ -38,12 +38,23 @@
 
   color: $color-danger;
 
+  &:before {
+    content: '\f10c';
+  }
+
   &--pending {
     color: $color-warning;
   }
 
   &--done {
     color: $color-success;
+  }
+
+  &--done-with-perf {
+    color: $color-success;
+    &:before {
+      content: '\f058';
+    }
   }
 }
 

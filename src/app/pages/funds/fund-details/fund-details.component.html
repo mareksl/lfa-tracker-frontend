@@ -1,14 +1,26 @@
 <div class="fund-details" #funditem>
-  <div class="no-data no-data--danger" *ngIf="!fund && !loading; else content">
+  <div class="no-data no-data--danger" *ngIf="!fund && !loading; else: content">
     <p>Fund not available!</p>
   </div>
   <ng-template #content>
-    <app-loading-overlay *ngIf="loading; else fundDetails"></app-loading-overlay>
-    <ng-template #fundDetails >
+    <app-loading-overlay
+      *ngIf="loading; else: fundDetails"
+    ></app-loading-overlay>
+    <ng-template #fundDetails>
       <div class="fund-details__header">
-        <h2>{{fund.fundName}}</h2>
-        <button class="button button--accent button--square" (click)="toCanvas(funditem)" [disabled]="exporting">
-          <span class="fa fa-fw" [ngClass]="{'fa-refresh fa-spin': exporting, 'fa-file-image-o': !exporting}"></span>
+        <h2>{{ fund.fundName }}</h2>
+        <button
+          class="button button--accent button--square"
+          (click)="toCanvas(funditem)"
+          [disabled]="exporting"
+        >
+          <span
+            class="fa fa-fw"
+            [ngClass]="{
+              'fa-refresh fa-spin': exporting,
+              'fa-file-image-o': !exporting
+            }"
+          ></span>
         </button>
       </div>
       <div class="fund-details__data col-8">
@@ -16,72 +28,92 @@
         <ul>
           <li class="data-point">
             <span class="data-point__title">Lipper ID</span>
-            <span class="data-point__data">{{fund.lipperID}}</span>
+            <span class="data-point__data">{{ fund.lipperID }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">ISIN Code</span>
-            <span class="data-point__data">{{fund.iSINCode}}</span>
+            <span class="data-point__data">{{ fund.iSINCode }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Assignee</span>
-            <span class="data-point__data">{{fund.fundOwner}}</span>
+            <span class="data-point__data">{{ fund.fundOwner }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Domicile</span>
-            <span class="data-point__data">{{fund.domicile}}</span>
+            <span class="data-point__data">{{ fund.domicile }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Investment Advisor</span>
-            <span class="data-point__data">{{fund.advisorCompanyName}}</span>
+            <span class="data-point__data">{{ fund.advisorCompanyName }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Promoter</span>
-            <span class="data-point__data">{{fund.promoterCompanyName}}</span>
+            <span class="data-point__data">{{ fund.promoterCompanyName }}</span>
           </li>
         </ul>
         <h3 class="fund-details__header">LFA data</h3>
         <ul>
           <li class="data-point">
             <span class="data-point__title">Award Universe</span>
-            <span class="data-point__data">{{fund.awardUniverse}}</span>
+            <span class="data-point__data">{{ fund.awardUniverse }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Award Period</span>
-            <span class="data-point__data">{{fund.awardPeriod}}</span>
+            <span class="data-point__data">{{ fund.awardPeriod }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Award Verified Note Date</span>
-            <span class="data-point__data">{{fund.awardVerifiedNoteDate | date:'dd/MM/y'}}</span>
+            <span class="data-point__data">{{
+              fund.awardVerifiedNoteDate | date: 'dd/MM/y'
+            }}</span>
           </li>
           <li class="data-point">
             <span class="data-point__title">Award Verified Note Text</span>
-            <span class="data-point__data">{{fund.awardVerifiedNoteText}}</span>
+            <span class="data-point__data">{{
+              fund.awardVerifiedNoteText
+            }}</span>
           </li>
         </ul>
       </div>
       <div class="fund-details__status col-4">
-        <h3 class="fund-details__header">Fund status <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.fundStatus === 'done', 'fund-status-icon--pending': fund.fundStatus === 'pending'}"></span></h3>
+        <h3 class="fund-details__header">
+          Fund status
+          <span
+            class="fa fa-circle fund-status-icon"
+            [ngClass]="fundClass"
+          ></span>
+        </h3>
         <ul>
           <li class="data-point data-point--status">
             <span class="data-point__title">Extended LGC Verified</span>
-            <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.extendedLGCVerified}"></span>
+            <span
+              class="fa fa-circle fund-status-icon"
+              [ngClass]="{ 'fund-status-icon--done': fund.extendedLGCVerified }"
+            ></span>
           </li>
           <li class="data-point data-point--status">
             <span class="data-point__title">Performance Verified</span>
-            <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.performanceVerified}"></span>
+            <span
+              class="fa fa-circle fund-status-icon"
+              [ngClass]="{ 'fund-status-icon--done': fund.performanceVerified }"
+            ></span>
           </li>
           <li class="data-point data-point--status">
             <span class="data-point__title">Profile Data Verified</span>
-            <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.profileDataVerified}"></span>
+            <span
+              class="fa fa-circle fund-status-icon"
+              [ngClass]="{ 'fund-status-icon--done': fund.profileDataVerified }"
+            ></span>
           </li>
           <li class="data-point data-point--status">
             <span class="data-point__title">Time Series Verified</span>
-            <span class="fa fa-circle fund-status-icon" [ngClass]="{'fund-status-icon--done': fund.timeSeriesVerified}"></span>
+            <span
+              class="fa fa-circle fund-status-icon"
+              [ngClass]="{ 'fund-status-icon--done': fund.timeSeriesVerified }"
+            ></span>
           </li>
         </ul>
       </div>
     </ng-template>
-
   </ng-template>
-
 </div>

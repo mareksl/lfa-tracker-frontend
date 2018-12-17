@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Fund } from 'src/app/shared/models/fund.model';
+import { Fund, FundStatus } from 'src/app/shared/models/fund.model';
 
 @Component({
   selector: 'app-funds-list-item',
@@ -13,4 +13,13 @@ export class FundsListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  get fundClass() {
+    return {
+      'fund-status-icon--done-with-perf':
+        this.fund.fundStatus === FundStatus.doneWithPerf,
+      'fund-status-icon--done': this.fund.fundStatus === FundStatus.done,
+      'fund-status-icon--pending': this.fund.fundStatus === FundStatus.pending
+    };
+  }
 }

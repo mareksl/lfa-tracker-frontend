@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Fund } from 'src/app/shared/models/fund.model';
+import { Fund, FundStatus } from 'src/app/shared/models/fund.model';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FundsService } from 'src/app/core/services/funds/funds.service';
 import html2canvas from 'html2canvas';
@@ -59,5 +59,14 @@ export class FundDetailsComponent implements OnInit {
       document.body.removeChild(a);
       this.exporting = false;
     });
+  }
+
+  get fundClass() {
+    return {
+      'fund-status-icon--done-with-perf':
+        this.fund.fundStatus === FundStatus.doneWithPerf,
+      'fund-status-icon--done': this.fund.fundStatus === FundStatus.done,
+      'fund-status-icon--pending': this.fund.fundStatus === FundStatus.pending
+    };
   }
 }
