@@ -10,6 +10,7 @@ import { StatisticsByAssigneeComponent } from './statistics-by-assignee/statisti
 import { StatisticsByDepartmentComponent } from './statistics-by-department/statistics-by-department.component';
 import { StatisticsByRankComponent } from './statistics-by-rank/statistics-by-rank.component';
 import { StatisticsByUniverseComponent } from './statistics-by-universe/statistics-by-universe.component';
+import { TotalStatisticsListComponent } from './total-statistics/total-statistics-list/total-statistics-list.component';
 
 @NgModule({
   imports: [SharedModule, StatisticsRoutingModule, FormsModule],
@@ -20,7 +21,8 @@ import { StatisticsByUniverseComponent } from './statistics-by-universe/statisti
     StatisticsByAssigneeComponent,
     StatisticsByDepartmentComponent,
     StatisticsByRankComponent,
-    StatisticsByUniverseComponent
+    StatisticsByUniverseComponent,
+    TotalStatisticsListComponent
   ]
 })
 export class StatisticsModule {}

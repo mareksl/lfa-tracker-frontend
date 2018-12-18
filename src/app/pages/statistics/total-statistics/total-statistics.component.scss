@@ -5,49 +5,8 @@
 .total-statistics__header {
   @include main-content__header;
 }
+
 .total-statistics__list {
   @include full-width;
-  @include box-shadow-default;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  // border: 1px solid $color-neutral;
-  border-radius: $border-radius-default;
-}
-
-.total-statistics__datapoint {
-  flex: 1 1 25%;
-  padding: 1rem;
-  text-align: center;
-
-  border: 1px solid $color-neutral;
-
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-
-  white-space: nowrap;
-}
-
-.datapoint__title {
-  font-weight: 500;
-}
-
-.datapoint__title--small {
-  font-weight: 300;
-}
-
-.datapoint__data {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 0.5rem;
-}
-
-.datapoint__data--small {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-.total-statistics__progress {
-  @include full-width;
+  @include grid-container;
 }

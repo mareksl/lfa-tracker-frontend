@@ -1,34 +1,32 @@
-export interface IStatisticsItem {
-  statsByRank?: IStatisticsByRank;
-  totalCount: number;
-  doneCount: number;
-  percentageDone: number;
+export interface IStatisticsCollection {
+  count: number;
   extendedLGCVerified: number;
   performanceVerified: number;
   profileDataVerified: number;
   timeSeriesVerified: number;
+  complete: number;
+  completeWithPerformance: number;
 }
+
 interface IStatisticsByRank {
-  [name: string]: IStatisticsItem;
+  [name: string]: IStatisticsCollection;
 }
+
+export interface IStatisticsItem {
+  total: IStatisticsCollection;
+  rank123: IStatisticsCollection;
+  byRank: IStatisticsByRank;
+}
+
 interface IStatisticsByProperty {
-  [name: string]: {
-    statsByRank: IStatisticsByRank;
-    totalCount: number;
-    doneCount: number;
-    percentageDone: number;
-    extendedLGCVerified: number;
-    performanceVerified: number;
-    profileDataVerified: number;
-    timeSeriesVerified: number;
-  };
+  [name: string]: IStatisticsItem;
 }
 
 export interface IStatistics extends IStatisticsItem {
-  statsByRank: IStatisticsByRank;
-  statsByDepartment: IStatisticsByProperty;
-  statsByAssignee: IStatisticsByProperty;
-  statsByUniverse: IStatisticsByProperty;
+  byRank: IStatisticsByRank;
+  byDepartment: IStatisticsByProperty;
+  byFundOwner: IStatisticsByProperty;
+  byUniverse: IStatisticsByProperty;
   date: Date;
   _id: string;
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IStatisticsItem } from 'src/app/shared/models/statistics.model';
+import {
+  IStatisticsItem,
+  IStatisticsByPropertyItem
+} from 'src/app/shared/models/statistics.model';
 import html2canvas from 'html2canvas';
 import { formatDate } from '@angular/common';
 
@@ -10,7 +13,7 @@ import { formatDate } from '@angular/common';
 })
 export class StatisticsItemComponent implements OnInit {
   @Input()
-  item: IStatisticsItem;
+  item: IStatisticsItem | IStatisticsByPropertyItem;
 
   // tslint:disable-next-line:no-input-rename
   @Input('title')
