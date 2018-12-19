@@ -3,17 +3,17 @@
     <h4 class="statistics-item__heading">{{ title | titlecase }}{{ key }}</h4>
     <ul>
       <li class="statistics-item__datapoint">
-        <span>Total Fund Count:</span> <span>{{ item.totalCount }}</span>
+        <span>Total Fund Count:</span> <span>{{ item.count }}</span>
       </li>
       <li class="statistics-item__datapoint">
-        <span>Checked Funds: </span> <span>{{ item.doneCount }}</span>
+        <span>Checked Funds: </span> <span>{{ item.complete }}</span>
       </li>
       <li
-        *ngFor="let rank of (item.statsByRank | keyvalue)"
+        *ngFor="let rank of (item.byRank | keyvalue)"
         class="statistics-item__datapoint"
       >
         <span
-          >Rank {{ rank.key }}: {{ rank.value.doneCount }}/{{
+          >Rank {{ rank.key }}: {{ rank.value.complete }}/{{
             rank.value.totalCount
           }}</span
         >
@@ -26,14 +26,14 @@
       </li>
       <li class="statistics-item__datapoint statistics-item__datapoint--accent">
         <span>Total: </span>
-        <span [appPercentageColor]="item.percentageDone">
-          {{ item.percentageDone | percent: '1.0-2' }}
+        <span [appPercentageColor]="item.complete / item.count">
+          {{ item.complete / item.count | percent: '1.0-2' }}
         </span>
       </li>
     </ul>
     <app-total-pie-chart
       class="chart"
-      [chartData]="[item.doneCount, item.totalCount - item.doneCount]"
+      [chartData]="[item.complete, item.count - item.complete]"
       [chartLabels]="['Checked', 'Unchecked']"
     ></app-total-pie-chart>
     <h5 class="statistics-item__verified-heading">Verified:</h5>
@@ -51,7 +51,7 @@
         'Time Series',
         'Performance'
       ]"
-      [max]="item.totalCount"
+      [max]="item.count"
     ></app-bar-chart>
   </div>
   <button

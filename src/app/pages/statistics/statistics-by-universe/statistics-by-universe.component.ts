@@ -14,6 +14,7 @@ export class StatisticsByUniverseComponent implements OnInit {
   constructor() {}
 
   statsVisible: boolean;
+  rank123Visible: boolean;
 
   ngOnInit() {
     this.search = '';

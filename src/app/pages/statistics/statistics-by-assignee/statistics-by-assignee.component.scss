@@ -12,7 +12,14 @@
 
 .statistics-by-assignee__item {
   @include content-box;
+  grid-column-end: span 2;
+  display: flex;
+  flex-flow: row wrap;
   padding: 0;
+}
+
+.statistics-by-assignee__sub-item {
+flex: 1 0 50%;
 }
 
 .statistics-by-assignee__list {

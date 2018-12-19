@@ -1,21 +1,50 @@
 <div class="statistics">
   <header class="statistics__header">
     <h2>Statistics</h2>
-    <button class="button button--square button--accent button--refresh" (click)="refreshData()" [disabled]="loading">
-      <span class="fa fa-fw fa-refresh" [ngClass]="{'fa-spin': loading}"></span>
+    <button
+      class="button button--square button--accent button--refresh"
+      (click)="refreshData()"
+      [disabled]="loading"
+    >
+      <span
+        class="fa fa-fw fa-refresh"
+        [ngClass]="{ 'fa-spin': loading }"
+      ></span>
     </button>
   </header>
   <app-loading-overlay *ngIf="loading; else loaded"></app-loading-overlay>
   <ng-template #loaded>
-    <div class="no-data no-data--danger" *ngIf="!statistics || statistics.totalCount === 0; else content">
+    <div
+      class="no-data no-data--danger"
+      *ngIf="!statistics || statistics.total.count === 0; else content"
+    >
       <p>No statistics available!</p>
     </div>
     <ng-template #content>
-      <app-total-statistics [statistics]="statistics" class="statistics__data"></app-total-statistics>
-      <app-statistics-by-rank id="statistics-by-rank" [statistics]="statistics.statsByRank" class="statistics__data"></app-statistics-by-rank>
-      <app-statistics-by-universe id="statistics-by-universe" [statistics]="statistics.statsByUniverse" class="statistics__data"></app-statistics-by-universe>
-      <app-statistics-by-department id="statistics-by-department" [statistics]="statistics.statsByDepartment" class="statistics__data"></app-statistics-by-department>
-      <app-statistics-by-assignee id="statistics-by-assignee" [statistics]="statistics.statsByAssignee" class="statistics__data"></app-statistics-by-assignee>
+      <app-total-statistics
+        [statistics]="statistics"
+        class="statistics__data"
+      ></app-total-statistics>
+      <app-statistics-by-rank
+        id="statistics-by-rank"
+        [statistics]="statistics.byRank"
+        class="statistics__data"
+      ></app-statistics-by-rank>
+      <app-statistics-by-universe
+        id="statistics-by-universe"
+        [statistics]="statistics.byUniverse"
+        class="statistics__data"
+      ></app-statistics-by-universe>
+      <app-statistics-by-department
+        id="statistics-by-department"
+        [statistics]="statistics.byDepartment"
+        class="statistics__data"
+      ></app-statistics-by-department>
+      <app-statistics-by-assignee
+        id="statistics-by-assignee"
+        [statistics]="statistics.byFundOwner"
+        class="statistics__data"
+      ></app-statistics-by-assignee>
     </ng-template>
   </ng-template>
 </div>

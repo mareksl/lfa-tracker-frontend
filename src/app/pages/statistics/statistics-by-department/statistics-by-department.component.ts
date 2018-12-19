@@ -13,6 +13,7 @@ export class StatisticsByDepartmentComponent implements OnInit {
   search: string;
 
   statsVisible: boolean;
+  rank123Visible: boolean;
 
   constructor() {}
 

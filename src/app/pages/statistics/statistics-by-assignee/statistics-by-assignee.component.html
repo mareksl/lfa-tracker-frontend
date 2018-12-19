@@ -1,9 +1,24 @@
-<div class="statistics-by-assignee__header">
-  <h3>Stats by assignee</h3>
-</div>
-<app-multi-select class="statistics-by-assignee__select" [options]=" assigneeList" [(selected)]="assignees"></app-multi-select>
+<div class="statistics-by-assignee__header"><h3>Stats by Fund Owner</h3></div>
+
+<app-multi-select
+  class="statistics-by-assignee__select"
+  [options]="assigneeList"
+  [(selected)]="assignees"
+></app-multi-select>
+
 <ul class="statistics-by-assignee__list">
-  <app-statistics-item *ngFor="let assignee of assignees" class="statistics-by-assignee__item" [item]="statistics[assignee]"
-    [key]="assignee">
-  </app-statistics-item>
+  <li class="statistics-by-assignee__item" *ngFor="let assignee of assignees">
+    <app-statistics-item
+    class="statistics-by-assignee__sub-item"
+      [item]="statistics[assignee].total"
+      [key]="assignee"
+    >
+    </app-statistics-item>
+    <app-statistics-item
+    class="statistics-by-assignee__sub-item"
+      [item]="statistics[assignee].rank123"
+      [key]="'Rank 1-3 ' + assignee"
+    >
+    </app-statistics-item>
+  </li>
 </ul>
